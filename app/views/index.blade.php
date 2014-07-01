@@ -14,7 +14,7 @@
     <div class="container">
         <div class="header navbar navbar-default">
           <div class="navbar-inner">
-            <a class="navbar-brand" href="/"><img src="/img/ball-40.png" alt="SFPD" width="38" height="40"></a>
+            <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="SFPD" width="32" height="32"></a>
             <ul class="nav navbar-nav">
               <li class="active"><a ng-href="#">Home</a></li>
               <li><a ng-href="#/standings">Standings</a></li>

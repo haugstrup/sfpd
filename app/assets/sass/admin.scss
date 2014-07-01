@@ -16,6 +16,11 @@ table label {
   vertical-align: middle;
 }
 
+.navbar-brand img {
+  position:relative;
+  top:-5px;
+}
+
 
 /* States */
 .state-inactive {
