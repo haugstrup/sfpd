@@ -24,7 +24,7 @@ class AdminHeatController extends \BaseController {
   public function store_groups($id)
   {
 
-    $hashids = new Hashids\Hashids('GN2FnrnthVuX', 9, 'abcdefghijkmnpqrstuvwxyz');
+    $hashids = new Hashids\Hashids('GN2FnrnthVuX', 4, 'abcdefghijkmnpqrstuvwxyz');
 
     $count = (int)Input::get('count');
     if ($count > 0 && $count < 30)
