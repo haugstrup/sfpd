@@ -3,7 +3,7 @@
 class Result extends \Eloquent {
   protected $primaryKey = 'result_id';
   protected $softDelete = true;
-  protected $hidden = array('created_at', 'deleted_at', 'updated_at');
+  protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'game');
   protected $fillable = array('game_id', 'player_id', 'position', 'delta');
   protected $appends = array('points');
 

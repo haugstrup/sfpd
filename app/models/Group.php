@@ -5,7 +5,7 @@ class Group extends \Eloquent {
   protected $softDelete = true;
   protected $fillable = array('code', 'heat_id', 'delta');
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'group_id');
-  protected $appends = array('name');
+  protected $appends = array('name', 'points');
 
   public function players()
   {
@@ -27,6 +27,11 @@ class Group extends \Eloquent {
     return $this->name();
   }
 
+  public function getPointsAttribute()
+  {
+    return $this->points();
+  }
+
   public function name() {
     $number = $this->delta+1;
     return "Group {$number}";
@@ -35,6 +40,28 @@ class Group extends \Eloquent {
   public function url()
   {
     return url('/') . "/#/group/{$this->code}";
+  }
+
+  public function points()
+  {
+    $points = array();
+    $return = array();
+
+    foreach ($this->games as $game) {
+      foreach ($game->results as $result) {
+        $points[$result->player_id] = isset($points[$result->player_id]) ? $points[$result->player_id] + $result->points : $result->points;
+      }
+    }
+
+    foreach ($points as $player_id => $score) {
+      $return[] = array(
+        'player_id' => $player_id,
+        'points' => $score
+      );
+    }
+
+    return $return;
+
   }
 
 }

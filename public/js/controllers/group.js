@@ -15,18 +15,6 @@ angular.module('sfpdApp')
       $scope.group.newPlayer = null;
     };
 
-    $scope.pointsForPlayer = function(playerId) {
-      var points = 0;
-      angular.forEach($scope.group.games, function(game){
-        angular.forEach(game.results, function(result) {
-          if (result.player_id === playerId) {
-            points = points + result.points;
-          }
-        });
-      });
-      return points;
-    };
-
     $scope.roomForPlayers = function() {
       if (!$scope.group.players) {
         return true;
