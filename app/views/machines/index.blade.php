@@ -1,27 +1,27 @@
 @extends("layout")
 @section("content")
 <h1>All machines <a href="{{ URL::route('admin.machines.create') }}" class="btn btn-primary">Add machine</a></h1>
-<table class="table table-bordered">
+<table class="table table-bordered table-vertical-center">
   <thead>
     <tr>
       <th>Name</th>
-      <th>Short</th>
-      <th>Actions</th>
+      <th class="text-center">Short</th>
+      <th class="text-center">Actions</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($machines as $machine)
       <tr class="state-{{{ $machine->status }}}">
         <td><a href="{{ URL::route('admin.machines.edit', $machine->machine_id) }}">{{{ $machine->name }}}</a></td>
-        <td>{{{ $machine->shortname }}}</td>
-        <td>
+        <td class="text-center">{{{ $machine->shortname }}}</td>
+        <td class="text-center">
           @if ($machine->status === 'inactive')
             {{ Form::open(array('route' => array('machines.activate', $machine->machine_id))) }}
-              {{ Form::submit('Activate', array('class' => 'btn btn-success btn-sm')) }}
+              {{ Form::submit('Activate', array('class' => 'btn btn-success')) }}
             {{ Form::close() }}
           @else
             {{ Form::open(array('route' => array('machines.deactivate', $machine->machine_id))) }}
-              {{ Form::submit('Deactivate', array('class' => 'btn btn-sm')) }}
+              {{ Form::submit('Deactivate', array('class' => 'btn btn-default')) }}
             {{ Form::close() }}
           @endif
         </td>

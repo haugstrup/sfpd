@@ -9,27 +9,27 @@
   </ul>
   <h2>Heats</h2>
 
-  <table class="table table-bordered">
+  <table class="table table-bordered table-vertical-center">
     <thead>
       <tr>
         <th>Name</th>
         <th>Date</th>
-        <th>Actions</th>
+        <th class="text-center">Actions</th>
       </tr>
     </thead>
     <tbody>
       @foreach ($season->heats as $heat)
-        <tr class="state-{{$heat->status}}">
-          <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}" class="state-{{$heat->status}}">{{$heat->name()}}</a></td>
-          <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}" class="state-{{$heat->status}}">{{$heat->formatted_date()}}</a></td>
-          <td>
+        <tr class="{{$heat->status === 'active' ? 'success' : ''}}">
+          <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->name()}}</a></td>
+          <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->formatted_date()}}</a></td>
+          <td class="text-center">
             @if ($heat->status === 'inactive')
               {{ Form::open(array('route' => array('heats.activate', $heat->heat_id))) }}
-                {{ Form::submit('Activate', array('class' => 'btn btn-success btn-sm')) }}
+                {{ Form::submit('Activate', array('class' => 'btn btn-success')) }}
               {{ Form::close() }}
             @else
               {{ Form::open(array('route' => array('heats.deactivate', $heat->heat_id))) }}
-                {{ Form::submit('Close', array('class' => 'btn btn-sm')) }}
+                {{ Form::submit('Close', array('class' => 'btn btn-default')) }}
               {{ Form::close() }}
             @endif
           </td>

@@ -1,5 +1,6 @@
-body {
-  padding:20px;
+.container {
+  max-width:730px;
+  margin:15px auto;
 }
 
 tr.state-inactive {
@@ -11,14 +12,15 @@ table label {
   font-weight:normal;
 }
 
+.table.table-vertical-center > tbody > tr > td {
+  vertical-align: middle;
+}
+
+
 /* States */
-.state-inactive, .state-past {
+.state-inactive {
   color:#999;
 }
 li.state-active, a.state-active {
   color:#468847;
 }
-/*.state-future {
-  color:#3a87ad;
-}
-*/

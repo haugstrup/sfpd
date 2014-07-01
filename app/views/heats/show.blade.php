@@ -4,7 +4,7 @@
 
 <hr>
 {{ Form::open(array('route' => array('admin.heats.store_groups', $heat->heat_id), 'method' => 'post', 'class' => 'form-inline')) }}
-  Create {{ Form::text('count', '20', array('class' => 'input-mini')) }} fresh groups {{ Form::submit('Go!', array('class' => 'btn btn-success')) }}
+  Create {{ Form::text('count', '20', array('class' => 'input-sm form-control', 'size' => 2)) }} fresh groups {{ Form::submit('Go!', array('class' => 'btn btn-success btn-sm')) }}
 {{ Form::close() }}
 <hr>
 
@@ -22,7 +22,7 @@
       @foreach ($heat->groups as $group)
         <tr>
           <td>{{{ $group->name() }}}</td>
-          <td><a href="{{ $group->url() }}">{{{ $group->code }}}</a></td>
+          <td><a href="{{ $group->url() }}" target="_blank">{{{ $group->code }}}</a></td>
           <td>{{{ count($group->players) }}}</td>
         </tr>
       @endforeach

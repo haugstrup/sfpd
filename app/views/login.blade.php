@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-	{{ Form::open(array('url' => 'login')) }}
+	{{ Form::open(array('url' => 'login', 'role' => 'form')) }}
 		<h1>Login</h1>
 
 		<!-- if there are login errors, show them here -->
@@ -9,16 +9,16 @@
 			{{ $errors->first('password') }}
 		</p>
 
-		<div>
+		<div class="form-group">
 			{{ Form::label('email', 'Email Address') }}
-			{{ Form::text('email', Input::old('email'), array('placeholder' => 'yourself@example.com')) }}
+			{{ Form::text('email', Input::old('email'), array('placeholder' => 'yourself@example.com', 'class' => 'form-control')) }}
 		</div>
 
-		<div>
+		<div class="form-group">
 			{{ Form::label('password', 'Password') }}
-			{{ Form::password('password') }}
+			{{ Form::password('password', array('class' => 'form-control')) }}
 		</div>
 
-		<p>{{ Form::submit('Login') }}</p>
+		<div class="form-group">{{ Form::submit('Login', array('class' => 'btn btn-primary')) }}</div>
 	{{ Form::close() }}
 @stop

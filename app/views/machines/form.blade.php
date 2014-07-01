@@ -1,14 +1,14 @@
-<div>
+<div class="form-group">
   {{ Form::label('name', 'Name') }}
-  {{ Form::text('name') }}
+  {{ Form::text('name', null, array('class' => 'form-control')) }}
 </div>
 
-<div>
+<div class="form-group">
   {{ Form::label('shortname', 'Short Name') }}
-  {{ Form::text('shortname') }}
+  {{ Form::text('shortname', null, array('class' => 'form-control')) }}
 </div>
 
-<div>
+<div class="form-group">
   {{ Form::label('status', 'Status') }}
-  {{Form::select('status', array('active' => 'Active', 'inactive' => 'Inactive'))}}
+  {{Form::select('status', array('active' => 'Active', 'inactive' => 'Inactive'), null, array('class' => 'form-control'))}}
 </div>

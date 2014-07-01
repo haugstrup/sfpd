@@ -6,10 +6,9 @@
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>&nbsp;</th>
       <th>Name</th>
-      <th>Initials</th>
-      <th>IFPA No.</th>
+      <th class="text-center">Initials</th>
+      <th class="text-center">IFPA No.</th>
     </tr>
   </thead>
   <tbody>
@@ -17,10 +16,9 @@
       <tr class="state-">
         <td>
           {{ Form::checkbox("players[]", $player->player_id, $season->has_player($player), array('id' => "player-{$player->player_id}")) }}
-        </td>
-        <td>{{ Form::label("player-{$player->player_id}", $player->display_name) }}</td>
-        <td>{{ Form::label("player-{$player->player_id}", $player->initials ? $player->initials : '&nbsp;') }}</td>
-        <td>@if ($player->ifpa_id) <a href="http://www.ifpapinball.com/player.php?player_id={{{ $player->ifpa_id }}}">{{{ $player->ifpa_id }}}</a>@endif</td>
+          {{ Form::label("player-{$player->player_id}", $player->display_name) }}</td>
+        <td class="text-center">{{ Form::label("player-{$player->player_id}", $player->initials ? $player->initials : '&nbsp;') }}</td>
+        <td class="text-center">@if ($player->ifpa_id) <a href="http://www.ifpapinball.com/player.php?player_id={{{ $player->ifpa_id }}}">{{{ $player->ifpa_id }}}</a>@endif</td>
       </tr>
     @endforeach
   </tbody>
