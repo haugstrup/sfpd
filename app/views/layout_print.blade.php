@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {{ HTML::style('css/bootstrap.css') }}
   {{ HTML::style('css/bootstrap-responsive.css') }}
-  {{ HTML::style('css/style_print.css') }}
+  {{ HTML::style('css/admin_print.css') }}
 </head>
 <body>
 
