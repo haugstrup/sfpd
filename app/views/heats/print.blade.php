@@ -12,7 +12,7 @@
         <thead>
           <tr class="fake-header">
             <th colspan="3">SFPD Score Sheet, {{{$group->name()}}}</th>
-            <th colspan="3" class="name">{{{$heat->season->name}}} {{{$heat->name()}}}</th>
+            <th colspan="3" class="name">{{{$heat->season->name}}}, {{{$heat->name()}}}</th>
           </tr>
           <tr>
             <th>Player Name</th>
@@ -59,7 +59,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td colspan="6">Fill in the <b>points</b> each player earned. Use the mobile app: <b>http://sfpd.hgstrp.com/</b></td>
+            <td colspan="6">Fill in the <b>points</b> each player earned. Use the mobile app: <b>{{url('/')}}</b></td>
           </tr>
         </tfoot>
       </table>
