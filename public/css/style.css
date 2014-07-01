@@ -1,0 +1,34 @@
+body {
+  padding:20px;
+}
+
+/* Table views */
+table, th, td {
+  border:1px solid #ccc;
+  border-collapse:collapse;
+}
+th, td {
+  padding:5px;
+}
+th {
+  text-align:left;
+}
+tr.state-inactive {
+  background:#eee;
+}
+table form,
+table label {
+  margin:0;
+}
+
+/* States */
+.state-inactive, .state-past {
+  color:#999;
+}
+li.state-active, a.state-active {
+  color:#468847;
+}
+/*.state-future {
+  color:#3a87ad;
+}
+*/
