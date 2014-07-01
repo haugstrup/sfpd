@@ -28,15 +28,6 @@ class DatabaseSeeder extends Seeder {
 		$this->call('HeatsTableSeeder');
 		$this->command->info('Heats table seeded.');
 
-		$this->call('GroupsTableSeeder');
-		$this->command->info('Groups table seeded.');
-
-		$this->call('GamesTableSeeder');
-		$this->command->info('Games table seeded.');
-
-		$this->call('ResultsTableSeeder');
-		$this->command->info('Results table seeded.');
-
 		DB::statement('SET FOREIGN_KEY_CHECKS=1;');
 	}
 
