@@ -6,7 +6,6 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"hashids/hashids": "0.3.*@dev",
-		"barryvdh/laravel-cors": "dev-master",
 		"simplesoftwareio/simple-qrcode": "0.0.4-beta"
 	},
 	"require-dev": {
