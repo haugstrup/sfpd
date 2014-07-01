@@ -3,17 +3,16 @@
 <head>
   <title>SFPD Awesome Admin Area</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{ HTML::style('css/bootstrap.css') }}
-  {{ HTML::style('css/bootstrap-responsive.css') }}
-  {{ HTML::style('css/admin.css') }}
+  {{ stylesheet('bootstrap.css') }}
+  {{ stylesheet('admin.css') }}
 </head>
 <body>
 
   @if (Auth::check())
-  <div class="navbar">
+  <div class="navbar navbar-default">
     <div class="navbar-inner">
-      <a class="brand" href="{{ URL::route('admin.index') }}">SFPD</a>
-      <ul class="nav">
+      <a class="navbar-brand" href="{{ URL::route('admin.index') }}">SFPD</a>
+      <ul class="nav navbar-nav">
 
         <li class="{{ substr(Request::path(), 6, 8) == 'players' ? 'active' : '' }}">
           <a href="{{ URL::route('admin.players.index') }}">Players</a>

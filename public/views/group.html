@@ -1,0 +1,59 @@
+<div ng-if="group.code">
+  <h2>{{group.name}}: {{group.code}}</h2>
+
+  <h3>Players</h3>
+  <ul>
+    <li ng-repeat="player in group.players">
+      {{player.display_name}}
+    </li>
+  </ul>
+  <form class="form-inline" ng-show="roomForPlayers() && !group.games.length">
+    <select class="form-control" ng-required ng-model="group.newPlayer" ng-options="player as player.display_name for player in group.season.players | orderBy:'display_name'">
+      <option value="">-- select player --</option>
+    </select>
+    <button class="btn btn-success form-control" ng-click="addPlayer()">Add player</button>
+  </form>
+
+  <h3>Games</h3>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Player</th>
+        <th ng-repeat="game in group.games" class="text-center"><a href="#/game/{{game.game_id}}">{{game.machine.shortname}}</a></th>
+        <th class="text-center"><b>Total</b></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="player in group.players">
+        <td>{{player.display_name}}</td>
+        <td ng-repeat="game in group.games" class="text-center">
+          {{ (game.results|filter:{player_id:player.player_id}:true)[0].points }} pt.
+        </td>
+        <td class="text-center">
+          {{ pointsForPlayer(player.player_id) }} pt.
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <form class="form-inline" ng-show="group.players.length >= 3 && !(group.games|filter:{status:'active'}:true).length && group.games.length < 4">
+    <select class="form-control" ng-required ng-model="group.nextPlayerPick" ng-options="player as player.display_name for player in group.players">
+      <option value="">-- player --</option>
+    </select>
+    picks
+    <select class="form-control" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in group.machines">
+      <option value="">-- machine --</option>
+    </select>
+    <button class="btn btn-success form-control" ng-click="startGame()" ng-disabled="buttonDisabled">Pick game</button>
+  </form>
+
+  <div ng-show="group.players.length < 3" class="text-warning">
+    <p>You can't pick games until you've picked players.</p>
+  </div>
+
+</div>
+<div ng-show="!group.code" class="text-danger">
+  <h2>Group not found</h2>
+  <p>Can't find your group. It's probably connected to the wrong league night.</p>
+</div>

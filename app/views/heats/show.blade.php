@@ -10,7 +10,7 @@
 
 <h2>Groups <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
 @if ($heat->groups)
-  <table>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>

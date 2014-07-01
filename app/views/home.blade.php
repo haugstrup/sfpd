@@ -9,7 +9,7 @@
   </ul>
   <h2>Heats</h2>
 
-  <table>
+  <table class="table table-bordered">
     <thead>
       <tr>
         <th>Name</th>
@@ -25,11 +25,11 @@
           <td>
             @if ($heat->status === 'inactive')
               {{ Form::open(array('route' => array('heats.activate', $heat->heat_id))) }}
-                {{ Form::submit('Activate', array('class' => 'btn btn-success')) }}
+                {{ Form::submit('Activate', array('class' => 'btn btn-success btn-sm')) }}
               {{ Form::close() }}
             @else
               {{ Form::open(array('route' => array('heats.deactivate', $heat->heat_id))) }}
-                {{ Form::submit('Close', array('class' => 'btn')) }}
+                {{ Form::submit('Close', array('class' => 'btn btn-sm')) }}
               {{ Form::close() }}
             @endif
           </td>
@@ -41,8 +41,8 @@
 <hr>
 
 {{ Form::open(array('route' => array('admin.seasons.store_heat', $season->season_id), 'method' => 'post', 'class' => 'form-inline')) }}
-  {{ Form::input('date', 'date', '') }}
-  {{ Form::input('time', 'time', '') }}
+  {{ Form::input('date', 'date', '', array('class' => 'form-control')) }}
+  {{ Form::input('time', 'time', '', array('class' => 'form-control')) }}
   {{ Form::submit('Add heat', array('class' => 'btn btn-success')) }}
 {{ Form::close() }}
 

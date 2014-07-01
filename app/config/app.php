@@ -122,6 +122,7 @@ return array(
 		'Way\Generators\GeneratorsServiceProvider',
 		'Barryvdh\Cors\CorsServiceProvider',
 		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider',
+		'Way\Console\GuardLaravelServiceProvider',
 	),
 
 	/*

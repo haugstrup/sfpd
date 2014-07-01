@@ -1,0 +1,60 @@
+@import "bootstrap.scss";
+
+body {
+  margin:20px;
+}
+.sheet {
+  clear:both;
+  width:100%;
+  margin-bottom:40px;
+}
+.sheet table {
+  width:100%;
+}
+.sheet th, .sheet td {
+  border:1px solid black;
+  border-collapse:collapse;
+}
+.sheet thead .fake-header th,
+.sheet tfoot td {
+  border:none;
+}
+.sheet td {
+  padding:5px;
+  width:18%;
+}
+.sheet th {
+  text-align:left;
+  padding:5px;
+}
+.sheet .fake-header .name {
+  text-align:right;
+}
+
+.sheet .total {
+  text-align:center;
+  width:10%;
+}
+
+.sheet .mobile {
+  width:100px;
+  height:200px;
+  float:right;
+  text-align:center;
+  padding-top:25px;
+}
+.sheet .scores {
+  width:calc(100% - 110px);
+}
+
+@media print {
+  body {
+    padding:0;
+  }
+  .sheet {
+    margin-bottom:5px;
+  }
+  .sheet:nth-child(4n) {
+    page-break-after: always;
+  }
+}

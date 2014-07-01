@@ -1,0 +1,24 @@
+body {
+  padding:20px;
+}
+
+tr.state-inactive {
+  background:#eee;
+}
+table form,
+table label {
+  margin:0;
+  font-weight:normal;
+}
+
+/* States */
+.state-inactive, .state-past {
+  color:#999;
+}
+li.state-active, a.state-active {
+  color:#468847;
+}
+/*.state-future {
+  color:#3a87ad;
+}
+*/

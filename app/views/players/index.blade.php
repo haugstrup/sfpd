@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <h1>All players <a href="{{ URL::route('admin.players.create') }}" class="btn btn-primary">Add player</a></h1>
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Display name</th>

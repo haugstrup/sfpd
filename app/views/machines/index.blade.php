@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <h1>All machines <a href="{{ URL::route('admin.machines.create') }}" class="btn btn-primary">Add machine</a></h1>
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>Name</th>
@@ -17,11 +17,11 @@
         <td>
           @if ($machine->status === 'inactive')
             {{ Form::open(array('route' => array('machines.activate', $machine->machine_id))) }}
-              {{ Form::submit('Activate', array('class' => 'btn btn-success')) }}
+              {{ Form::submit('Activate', array('class' => 'btn btn-success btn-sm')) }}
             {{ Form::close() }}
           @else
             {{ Form::open(array('route' => array('machines.deactivate', $machine->machine_id))) }}
-              {{ Form::submit('Deactivate', array('class' => 'btn')) }}
+              {{ Form::submit('Deactivate', array('class' => 'btn btn-sm')) }}
             {{ Form::close() }}
           @endif
         </td>
