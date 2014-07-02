@@ -3,12 +3,8 @@
 
 @if ($season)
   <h1>Season: {{{ $season->name }}}</h1>
-  <h2>Players</h2>
-  <ul class="unstyled">
-    <li><a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}">View/Modify players for this season</a></li>
-  </ul>
-  <h2>Heats</h2>
 
+  <h2>Heats</h2>
   <table class="table table-bordered table-vertical-center">
     <thead>
       <tr>
@@ -38,13 +34,18 @@
     </tbody>
   </table>
 
-<hr>
-
 {{ Form::open(array('route' => array('admin.seasons.store_heat', $season->season_id), 'method' => 'post', 'class' => 'form-inline')) }}
   {{ Form::input('date', 'date', '', array('class' => 'form-control')) }}
   {{ Form::input('time', 'time', '', array('class' => 'form-control')) }}
   {{ Form::submit('Add heat', array('class' => 'btn btn-success')) }}
 {{ Form::close() }}
+
+<hr>
+
+<h2>Players</h2>
+<ul class="unstyled">
+  <li><a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}">View/Modify players for this season</a></li>
+</ul>
 
 
 @endif
