@@ -2,9 +2,9 @@
   <h2>{{group.name}}: {{group.code}}</h2>
 
   <h3>Players</h3>
-  <ul>
+  <ul class="list-unstyled">
     <li ng-repeat="player in group.players">
-      {{player.display_name}}
+      {{player.display_name}} <button class="btn btn-xs btn-danger" ng-show="!group.games.length" ng-click="removePlayer(player)">remove</button>
     </li>
   </ul>
   <form class="form-inline" ng-show="roomForPlayers() && !group.games.length">

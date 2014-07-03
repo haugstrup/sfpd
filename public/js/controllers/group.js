@@ -15,6 +15,14 @@ angular.module('sfpdApp')
       $scope.group.newPlayer = null;
     };
 
+    $scope.removePlayer = function(player) {
+      var index = $scope.group.players.indexOf(player);
+      if (index !== -1) {
+        $scope.group.players.splice(index, 1);
+        $scope.group.$update();
+      }
+    };
+
     $scope.roomForPlayers = function() {
       if (!$scope.group.players) {
         return true;
