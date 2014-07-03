@@ -34,5 +34,30 @@ class GameController extends \BaseController {
 
 	}
 
+	public function destroy($code)
+	{
+		$game = Game::with('group.heat', 'results')->where('code', '=', $code)->get()->first();
+
+		if (!$game || $game->group->heat->status != 'active') {
+			App::abort(404);
+		}
+
+		$canDelete = true;
+		foreach ($game->results as $result) {
+			if ($result->position != null) {
+				$canDelete = false;
+			}
+		}
+
+		if (!$canDelete) {
+			App::abort(403);
+		}
+
+		$game->results()->delete();
+		$game->delete();
+
+		return Response::make('',204);
+	}
+
 
 }

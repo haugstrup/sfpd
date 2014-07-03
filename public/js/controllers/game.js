@@ -1,8 +1,8 @@
-'use strict';
-
 angular.module('sfpdApp')
   .controller('GameCtrl', function ($scope, $location, game) {
     $scope.game = game;
+    $scope.removeButtonDisabled = false;
+    $scope.saveButtonDisabled = false;
 
     $scope.positions = [
       {id: 1, title: '1st'},
@@ -12,6 +12,26 @@ angular.module('sfpdApp')
       {id: 0, title: 'D.Q.'},
       {id: -1, title: 'Tardy player'}
     ];
+
+    $scope.canDelete = function() {
+      var canDelete = true;
+
+      angular.forEach($scope.game.results, function(result) {
+        if (result.position !== null) {
+          canDelete = false;
+        }
+      });
+
+      return canDelete;
+    };
+
+    $scope.removeGame = function() {
+      var groupUrl = '/group/'+$scope.game.group.code;
+      $scope.removeButtonDisabled = true;
+      $scope.game.$delete(function() {
+        $location.path(groupUrl);
+      });
+    };
 
     $scope.storeResults = function() {
 
@@ -32,7 +52,7 @@ angular.module('sfpdApp')
       }
 
       // Mark game as completed and submit to API
-      $scope.buttonDisabled = true;
+      $scope.saveButtonDisabled = true;
       $scope.game.status = 'completed';
       $scope.game.$update(function() {
         $location.path('/group/'+game.group.code);
