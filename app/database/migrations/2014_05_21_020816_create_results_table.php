@@ -19,7 +19,7 @@ class CreateResultsTable extends Migration {
 			$table->foreign('game_id')->references('game_id')->on('games');
 			$table->integer('player_id')->unsigned();
 			$table->foreign('player_id')->references('player_id')->on('players');
-			$table->integer('position')->unsigned()->nullable();
+			$table->integer('position')->nullable();
 
 			$table->timestamps();
 			$table->softDeletes();

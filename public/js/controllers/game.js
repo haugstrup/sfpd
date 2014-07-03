@@ -9,7 +9,8 @@ angular.module('sfpdApp')
       {id: 2, title: '2nd'},
       {id: 3, title: '3rd'},
       {id: 4, title: '4th'},
-      {id: 0, title: 'D.Q.'}
+      {id: 0, title: 'D.Q.'},
+      {id: -1, title: 'Tardy player'}
     ];
 
     $scope.storeResults = function() {

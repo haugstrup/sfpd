@@ -16,14 +16,14 @@
           <td>Player {{result.delta+1}}</td>
           <td>{{result.player.display_name}}</td>
           <td>
-            <select class="form-control input-sm" ng-disabled="game.status === 'completed'" ng-required ng-model="result.position" ng-options="position.id as position.title for position in positions">
+            <select class="form-control input-sm" ng-disabled="game.group.heat.status !== 'active'" ng-required ng-model="result.position" ng-options="position.id as position.title for position in positions">
               <option value="">-- result --</option>
             </select>
           </td>
         </tr>
       </tbody>
     </table>
-    <button class="btn btn-success text-right" ng-click="storeResults()" ng-disabled="buttonDisabled" ng-show="game.status === 'active'">Save results</button>
+    <button class="btn btn-success text-right" ng-click="storeResults()" ng-disabled="buttonDisabled" ng-show="game.group.heat.status === 'active'">Save results</button>
     <a href="#/group/{{game.group.code}}">Back to group</a>
   </form>
 

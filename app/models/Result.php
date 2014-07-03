@@ -20,7 +20,17 @@ class Result extends \Eloquent {
   public function getPointsAttribute()
   {
 
-    $three_player_group = count($this->game->group->players) === 3;
+    $three_player_group = count($this->game->group->players) === 3 || $this->position < 0;
+
+    // If at least one player is tardy, score as three person group
+    if (!$three_player_group) {
+      foreach ($this->game->results as $current) {
+        if ($current->position < 0) {
+          $three_player_group = true;
+          break;
+        }
+      }
+    }
 
     if ($three_player_group) {
       switch ($this->position) {
@@ -31,7 +41,6 @@ class Result extends \Eloquent {
         case 3:
           return 1.5;
         case 4:
-          return 0;
         default:
           return 0;
       }
