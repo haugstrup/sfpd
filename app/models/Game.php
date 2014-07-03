@@ -3,7 +3,7 @@
 class Game extends \Eloquent {
   protected $primaryKey = 'game_id';
   protected $softDelete = true;
-  protected $hidden = array('created_at', 'deleted_at', 'updated_at');
+  protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'game_id');
   protected $fillable = array('status', 'player_id', 'group_id', 'machine_id');
 
   public function results()

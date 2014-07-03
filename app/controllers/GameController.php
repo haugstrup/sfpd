@@ -2,9 +2,9 @@
 
 class GameController extends \BaseController {
 
-	public function show($id)
+	public function show($code)
 	{
-		$game = Game::with('player', 'machine', 'group.players', 'results', 'results.player')->find($id);
+		$game = Game::with('player', 'machine', 'group.players', 'results', 'results.player')->where('code', '=', $code)->get()->first();
 
 		if (!$game || $game->group->heat->status != 'active') {
 			App::abort(404);
@@ -13,11 +13,11 @@ class GameController extends \BaseController {
 		return Response::json($game);
 	}
 
-	public function update($id)
+	public function update($code)
 	{
-		$game = Game::with('results')->find($id);
+		$game = Game::with('results')->where('code', '=', $code)->get()->first();
 
-		if (!$game || $game->status != 'active') {
+		if (!$game || $game->status != 'active' || $game->group->heat->status != 'active') {
 			App::abort(403);
 		}
 

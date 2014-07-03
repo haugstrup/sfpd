@@ -1,4 +1,4 @@
-<div ng-if="game.game_id">
+<div ng-if="game.code">
   <h2>{{game.group.name}}: {{game.machine.name}}</h2>
   <h4>Picked by {{game.player.display_name}}</h4>
 
@@ -28,7 +28,7 @@
   </form>
 
 </div>
-<div ng-show="!game.game_id" class="text-danger">
+<div ng-show="!game.code" class="text-danger">
   <h2>Game not found</h2>
   <p>Can't find this game.</p>
 </div>

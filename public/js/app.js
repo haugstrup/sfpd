@@ -21,12 +21,12 @@ angular
           }
         }
       })
-      .when('/game/:game_id', {
+      .when('/game/:code', {
         templateUrl: 'views/game.html',
         controller: 'GameCtrl',
         resolve: {
           game: function($route, Games) {
-            return Games.get({game_id: $route.current.params.game_id});
+            return Games.get({code: $route.current.params.code});
           }
         }
       })

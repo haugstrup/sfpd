@@ -35,7 +35,7 @@ angular.module('sfpdApp')
 
         angular.forEach(group.games, function(game) {
           if (game.status === 'active') {
-            $location.path('/game/'+game.game_id);
+            $location.path('/game/'+game.code);
             return;
           }
         });

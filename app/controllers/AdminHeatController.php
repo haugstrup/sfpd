@@ -35,7 +35,6 @@ class AdminHeatController extends \BaseController {
         $delta = count($heat->groups);
 
         $group = Group::create(array(
-          'code' => '',
           'heat_id' => $heat->heat_id,
           'delta' => $delta
         ));

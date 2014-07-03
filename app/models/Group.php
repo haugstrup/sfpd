@@ -3,7 +3,7 @@
 class Group extends \Eloquent {
   protected $primaryKey = 'group_id';
   protected $softDelete = true;
-  protected $fillable = array('code', 'heat_id', 'delta');
+  protected $fillable = array('heat_id', 'delta');
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'group_id');
   protected $appends = array('name', 'points');
 

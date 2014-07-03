@@ -52,14 +52,22 @@ class GroupController extends \BaseController {
 		}
 
 		// Create game
+
+    $hashids = new Hashids\Hashids('GN2FnrnthVuX', 9, 'abcdefghijkmnpqrstuvwxyz');
+
 		$input = Input::all();
 		$game = new Game(array(
 			'group_id' => $group->group_id,
 			'machine_id' => (int)$input['machine']['machine_id'],
 			'player_id' => (int)$input['player']['player_id'],
-			'status' => $input['status'],
+			'status' => $input['status']
 		));
 		$game->save();
+
+    $game->code = $hashids->encrypt($game->game_id);
+
+    $game->save();
+
 
 		// Players in order according to group_player pivot timestamp
 		// Starting with person picking as player one

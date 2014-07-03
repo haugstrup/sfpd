@@ -3,7 +3,7 @@
 angular
   .module('gameService', ['ngResource'])
     .factory('Games', function($resource) {
-      return $resource('http://localhost:8000/api/games/:game_id', {game_id:'@game_id'}, {
+      return $resource('http://localhost:8000/api/games/:code', {code:'@code'}, {
         update: {
           method: 'PUT',
           transformRequest: function(data) {
