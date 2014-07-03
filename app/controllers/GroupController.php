@@ -14,13 +14,16 @@ class GroupController extends \BaseController {
 		$season = Season::with('players')->find($group->heat->season_id);
 		$machines = Machine::orderBy('name')->where('status', '=', 'active')->get();
 
-		$players = array();
-		foreach (Input::get('players') as $player_input) {
-			$players[] = $player_input['player_id'];
-		}
+		// Only update players if there are no games
+		if (count($group->games) === 0) {
+			$players = array();
+			foreach (Input::get('players') as $player_input) {
+				$players[] = $player_input['player_id'];
+			}
 
-		$group->players()->sync($players);
-		$group->save();
+			$group->players()->sync($players);
+			$group->save();
+		}
 
 		return $this->respond_with_full_group($code);
 	}
