@@ -16,6 +16,7 @@
         <th>Name</th>
         <th>Code</th>
         <th>Players</th>
+        <th>Games</th>
       </tr>
     </thead>
     <tbody>
@@ -24,6 +25,7 @@
           <td>{{{ $group->name() }}}</td>
           <td><a href="{{ $group->url() }}" target="_blank">{{{ $group->code }}}</a></td>
           <td>{{{ count($group->players) }}}</td>
+          <td>{{{ count($group->games) }}}</td>
         </tr>
       @endforeach
     </tbody>
