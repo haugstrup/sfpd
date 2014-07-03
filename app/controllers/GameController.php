@@ -17,7 +17,7 @@ class GameController extends \BaseController {
 	{
 		$game = Game::with('results')->where('code', '=', $code)->get()->first();
 
-		if (!$game || $game->status != 'active' || $game->group->heat->status != 'active') {
+		if (!$game || $game->group->heat->status != 'active') {
 			App::abort(403);
 		}
 
