@@ -5,7 +5,6 @@
   <title>SFPD Admin</title>
   <link rel="apple-touch-icon" href="/img/touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{ stylesheet('bootstrap.css') }}
   {{ stylesheet('admin.css') }}
 </head>
 <body>
@@ -27,7 +26,7 @@
           </li>
 
           <li class="divider-vertical"></li>
-          <li><a href="{{ URL::route('logout') }}">Log out</a></li>
+          <li><a href="{{ URL::route('logout') }}">Logout</a></li>
         </ul>
       </div>
     </div>

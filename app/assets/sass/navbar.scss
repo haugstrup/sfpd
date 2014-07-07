@@ -1,0 +1,36 @@
+.navbar {
+  @media (min-width: 320px) {
+    border-radius: $navbar-border-radius;
+  }
+}
+.navbar-header {
+  @media (min-width: 320px) {
+    float: left;
+  }
+}
+.navbar-brand {
+  @media (min-width: 320px) {
+    .navbar > .container &,
+    .navbar > .container-fluid & {
+      margin-left: -$navbar-padding-horizontal;
+    }
+  }
+}
+.navbar-nav {
+  @media (min-width: 320px) {
+    float: left;
+    margin: 0;
+
+    > li {
+      float: left;
+      > a {
+        padding-top:    $navbar-padding-vertical;
+        padding-bottom: $navbar-padding-vertical;
+      }
+    }
+
+    &.navbar-right:last-child {
+      margin-right: -$navbar-padding-horizontal;
+    }
+  }
+}
