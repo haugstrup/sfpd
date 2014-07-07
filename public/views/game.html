@@ -1,35 +1,32 @@
 <div ng-if="game.code">
-  <h2>{{game.group.name}}: {{game.machine.name}}</h2>
-  <h4>Picked by {{game.player.display_name}}</h4>
+  <h2>{{game.machine.name}}</h2>
+  <p>{{game.group.heat.name}}, {{game.group.name}}. Picked by {{game.player.display_name}}</p>
+
+  <table class="table table-condensed table-vertical-center">
+    <thead>
+      <tr>
+        <th>Pos.</th>
+        <th>Player</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="result in game.results">
+        <td>{{result.delta+1}}</td>
+        <td>{{result.player.display_name}}</td>
+        <td>
+          <select class="form-control input-sm" ng-disabled="game.group.heat.status !== 'active'" ng-required ng-model="result.position" ng-options="position.id as position.title for position in positions">
+            <option value="">-- result --</option>
+          </select>
+        </td>
+      </tr>
+    </tbody>
+  </table>
 
   <form>
-    <table class="table table-condensed table-vertical-center">
-      <thead>
-        <tr>
-          <th>Position</th>
-          <th>Player</th>
-          <th>Result</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr ng-repeat="result in game.results">
-          <td>Player {{result.delta+1}}</td>
-          <td>{{result.player.display_name}}</td>
-          <td>
-            <select class="form-control input-sm" ng-disabled="game.group.heat.status !== 'active'" ng-required ng-model="result.position" ng-options="position.id as position.title for position in positions">
-              <option value="">-- result --</option>
-            </select>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <button class="btn btn-success" ng-click="storeResults()" ng-disabled="saveButtonDisabled" ng-show="game.group.heat.status === 'active'">Save results</button>
-    <button class="btn btn-danger" ng-click="removeGame()" ng-disabled="removeButtonDisabled" ng-show="canDelete()">Remove game</button>
-    <a href="#/group/{{game.group.code}}" class="btn-cancel">Back to group</a>
+      <button class="btn btn-success" ng-click="storeResults()" ng-disabled="saveButtonDisabled" ng-show="game.group.heat.status === 'active'">Save</button>
+      <button class="btn btn-danger" ng-click="removeGame()" ng-disabled="removeButtonDisabled" ng-show="canDelete()">Remove game</button>
+      <a href="#/group/{{game.group.code}}" class="btn btn-default">Cancel</a>
   </form>
 
-</div>
-<div ng-show="!game.code" class="text-danger">
-  <h2>Game not found</h2>
-  <p>Can't find this game.</p>
 </div>

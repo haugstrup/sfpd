@@ -2,8 +2,6 @@
   <h2>{{group.name}}: {{group.code}}</h2>
 
   <div ng-show="!group.games.length">
-    <h3>Players</h3>
-
     <table class="table table-unstyled table-vertical-center">
       <tr ng-repeat="player in group.players">
         <td>
@@ -15,54 +13,51 @@
       </tr>
     </table>
 
-    <form class="form-inline" ng-show="roomForPlayers() && !group.games.length">
-      <select class="form-control input-sm" ng-required ng-model="group.newPlayer" ng-options="player as player.display_name for player in group.season.players | orderBy:'display_name'">
-        <option value="">-- select player --</option>
+    <form ng-show="roomForPlayers() && !group.games.length">
+      <select class="form-control input-sm" ng-required ng-model="group.newPlayer" ng-options="player as player.display_name for player in group.season.players | orderBy:'display_name'" ng-change="addPlayer()">
+        <option value="">-- add player --</option>
       </select>
-      <button class="btn btn-success btn-sm" ng-click="addPlayer()">Add player</button>
     </form>
   </div>
 
-  <h3>Games</h3>
+  <div ng-show="group.players.length >= 3">
+    <h3>Games</h3>
+    <table class="table">
+      <thead>
+        <tr>
+          <th>Player</th>
+          <th ng-repeat="game in group.games" class="text-center"><a title="{{game.machine.name}}" href="#/game/{{game.code}}">{{game.machine.shortname}}</a></th>
+          <th class="text-center"><b>Total</b></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr ng-repeat="player in group.players">
+          <td>{{player.display_name}}</td>
+          <td ng-repeat="game in group.games" class="text-center">
+            {{ pointsForPlayer(game.results, player.player_id) }}
+          </td>
+          <td class="text-center">
+            <b>{{ pointsForPlayer(group.points, player.player_id) }}</b>
+          </td>
+        </tr>
+      </tbody>
+    </table>
 
-  <table class="table">
-    <thead>
-      <tr>
-        <th>Player</th>
-        <th ng-repeat="game in group.games" class="text-center"><a title="{{game.machine.name}}" href="#/game/{{game.code}}">{{game.machine.shortname}}</a></th>
-        <th class="text-center"><b>Total</b></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr ng-repeat="player in group.players">
-        <td>{{player.display_name}}</td>
-        <td ng-repeat="game in group.games" class="text-center">
-          {{ pointsForPlayer(game.results, player.player_id) }} pt.
-        </td>
-        <td class="text-center">
-          <b>{{ pointsForPlayer(group.points, player.player_id) }} pt.</b>
-        </td>
-      </tr>
-    </tbody>
-  </table>
-
-  <form class="form-inline" ng-show="group.players.length >= 3 && !(group.games|filter:{status:'active'}:true).length && group.games.length < 4">
-    <select class="form-control input-sm" ng-required ng-model="group.nextPlayerPick" ng-options="player as player.display_name for player in group.players">
-      <option value="">-- player --</option>
-    </select>
-    picks
-    <select class="form-control input-sm" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in group.machines">
-      <option value="">-- machine --</option>
-    </select>
-    <button class="btn btn-success btn-sm" ng-click="startGame()" ng-disabled="buttonDisabled">Pick game</button>
-  </form>
-
-  <div ng-show="group.players.length < 3" class="text-warning">
-    <p>You can't pick games until you've picked players.</p>
+    <form class="form-inline" ng-show="!(group.games|filter:{status:'active'}:true).length && group.games.length < 4">
+      <div class="form-group">
+        <select class="form-control input-sm" ng-required ng-model="group.nextPlayerPick" ng-options="player as player.display_name for player in group.players">
+          <option value="">-- This player --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <select class="form-control input-sm" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in group.machines">
+          <option value="">-- picks this machine --</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <button class="btn btn-success btn-sm" ng-click="startGame()" ng-disabled="buttonDisabled">Pick game</button>
+      </div>
+    </form>
   </div>
 
-</div>
-<div ng-show="!group.code" class="text-danger">
-  <h2>Group not found</h2>
-  <p>Can't find your group. It's probably connected to the wrong league night.</p>
 </div>

@@ -6,7 +6,7 @@
   <head>
     <meta charset="utf-8">
     <title>San Francisco Pinball Department</title>
-    <meta name="viewport" content="width=device-width">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ stylesheet('main.css') }}
   </head>
   <body ng-app="sfpdApp">

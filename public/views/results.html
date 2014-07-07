@@ -16,10 +16,10 @@
             <tr ng-repeat="player in group.players">
               <td>{{player.display_name}}</td>
               <td ng-repeat="game in group.games" class="text-center">
-                {{ (game.results|filter:{player_id:player.player_id}:true)[0].points }} pt.
+                {{ pointsForPlayer(game.results, player.player_id) }}
               </td>
               <td class="text-center">
-                <b>{{ (group.points|filter:{player_id:player.player_id}:true)[0].points }} pt.</b>
+                <b>{{ pointsForPlayer(group.points, player.player_id) }}</b>
               </td>
             </tr>
           </tbody>
