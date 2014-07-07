@@ -1,11 +1,9 @@
 <!doctype html>
-<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
-<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
-<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
   <head>
     <meta charset="utf-8">
     <title>San Francisco Pinball Department</title>
+    <link rel="apple-touch-icon" href="/img/touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     {{ stylesheet('main.css') }}
   </head>
@@ -15,7 +13,7 @@
 
         <div class="header navbar navbar-default" ng-controller="HeaderCtrl">
           <div class="navbar-inner">
-            <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="SFPD" width="32" height="32"></a>
+            <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
             <ul class="nav navbar-nav">
               <li ng-class="{ active: isActive('/')}"><a ng-href="#/">Home</a></li>
               <li ng-class="{ active: isActive('/standings')}"><a ng-href="#/standings">Standings</a></li>
@@ -29,7 +27,7 @@
         <hr>
 
         <div class="footer text-muted">
-          <p><small>Comments or complaints? Get in touch with Andreas.</small></p>
+          <p><small>Comments or complaints? <a target="_blank" href="https://podio.com/webforms/8656053/642967">Get in touch</a>.</small></p>
         </div>
     </div>
 

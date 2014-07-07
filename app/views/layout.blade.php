@@ -1,7 +1,9 @@
 <!doctype html>
 <html>
 <head>
+  <meta charset="utf-8">
   <title>SFPD Admin</title>
+  <link rel="apple-touch-icon" href="/img/touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   {{ stylesheet('bootstrap.css') }}
   {{ stylesheet('admin.css') }}
@@ -13,7 +15,7 @@
     @if (Auth::check())
     <div class="navbar navbar-default">
       <div class="navbar-inner">
-        <a class="navbar-brand" href="{{ URL::route('admin.index') }}"><img src="/img/logo.png" alt="SFPD" width="32" height="32"></a>
+        <a class="navbar-brand" href="{{ URL::route('admin.index') }}"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
         <ul class="nav navbar-nav">
 
           <li class="{{ substr(Request::path(), 6, 8) == 'players' ? 'active' : '' }}">
