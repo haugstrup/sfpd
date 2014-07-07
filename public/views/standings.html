@@ -1,0 +1,18 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>&nbsp;</th>
+      <th class="text-center" ng-repeat="heat in season.heats">{{heat.short_name}}</th>
+      <th class="text-center">Score</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr ng-repeat="seasonPoint in season.points | orderBy:'points':true">
+      <td>{{ (season.players|filter:{player_id:seasonPoint.player_id}:true)[0].display_name }}</td>
+      <td class="text-center" ng-repeat="heat in season.heats">
+        {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}
+      </td>
+      <td class="text-center"><b>{{seasonPoint.points}}</b></td>
+    </tr>
+  </tbody>
+</table>

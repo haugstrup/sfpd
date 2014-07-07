@@ -12,13 +12,14 @@
   <body ng-app="sfpdApp">
 
     <div class="container">
-        <div class="header navbar navbar-default">
+
+        <div class="header navbar navbar-default" ng-controller="HeaderCtrl">
           <div class="navbar-inner">
             <a class="navbar-brand" href="/"><img src="/img/logo.png" alt="SFPD" width="32" height="32"></a>
             <ul class="nav navbar-nav">
-              <li class="active"><a ng-href="#">Home</a></li>
-              <li><a ng-href="#/standings">Standings</a></li>
-              <li><a ng-href="#/results">Results</a></li>
+              <li ng-class="{ active: isActive('/')}"><a ng-href="#/">Home</a></li>
+              <li ng-class="{ active: isActive('/standings')}"><a ng-href="#/standings">Standings</a></li>
+              <li  ng-class="{ active: isActive('/results')}"><a ng-href="#/results">Results</a></li>
             </ul>
           </div>
         </div>
@@ -45,6 +46,8 @@
     {{ script('controllers/main.js') }}
     {{ script('controllers/game.js') }}
     {{ script('controllers/group.js') }}
+    {{ script('controllers/heats_list.js') }}
+    {{ script('controllers/standings.js') }}
 
 </body>
 </html>

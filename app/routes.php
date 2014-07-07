@@ -25,10 +25,8 @@ Route::get('logout', array('uses' => 'HomeController@doLogout', 'as' => 'logout'
 // API ROUTES ==================================
 // =============================================
 Route::group(array('prefix' => 'api'), function() {
-  Route::resource('players', 'PlayerController', array('only' => array('index', 'show')));
-  Route::resource('machines', 'MachineController', array('only' => array('index', 'show')));
-  Route::resource('seasons', 'SeasonController', array('only' => array('index', 'show')));
-  Route::resource('heats', 'HeatController', array('only' => array('show')));
+  Route::resource('seasons', 'SeasonController', array('only' => array('index')));
+  Route::resource('heats', 'HeatController', array('only' => array('index')));
   Route::resource('games', 'GameController', array('only' => array('show', 'update', 'destroy')));
 
   Route::resource('groups', 'GroupController', array('only' => array('show', 'update')));

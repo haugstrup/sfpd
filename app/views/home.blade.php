@@ -5,7 +5,7 @@
   <h1>Season: {{{ $season->name }}}</h1>
 
   <h2>Heats</h2>
-  <table class="table table-bordered table-vertical-center">
+  <table class="table table-striped table-vertical-center">
     <thead>
       <tr>
         <th>Name</th>
@@ -15,7 +15,7 @@
     </thead>
     <tbody>
       @foreach ($season->heats as $heat)
-        <tr class="{{$heat->status === 'active' ? 'success' : ''}}">
+        <tr class="{{$heat->status === 'active' ? 'info' : ''}}">
           <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->name()}}</a></td>
           <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->formatted_date()}}</a></td>
           <td class="text-center">

@@ -7,4 +7,9 @@ angular.module('sfpdApp')
       $location.path('/group/'+$scope.code);
     };
 
+  })
+  .controller('HeaderCtrl', function ($scope, $location) {
+    $scope.isActive = function (viewLocation) {
+      return viewLocation === $location.path();
+    };
   });

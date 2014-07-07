@@ -25,4 +25,24 @@ class Season extends \Eloquent {
     return false;
   }
 
+  public function points() {
+    $points = array();
+    $return = array();
+
+    foreach ($this->heats as $heat) {
+      foreach ($heat->points() as $point) {
+        $points[$point['player_id']] = isset($points[$point['player_id']]) ? $points[$point['player_id']] + $point['points'] : $point['points'];
+      }
+    }
+
+    foreach ($points as $player_id => $score) {
+      $return[] = array(
+        'player_id' => $player_id,
+        'points' => $score
+      );
+    }
+
+    return $return;
+  }
+
 }

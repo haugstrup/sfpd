@@ -1,7 +1,7 @@
 @extends("layout")
 @section("content")
 <h1>All machines <a href="{{ URL::route('admin.machines.create') }}" class="btn btn-primary">Add machine</a></h1>
-<table class="table table-bordered table-vertical-center">
+<table class="table table-striped table-vertical-center">
   <thead>
     <tr>
       <th>Name</th>
@@ -11,7 +11,7 @@
   </thead>
   <tbody>
     @foreach ($machines as $machine)
-      <tr class="state-{{{ $machine->status }}}">
+      <tr class="{{{ $machine->status == 'inactive' ? 'info' : '' }}}">
         <td><a href="{{ URL::route('admin.machines.edit', $machine->machine_id) }}">{{{ $machine->name }}}</a></td>
         <td class="text-center">{{{ $machine->shortname }}}</td>
         <td class="text-center">

@@ -1,0 +1,30 @@
+
+<ul class="list-unstyled">
+  <li ng-repeat="heat in heats">
+    <h2>{{season.name}}, {{heat.name}}</h2>
+    <ul class="list-unstyled">
+      <li ng-repeat="group in heat.groups | filter:hasGamesFilter">
+        <table class="table">
+          <thead>
+            <tr>
+              <th>{{group.name}}</th>
+              <th ng-repeat="game in group.games" class="text-center" title="{{game.machine.name}}">{{game.machine.shortname}}</th>
+              <th class="text-center"><b>Total</b></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr ng-repeat="player in group.players">
+              <td>{{player.display_name}}</td>
+              <td ng-repeat="game in group.games" class="text-center">
+                {{ (game.results|filter:{player_id:player.player_id}:true)[0].points }} pt.
+              </td>
+              <td class="text-center">
+                <b>{{ (group.points|filter:{player_id:player.player_id}:true)[0].points }} pt.</b>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </li>
+    </ul>
+  </li>
+</ul>

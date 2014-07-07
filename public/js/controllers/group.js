@@ -33,7 +33,7 @@ angular.module('sfpdApp')
     $scope.startGame = function() {
       $scope.buttonDisabled = true;
 
-      var url = 'http://localhost:8000/api/groups/'+$scope.group.code+'/games';
+      var url = '/api/groups/'+$scope.group.code+'/games';
       $http.post(url, {
         machine: $scope.group.nextMachine,
         player: $scope.group.nextPlayerPick,

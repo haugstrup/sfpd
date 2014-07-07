@@ -2,29 +2,27 @@
 
 class SeasonController extends \BaseController {
 
-	/**
-	 * Display a listing of the resource.
-	 *
-	 * @return Response
-	 */
 	public function index()
 	{
-		return Response::json(Season::get());
+    // Find active season
+    $season = Season::with('heats', 'heats.groups', 'players')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
+    $season->heats->sortBy('delta');
+
+    // Return it with players, heats and points
+    $response = $season->toArray();
+
+    // Remove "groups" from "heats" to keep payload small
+    foreach ($response['heats'] as $index => $heat) {
+      unset($response['heats'][$index]['groups']);
+      $h = $season->heats->find($heat['heat_id']);
+      $response['heats'][$index]['points'] = $h->points();
+    }
+
+    $response['points'] = $season->points();
+
+
+    return Response::json($response);
+
 	}
-
-
-	/**
-	 * Display the specified resource.
-	 *
-	 * @param  int  $id
-	 * @return Response
-	 */
-	public function show($id)
-	{
-		$season = Season::with('players', 'heats')->find($id);
-		$season->players->sortBy('display_name');
-		return Response::json($season);
-	}
-
 
 }

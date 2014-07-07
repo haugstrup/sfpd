@@ -1,6 +1,6 @@
 guard :concat, :type => "css", :files => %w[admin admin_print bootstrap/bootstrap bootstrap main], :input_dir => "public/css", :output => "public/css/styles.min"
 
-guard :concat, :type => "js", :files => %w[app controllers/game controllers/group controllers/main services/game services/group vendor/angular-resource vendor/angular-route vendor/angular-sanitize vendor/angular vendor/jquery], :input_dir => "public/js", :output => "public/js/scripts.min"
+guard :concat, :type => "js", :files => %w[app controllers/game controllers/group controllers/heats_list controllers/main controllers/standings services/game services/group vendor/angular-resource vendor/angular-route vendor/angular-sanitize vendor/angular vendor/jquery], :input_dir => "public/js", :output => "public/js/scripts.min"
 
 # Refresh the browser on save
 guard 'livereload' do

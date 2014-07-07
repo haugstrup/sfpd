@@ -3,7 +3,7 @@
 <h1>Players in {{{$season->name}}}</h1>
 
 {{ Form::open(array('route' => array('admin.seasons.update_players', $season->season_id), 'method' => 'put')) }}
-<table class="table table-bordered">
+<table class="table table-striped">
   <thead>
     <tr>
       <th>Name</th>

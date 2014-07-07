@@ -1,5 +1,9 @@
 <h2>Find your group</h2>
 <form>
-  <input type="search" size="10" placeholder="Group code…" class="form-control input-lg" ng-model="code">
-  <button class="btn btn-success form-control" ng-click="goToGroup()">Go!</button>
+  <div class="input-group">
+    <input type="search" size="20" placeholder="Group code…" class="form-control input-lg" ng-model="code">
+    <span class="input-group-btn">
+      <button class="btn btn-success btn-lg" ng-click="goToGroup()">Go!</button>
+    </span>
+  </div>
 </form>

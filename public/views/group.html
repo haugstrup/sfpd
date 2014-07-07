@@ -20,7 +20,7 @@
     <thead>
       <tr>
         <th>Player</th>
-        <th ng-repeat="game in group.games" class="text-center"><a href="#/game/{{game.code}}">{{game.machine.shortname}}</a></th>
+        <th ng-repeat="game in group.games" class="text-center"><a title="{{game.machine.name}}" href="#/game/{{game.code}}">{{game.machine.shortname}}</a></th>
         <th class="text-center"><b>Total</b></th>
       </tr>
     </thead>
@@ -31,7 +31,7 @@
           {{ (game.results|filter:{player_id:player.player_id}:true)[0].points }} pt.
         </td>
         <td class="text-center">
-          {{ (group.points|filter:{player_id:player.player_id}:true)[0].points }} pt.
+          <b>{{ (group.points|filter:{player_id:player.player_id}:true)[0].points }} pt.</b>
         </td>
       </tr>
     </tbody>
