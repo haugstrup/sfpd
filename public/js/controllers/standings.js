@@ -3,7 +3,6 @@ angular.module('sfpdApp')
     $scope.season = response.data;
 
     $scope.pointsForPlayerForHeat = function(pointsList, playerId) {
-      console.log(pointsList);
       var points = $filter('filter')(pointsList, {player_id: playerId}, true)[0];
 
       return points ? points.points : "0";

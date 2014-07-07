@@ -1,10 +1,13 @@
-'use strict';
-
 angular.module('sfpdApp')
-  .controller('GroupCtrl', function ($scope, $location, group, $http) {
+  .controller('GroupCtrl', function ($scope, $location, group, $http, $filter) {
     $scope.group = group;
     $scope.group.newPlayer = null;
     $scope.buttonDisabled = false;
+
+    $scope.pointsForPlayer = function(pointsList, playerId) {
+      var points = $filter('filter')(pointsList, {player_id: playerId}, true)[0];
+      return points ? points.points : "0";
+    };
 
     $scope.addPlayer = function() {
       if ($scope.group.newPlayer && $scope.group.players.indexOf($scope.group.newPlayer) === -1) {

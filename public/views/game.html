@@ -3,7 +3,7 @@
   <h4>Picked by {{game.player.display_name}}</h4>
 
   <form>
-    <table class="table table-condensed">
+    <table class="table table-condensed table-vertical-center">
       <thead>
         <tr>
           <th>Position</th>
@@ -25,7 +25,7 @@
     </table>
     <button class="btn btn-success" ng-click="storeResults()" ng-disabled="saveButtonDisabled" ng-show="game.group.heat.status === 'active'">Save results</button>
     <button class="btn btn-danger" ng-click="removeGame()" ng-disabled="removeButtonDisabled" ng-show="canDelete()">Remove game</button>
-    <a href="#/group/{{game.group.code}}">Back to group</a>
+    <a href="#/group/{{game.group.code}}" class="btn-cancel">Back to group</a>
   </form>
 
 </div>
