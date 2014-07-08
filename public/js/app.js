@@ -9,11 +9,11 @@ angular
   .config(function ($routeProvider) {
     $routeProvider
       .when('/', {
-        templateUrl: 'views/main.html',
+        templateUrl: 'public/views/main.html',
         controller: 'MainCtrl'
       })
       .when('/standings', {
-        templateUrl: 'views/standings.html',
+        templateUrl: 'public/views/standings.html',
         controller: 'StandingsCtrl',
         resolve: {
           response: function($http) {
@@ -22,7 +22,7 @@ angular
         }
       })
       .when('/results', {
-        templateUrl: 'views/results.html',
+        templateUrl: 'public/views/results.html',
         controller: 'HeatsListCtrl',
         resolve: {
           response: function($http) {
@@ -31,7 +31,7 @@ angular
         }
       })
       .when('/group/:code', {
-        templateUrl: 'views/group.html',
+        templateUrl: 'public/views/group.html',
         controller: 'GroupCtrl',
         resolve: {
           group: function($route, Groups) {
@@ -40,7 +40,7 @@ angular
         }
       })
       .when('/game/:code', {
-        templateUrl: 'views/game.html',
+        templateUrl: 'public/views/game.html',
         controller: 'GameCtrl',
         resolve: {
           game: function($route, Games) {
