@@ -9,8 +9,7 @@
 		"simplesoftwareio/simple-qrcode": "0.0.4-beta"
 	},
 	"require-dev": {
-	    "way/generators": "2.*",
-	    "way/guard-laravel": "dev-master"
+	    "way/generators": "2.*"
 	},
 	"autoload": {
 		"classmap": [

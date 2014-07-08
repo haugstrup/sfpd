@@ -120,8 +120,7 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider',
-		'Way\Console\GuardLaravelServiceProvider',
+		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider'
 	),
 
 	/*
