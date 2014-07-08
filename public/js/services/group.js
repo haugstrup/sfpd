@@ -3,7 +3,7 @@
 angular
   .module('groupService', ['ngResource'])
     .factory('Groups', function($resource) {
-      return $resource('http://localhost:8000/api/groups/:code', {code:'@code'}, {
+      return $resource('/api/groups/:code', {code:'@code'}, {
         update: {
           method: 'PUT',
           transformRequest: function(data) {
