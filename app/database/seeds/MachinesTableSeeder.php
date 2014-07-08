@@ -158,7 +158,7 @@ class MachinesTableSeeder extends Seeder {
     ));
 
     Machine::create(array(
-      'name' => 'Start Trek',
+      'name' => 'Star Trek',
       'status' => 'active',
       'shortname' => 'ST',
     ));
