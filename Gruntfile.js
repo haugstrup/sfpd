@@ -38,13 +38,24 @@ module.exports = function(grunt) {
           'public/css/admin_print.css': 'app/assets/sass/admin_print.scss'
         }
       }
+    },
+    watch: {
+      sass: {
+        files: 'app/assets/sass/**/*.scss',
+        tasks: ['sass']
+      },
+      js: {
+        files: ['public/js/**/*.js'],
+        tasks: ['uglify']
+      }
     }
   });
 
   grunt.loadNpmTasks('grunt-contrib-uglify');
   grunt.loadNpmTasks('grunt-contrib-sass');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task(s).
-  grunt.registerTask('default', ['uglify', 'sass']);
+  grunt.registerTask('default', ['uglify', 'sass', 'watch']);
 
 };
