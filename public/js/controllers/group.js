@@ -9,6 +9,15 @@ angular.module('sfpdApp')
       return points ? points.points : "0";
     };
 
+    $scope.gamePicked = function(player) {
+      var games = $filter('filter')($scope.group.games, {player_id: player.player_id}, true);
+      var names = games.map(function(game) {
+        return game.machine.name;
+      });
+
+      return names.length ? " picked "+names.join(', ') : '';
+    };
+
     $scope.addPlayer = function() {
       if ($scope.group.newPlayer && $scope.group.players.indexOf($scope.group.newPlayer) === -1) {
         $scope.group.players.push($scope.group.newPlayer);

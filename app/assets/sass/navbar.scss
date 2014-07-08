@@ -1,3 +1,5 @@
+@import "bootstrap/variables";
+
 .navbar {
   @media (min-width: 320px) {
     border-radius: $navbar-border-radius;
