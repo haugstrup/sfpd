@@ -30,8 +30,7 @@
         </div>
     </div>
 
-    {{ script('vendor/jquery.js') }}
-    {{ script('vendor/angular.js') }}
+    <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
     {{ script('vendor/angular-resource.js') }}
     {{ script('vendor/angular-sanitize.js') }}
     {{ script('vendor/angular-route.js') }}
