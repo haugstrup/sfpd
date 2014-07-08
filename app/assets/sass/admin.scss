@@ -32,3 +32,16 @@ table label {
 li.state-active, a.state-active {
   color:#468847;
 }
+
+// Smaller headers for phones
+@media screen and (max-width: 400px) {
+  h2 {
+    font-size:24px;
+  }
+  h3 {
+    font-size:18px;
+  }
+  h4 {
+    font-size:14px;
+  }
+}

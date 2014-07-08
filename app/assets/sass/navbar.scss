@@ -1,5 +1,10 @@
 @import "bootstrap/variables";
 
+.nav > li > a {
+  padding-left:10px;
+  padding-right:10px;
+}
+
 .navbar {
   @media (min-width: 320px) {
     border-radius: $navbar-border-radius;

@@ -33,9 +33,9 @@
     @endif
 
     @if(Session::get('success'))<div class="alert alert-success">{{ Session::get('success') }}</div>@endif
-    @if(Session::get('error'))<div class="alert alert-error">{{ Session::get('error') }}</div>@endif
+    @if(Session::get('error'))<div class="alert alert-danger">{{ Session::get('error') }}</div>@endif
     @if(Session::get('errors'))
-      <div class="alert alert-error">
+      <div class="alert alert-danger">
         @foreach (Session::get('errors')->all() as $message)
           {{{ $message }}}<br>
         @endforeach

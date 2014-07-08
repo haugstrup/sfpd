@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<h1>Add machine</h1>
+<h2>Add machine</h2>
 
 {{ Form::model($machine, array('route' => array('admin.machines.store'), 'method' => 'post')) }}
 

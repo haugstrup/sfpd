@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<h1>Edit {{{ $machine->name }}}</h1>
+<h2>Edit {{{ $machine->name }}}</h2>
 
 {{ Form::model($machine, array('route' => array('admin.machines.update', $machine->machine_id), 'method' => 'put')) }}
 

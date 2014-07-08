@@ -2,9 +2,9 @@
 @section("content")
 
 @if ($season)
-  <h1>Season: {{{ $season->name }}}</h1>
+  <h2>Season: {{{ $season->name }}}</h2>
 
-  <h2>Heats</h2>
+  <h3>Heats</h3>
   <table class="table table-striped table-vertical-center">
     <thead>
       <tr>
@@ -42,7 +42,7 @@
 
 <hr>
 
-<h2>Players</h2>
+<h3>Players</h3>
 <ul class="unstyled">
   <li><a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}">View/Modify players for this season</a></li>
 </ul>

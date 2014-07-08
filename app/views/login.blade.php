@@ -1,13 +1,7 @@
 @extends("layout")
 @section("content")
 	{{ Form::open(array('url' => 'login', 'role' => 'form')) }}
-		<h1>Login</h1>
-
-		<!-- if there are login errors, show them here -->
-		<p>
-			{{ $errors->first('email') }}
-			{{ $errors->first('password') }}
-		</p>
+		<h2>Login</h2>
 
 		<div class="form-group">
 			{{ Form::label('email', 'Email Address') }}

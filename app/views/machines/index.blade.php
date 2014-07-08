@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<h1>All machines <a href="{{ URL::route('admin.machines.create') }}" class="btn btn-primary">Add machine</a></h1>
+<h2>All machines <a href="{{ URL::route('admin.machines.create') }}" class="btn btn-primary">Add machine</a></h2>
 <table class="table table-striped table-vertical-center">
   <thead>
     <tr>

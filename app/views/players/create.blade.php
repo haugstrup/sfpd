@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<h1>Add Player</h1>
+<h2>Add Player</h2>
 
 {{ Form::model($player, array('route' => array('admin.players.store'), 'method' => 'post')) }}
 

@@ -1,6 +1,6 @@
 @extends("layout")
 @section("content")
-<h1>{{{$heat->season->name}}}: {{$heat->name()}}</h1>
+<h2>{{{$heat->season->name}}}: {{$heat->name()}}</h2>
 
 <hr>
 {{ Form::open(array('route' => array('admin.heats.store_groups', $heat->heat_id), 'method' => 'post', 'class' => 'form-inline')) }}
