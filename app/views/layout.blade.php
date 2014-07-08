@@ -5,7 +5,7 @@
   <title>SFPD Admin</title>
   <link rel="apple-touch-icon" href="/img/touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  {{ stylesheet('admin.css') }}
+  <link rel="stylesheet" href="/css/admin.css">
 </head>
 <body>
 

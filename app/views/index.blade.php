@@ -5,7 +5,7 @@
     <title>San Francisco Pinball Department</title>
     <link rel="apple-touch-icon" href="/img/touch-icon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    {{ stylesheet('main.css') }}
+    <link rel="stylesheet" href="/css/main.css">
   </head>
   <body ng-app="sfpdApp">
 
@@ -31,7 +31,7 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    {{ script('scripts.min.js') }}
+    <script src="/js/scripts.min.js"></script>
 
 </body>
 </html>
