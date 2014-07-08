@@ -24,7 +24,7 @@ class GameController extends \BaseController {
 		foreach (Input::get('results') as $current) {
 			$result = $game->results->find((int)$current['result_id']);
 			if ($result) {
-				$result->position = (int)$current['position'];
+				$result->position = is_null($current['position']) ? null : (int)$current['position'];
 				$result->save();
 			}
 		}

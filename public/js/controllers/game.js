@@ -38,7 +38,13 @@ angular.module('sfpdApp')
       // Make sure that each position is only used once
       var usedPositions = [];
       var resultsValid = true;
+      var allNull = true;
       angular.forEach($scope.game.results, function(result) {
+
+        if (allNull && result.position !== null) {
+          allNull = false;
+        }
+
         if (result.position === null || (result.position > 0 && usedPositions.indexOf(result.position) !== -1)) {
           resultsValid = false;
           return;
@@ -46,6 +52,10 @@ angular.module('sfpdApp')
           usedPositions.push(result.position);
         }
       });
+
+      if (allNull) {
+        resultsValid = true;
+      }
 
       if (!resultsValid) {
         return;
