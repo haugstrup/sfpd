@@ -12,10 +12,10 @@ class HeatController extends \BaseController {
 		// Only include heats before the current active one.
 		$heats = array();
 		foreach ($season->heats as $heat) {
+			$heats[] = $heat->toArray();
 			if ($heat->status === 'active') {
 				break;
 			}
-			$heats[] = $heat->toArray();
 		}
 
 		$response = array();
