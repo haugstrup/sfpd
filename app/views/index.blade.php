@@ -31,19 +31,7 @@
     </div>
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
-    {{ script('vendor/angular-resource.js') }}
-    {{ script('vendor/angular-sanitize.js') }}
-    {{ script('vendor/angular-route.js') }}
-
-    {{ script('app.js') }}
-
-    {{ script('services/game.js') }}
-    {{ script('services/group.js') }}
-    {{ script('controllers/main.js') }}
-    {{ script('controllers/game.js') }}
-    {{ script('controllers/group.js') }}
-    {{ script('controllers/heats_list.js') }}
-    {{ script('controllers/standings.js') }}
+    {{ script('scripts.min.js') }}
 
 </body>
 </html>

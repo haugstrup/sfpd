@@ -8,5 +8,4 @@ composer.phar
 .sass-cache
 app/storage
 
-public/js/scripts.min.js
-public/css
+node_modules
