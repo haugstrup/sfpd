@@ -70,3 +70,101 @@ body {
     width: $container-lg;
   }
 }
+
+// Ajax loading indicator
+.loading-indicator {
+  position:relative;
+  width:40px;
+  height:5px;
+  top:22px;
+  left:-5px;
+  > div {
+    position:absolute;
+    top:0;
+    background-color:#f8981d;
+    width:5px;
+    height:5px;
+    -webkit-animation-name:bounce_fadingBarsG;
+    -webkit-animation-duration:0.8s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction:linear;
+    -webkit-transform:scale(.3);
+    animation-name:bounce_fadingBarsG;
+    animation-duration:0.8s;
+    animation-iteration-count:infinite;
+    animation-direction:linear;
+    transform:scale(.3);
+  }
+}
+
+.bar-1{
+  left:0;
+  -webkit-animation-delay:0.32s;
+  animation-delay:0.32s;
+}
+
+.bar-2{
+  left:5px;
+  -webkit-animation-delay:0.4s;
+  animation-delay:0.4s;
+}
+
+.bar-3{
+  left:10px;
+  -webkit-animation-delay:0.48s;
+  animation-delay:0.48s;
+}
+
+.bar-4{
+  left:15px;
+  -webkit-animation-delay:0.56s;
+  animation-delay:0.56s;
+}
+
+.bar-5{
+  left:20px;
+  -webkit-animation-delay:0.64s;
+  animation-delay:0.64s;
+}
+
+.bar-6{
+  left:25px;
+  -webkit-animation-delay:0.72s;
+  animation-delay:0.72s;
+}
+
+.bar-7{
+  left:30px;
+  -webkit-animation-delay:0.8s;
+  animation-delay:0.8s;
+}
+
+.bar-8{
+  left:35px;
+  -webkit-animation-delay:0.88s;
+  animation-delay:0.88s;
+}
+
+@-webkit-keyframes bounce_fadingBarsG{
+  0%{
+    -webkit-transform:scale(1);
+    background-color:#f8981d;
+  }
+
+  100%{
+    -webkit-transform:scale(.3);
+    background-color:#f8f8f8;
+  }
+}
+
+@keyframes bounce_fadingBarsG{
+  0%{
+    transform:scale(1);
+    background-color:#f8981d;
+  }
+
+  100%{
+    transform:scale(.3);
+    background-color:#f8f8f8;
+  }
+}
