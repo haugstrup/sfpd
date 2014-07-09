@@ -19,9 +19,7 @@
               <li ng-class="{ active: isActive('/results')}"><a ng-href="#/results">Results</a></li>
             </ul>
           </div>
-          <div class="navbar-right">
-            <div loading-indicator></div>
-          </div>
+          <div loading-indicator class="loading-indicator-wrapper"></div>
         </div>
 
         <div ng-view=""></div>
