@@ -70,6 +70,10 @@ angular
             }
           }
           return response || $q.when(response);
+        },
+        'responseError': function(rejection) {
+          $rootScope.$broadcast('loading-failed', rejection.status);
+          return $q.reject(rejection);
         }
       };
     });
@@ -86,6 +90,17 @@ angular
 
         scope.$on("loading-complete", function(e) {
           element.css({"display" : "none"});
+        });
+
+        scope.$on("loading-failed", function(e, status) {
+          switch(status) {
+            case 404:
+            case 403:
+              alert('Something went really wrong ('+status+'). Reload this page and try again.');
+              break;
+            default:
+              alert('Something unknown went wrong. Reload this page and try again.');
+          }
         });
       }
     };

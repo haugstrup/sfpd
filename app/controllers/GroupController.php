@@ -9,7 +9,6 @@ class GroupController extends \BaseController {
 
 	public function update($code)
 	{
-
 		$group = Group::with('players', 'games', 'heat')->where('code', '=', $code)->get()->first();
 		$season = Season::with('players')->find($group->heat->season_id);
 		$machines = Machine::orderBy('name')->where('status', '=', 'active')->get();
