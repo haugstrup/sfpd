@@ -38,6 +38,11 @@
             <b>{{ pointsForPlayer(group.points, player.player_id) }}pt.</b>
           </td>
         </tr>
+        <tr>
+          <td>&nbsp;</td>
+          <td ng-repeat="game in group.games" class="text-center"><a href="#/game/{{game.code}}" class="btn btn-xs btn-info">edit</a></td>
+          <td>&nbsp;</td>
+        </tr>
       </tbody>
     </table>
 
