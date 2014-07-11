@@ -39,7 +39,7 @@ class Result extends \Eloquent {
         case 2:
           return 2.5;
         case 3:
-          return 1.5;
+          return 1;
         case 4:
         default:
           return 0;
@@ -48,7 +48,7 @@ class Result extends \Eloquent {
     else {
       switch ($this->position) {
         case 1:
-          return 5;
+          return 4.5;
         case 2:
           return 3;
         case 3:
