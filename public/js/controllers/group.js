@@ -2,7 +2,11 @@ angular.module('sfpdApp')
   .controller('GroupCtrl', function ($scope, $location, group, $http, $filter) {
     $scope.group = group;
     $scope.group.newPlayer = null;
-    $scope.buttonDisabled = false;
+    $scope.buttonDisabledState = false;
+
+    $scope.buttonDisabled = function() {
+      return $scope.buttonDisabledState || !$scope.group.nextPlayerPick || !$scope.group.nextMachine;
+    };
 
     $scope.pointsForPlayer = function(pointsList, playerId) {
       var points = $filter('filter')(pointsList, {player_id: playerId}, true)[0];
@@ -43,7 +47,7 @@ angular.module('sfpdApp')
     };
 
     $scope.startGame = function() {
-      $scope.buttonDisabled = true;
+      $scope.buttonDisabledState = true;
 
       var url = '/api/groups/'+$scope.group.code+'/games';
       $http.post(url, {
