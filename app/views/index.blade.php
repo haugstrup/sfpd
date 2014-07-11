@@ -4,7 +4,7 @@
     <meta charset="utf-8">
     <title>San Francisco Pinball Department</title>
     <link rel="apple-touch-icon" href="/img/touch-icon.png">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body ng-app="sfpdApp">
