@@ -20,7 +20,7 @@
 
   <div ng-show="group.players.length >= 3">
     <h3>Games</h3>
-    <table class="table">
+    <table class="table table-scores">
       <thead>
         <tr>
           <th>Player</th>
@@ -40,7 +40,7 @@
         </tr>
         <tr>
           <td>&nbsp;</td>
-          <td ng-repeat="game in group.games" class="text-center"><a href="#/game/{{game.code}}" class="btn btn-xs btn-info">edit</a></td>
+          <td ng-repeat="game in group.games" class="text-center"><a href="#/game/{{game.code}}">edit</a></td>
           <td>&nbsp;</td>
         </tr>
       </tbody>
