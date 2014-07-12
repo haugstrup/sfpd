@@ -8,6 +8,16 @@ angular.module('sfpdApp')
       return $scope.buttonDisabledState || !$scope.group.nextPlayerPick || !$scope.group.nextMachine;
     };
 
+    $scope.availableMachines = function() {
+      var machinesPlayed = $scope.group.games.map(function(game) {
+        return game.machine.machine_id;
+      });
+
+      return $filter('filter')($scope.group.machines, function(machine) {
+        return machinesPlayed.indexOf(machine.machine_id) === -1;
+      });
+    };
+
     $scope.pointsForPlayer = function(pointsList, playerId) {
       var points = $filter('filter')(pointsList, {player_id: playerId}, true)[0];
       return points ? points.points : "0";
