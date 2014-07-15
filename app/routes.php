@@ -19,6 +19,7 @@ Route::get('/', function()
 Route::get('login', array('uses' => 'HomeController@showLogin'));
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('logout', array('uses' => 'HomeController@doLogout', 'as' => 'logout'));
+Route::get('help', array('uses' => 'HomeController@showHelp', 'as' => 'help'));
 
 
 // =============================================

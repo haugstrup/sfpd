@@ -27,7 +27,7 @@
         <hr>
 
         <div class="footer text-muted">
-          <p><small>Comments or complaints? <a target="_blank" href="https://podio.com/webforms/8656053/642967">Get in touch</a>.</small></p>
+          <p><small><a href="{{URL::route('help')}}">View online help</a> • Comments or complaints? <a target="_blank" href="https://podio.com/webforms/8656053/642967">Get in touch</a>.</small></p>
         </div>
 
     </div>

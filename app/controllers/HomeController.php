@@ -75,4 +75,9 @@ class HomeController extends BaseController {
 		return Redirect::to('login');
 	}
 
+	public function showHelp()
+	{
+		return View::make('help');
+	}
+
 }
