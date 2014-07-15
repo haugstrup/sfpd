@@ -4,7 +4,7 @@
 @if ($season)
   <h2>Season: {{{ $season->name }}}</h2>
 
-  <h3>Heats</h3>
+  <h3>Rounds</h3>
   <table class="table table-striped table-vertical-center">
     <thead>
       <tr>
@@ -37,7 +37,7 @@
 {{ Form::open(array('route' => array('admin.seasons.store_heat', $season->season_id), 'method' => 'post', 'class' => 'form-inline')) }}
   {{ Form::input('date', 'date', '', array('class' => 'form-control')) }}
   {{ Form::input('time', 'time', '', array('class' => 'form-control')) }}
-  {{ Form::submit('Add heat', array('class' => 'btn btn-success')) }}
+  {{ Form::submit('Add round', array('class' => 'btn btn-success')) }}
 {{ Form::close() }}
 
 <hr>
