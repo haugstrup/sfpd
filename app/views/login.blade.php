@@ -1,4 +1,7 @@
 @extends("layout")
+@section("title")
+  SFPD Login
+@stop
 @section("content")
 	{{ Form::open(array('url' => 'login', 'role' => 'form')) }}
 		<h2>Login</h2>

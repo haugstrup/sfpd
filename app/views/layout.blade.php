@@ -2,7 +2,7 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>SFPD Admin</title>
+  <title>@if (!Auth::check()) @yield("title") @else SFPD Admin @endif</title>
   <link rel="apple-touch-icon" href="/img/touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/admin.css">
