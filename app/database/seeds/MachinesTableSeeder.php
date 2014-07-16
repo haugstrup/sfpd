@@ -211,6 +211,18 @@ class MachinesTableSeeder extends Seeder {
       'shortname' => 'PG',
     ));
 
+    Machine::create(array(
+      'name' => 'Congo',
+      'status' => 'active',
+      'shortname' => 'CON',
+    ));
+
+    Machine::create(array(
+      'name' => 'NBA Fastbreak',
+      'status' => 'inactive',
+      'shortname' => 'NBA',
+    ));
+
 	}
 
 }
