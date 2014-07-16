@@ -26,11 +26,15 @@ class GameController extends \BaseController {
 			if ($result) {
 				$result->position = is_null($current['position']) ? null : (int)$current['position'];
 				$result->save();
+
+				$result->log('update');
 			}
 		}
 
 		$game->status = Input::get('status');
 		$game->save();
+
+		$game->log('update');
 
 	}
 
@@ -52,6 +56,8 @@ class GameController extends \BaseController {
 		if (!$canDelete) {
 			App::abort(403);
 		}
+
+		$game->log('destroy');
 
 		$game->results()->delete();
 		$game->delete();

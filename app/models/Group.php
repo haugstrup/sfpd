@@ -7,6 +7,10 @@ class Group extends \Eloquent {
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'group_id');
   protected $appends = array('name', 'points');
 
+  public function log($action) {
+    Activity::create(array('ref_type' => 'group', 'ref_id' => $this->group_id, 'action' => $action, 'data' => json_encode($this->toArray())));
+  }
+
   public function players()
   {
       return $this->belongsToMany('Player')->withTimestamps()->orderBy('pivot_created_at');

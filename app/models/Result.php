@@ -7,6 +7,10 @@ class Result extends \Eloquent {
   protected $fillable = array('game_id', 'player_id', 'position', 'delta');
   protected $appends = array('points');
 
+  public function log($action) {
+    Activity::create(array('ref_type' => 'result', 'ref_id' => $this->result_id, 'action' => $action, 'data' => json_encode($this->toArray())));
+  }
+
   public function player()
   {
     return $this->belongsTo('Player');

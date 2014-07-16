@@ -22,6 +22,9 @@ class GroupController extends \BaseController {
 
 			$group->players()->sync($players);
 			$group->save();
+
+			$group->log('players_update');
+
 		}
 
 		return $this->respond_with_full_group($code);
@@ -70,6 +73,7 @@ class GroupController extends \BaseController {
 
     $game->save();
 
+		$game->log('create');
 
 		// Players in order according to group_player pivot timestamp
 		// Starting with person picking as player one
@@ -98,6 +102,9 @@ class GroupController extends \BaseController {
 				'delta' => $index
 			));
 			$result->save();
+
+			$result->log('create');
+
 		}
 
 		// Send group back so we're sure to get all games

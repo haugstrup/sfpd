@@ -12,7 +12,7 @@ class CreateLogsTable extends Migration {
 	 */
 	public function up()
 	{
-		Schema::create('activity', function(Blueprint $table)
+		Schema::create('activities', function(Blueprint $table)
 		{
 			$table->increments('activity_id');
 			$table->string('ref_type');
@@ -31,7 +31,7 @@ class CreateLogsTable extends Migration {
 	 */
 	public function down()
 	{
-		Schema::drop('activity');
+		Schema::drop('activities');
 	}
 
 }
