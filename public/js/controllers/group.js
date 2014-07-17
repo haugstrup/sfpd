@@ -5,7 +5,7 @@ angular.module('sfpdApp')
     $scope.buttonDisabledState = false;
 
     $scope.buttonDisabled = function() {
-      return $scope.buttonDisabledState || !$scope.group.nextPlayerPick || !$scope.group.nextMachine;
+      return $scope.buttonDisabledState || !$scope.group.nextMachine;
     };
 
     $scope.availableMachines = function() {
@@ -56,13 +56,50 @@ angular.module('sfpdApp')
       return $scope.group.players.length < 4;
     };
 
+    $scope.nextPlayer = function() {
+      if (!$scope.group.players) {
+        return null;
+      }
+
+      if ($scope.group.games.length >= 4) {
+        return null;
+      }
+
+      // 3 player group, last game. Worst player picks
+      if ($scope.group.games.length === 3 && $scope.group.players.length === 3) {
+
+        var worstPlayer = null;
+
+        angular.forEach($scope.group.players, function(player) {
+          var currentPoints = $scope.pointsForPlayer($scope.group.points, player.player_id);
+          if (!worstPlayer || worstPlayer.totalPoints > currentPoints) {
+            worstPlayer = player;
+            worstPlayer.totalPoints = currentPoints;
+          }
+        });
+
+        return worstPlayer;
+      }
+
+      // Normal play. Just pick the next player who hasn't picked a game yet
+      var playersWhoHavePicked = $scope.group.games.map(function(game) {
+        return game.player.player_id;
+      });
+
+      var availablePlayers = $filter('filter')($scope.group.players, function(player) {
+        return playersWhoHavePicked.indexOf(player.player_id) === -1;
+      });
+
+      return availablePlayers[0];
+    };
+
     $scope.startGame = function() {
       $scope.buttonDisabledState = true;
 
       var url = '/api/groups/'+$scope.group.code+'/games';
       $http.post(url, {
         machine: $scope.group.nextMachine,
-        player: $scope.group.nextPlayerPick,
+        player: $scope.nextPlayer(),
         status: 'active'
       }).success(function(group){
         $scope.group.games = group.games;
