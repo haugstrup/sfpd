@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body ng-app="sfpdApp">
+    <div loading-indicator class="loading-indicator-wrapper"></div>
 
     <div class="container">
 
@@ -19,7 +20,6 @@
               <li ng-class="{ active: isActive('/results')}"><a ng-href="#/results">Results</a></li>
             </ul>
           </div>
-          <div loading-indicator class="loading-indicator-wrapper"></div>
         </div>
 
         <div ng-view=""></div>
