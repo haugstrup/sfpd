@@ -40,7 +40,7 @@ class PlayersTableSeeder extends Seeder {
     ));
 
     Player::create(array(
-      'name' => 'Vanessa Gonzales',
+      'name' => 'Vanessa Gonzalez',
       'display_name' => 'Vanessa',
     ));
 
@@ -92,7 +92,7 @@ class PlayersTableSeeder extends Seeder {
     ));
 
     Player::create(array(
-      'name' => 'Kevin J. Montgomery',
+      'name' => 'Kevin Montgomery',
       'display_name' => 'Kevin J.',
     ));
 
@@ -107,7 +107,7 @@ class PlayersTableSeeder extends Seeder {
     ));
 
     Player::create(array(
-      'name' => 'Dave Hermanos',
+      'name' => 'Dave Hermanas',
       'display_name' => 'Dave H.',
     ));
 
@@ -208,7 +208,7 @@ class PlayersTableSeeder extends Seeder {
     ));
 
     Player::create(array(
-      'name' => 'Jody Witt',
+      'name' => 'Jody Wirt',
       'display_name' => 'Jody',
     ));
 
@@ -278,7 +278,7 @@ class PlayersTableSeeder extends Seeder {
     ));
 
     Player::create(array(
-      'name' => 'Christel Joyce',
+      'name' => 'Christel Macabeo',
       'display_name' => 'Christel',
     ));
 
