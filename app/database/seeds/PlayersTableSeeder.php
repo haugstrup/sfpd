@@ -292,6 +292,111 @@ class PlayersTableSeeder extends Seeder {
       'display_name' => 'Matt W.',
     ));
 
+    Player::create(array(
+      'name' => 'Andy Steinhauser',
+      'display_name' => 'Andy',
+    ));
+
+    Player::create(array(
+      'name' => 'Devon Kelly',
+      'display_name' => 'Devon',
+    ));
+
+    Player::create(array(
+      'name' => 'Jake Wrench',
+      'display_name' => 'Jake',
+    ));
+
+    Player::create(array(
+      'name' => 'Jessica Thompson',
+      'display_name' => 'Jessica T.',
+    ));
+
+    Player::create(array(
+      'name' => 'John Lautman',
+      'display_name' => 'John L.',
+    ));
+
+    Player::create(array(
+      'name' => 'Richard Leavitt',
+      'display_name' => 'Richard L.',
+    ));
+
+    Player::create(array(
+      'name' => 'Spoon Silverscoop',
+      'display_name' => 'Spoon',
+    ));
+
+    Player::create(array(
+      'name' => 'Tracy Chiatello',
+      'display_name' => 'Tracy',
+    ));
+
+    Player::create(array(
+      'name' => 'Jeff Cleary',
+      'display_name' => 'Jeff C.',
+    ));
+
+    Player::create(array(
+      'name' => 'Brian Smock',
+      'display_name' => 'Brian S.',
+    ));
+
+    Player::create(array(
+      'name' => 'Ash Aiwase',
+      'display_name' => 'Ash',
+    ));
+
+    Player::create(array(
+      'name' => 'Laura Lewinson',
+      'display_name' => 'Laura',
+    ));
+
+    Player::create(array(
+      'name' => 'Emily Guzzardi',
+      'display_name' => 'Emily',
+    ));
+
+    Player::create(array(
+      'name' => 'Jaime Uziel',
+      'display_name' => 'Jaime',
+    ));
+
+    Player::create(array(
+      'name' => 'Bob Klossner',
+      'display_name' => 'Bob',
+    ));
+
+    Player::create(array(
+      'name' => 'Courtney Klossner',
+      'display_name' => 'Courtney',
+    ));
+
+    Player::create(array(
+      'name' => 'Jason Rosenberg',
+      'display_name' => 'Jason',
+    ));
+
+    Player::create(array(
+      'name' => 'Eddie Codel',
+      'display_name' => 'Eddie',
+    ));
+
+    Player::create(array(
+      'name' => 'Joe Fernandez',
+      'display_name' => 'Joe',
+    ));
+
+    Player::create(array(
+      'name' => 'Jengis Alpar',
+      'display_name' => 'Jengis',
+    ));
+
+    Player::create(array(
+      'name' => 'Chris Gibbs',
+      'display_name' => 'Chris G.',
+    ));
+
 	}
 
 }
