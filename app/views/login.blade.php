@@ -8,7 +8,7 @@
 
 		<div class="form-group">
 			{{ Form::label('email', 'Email Address') }}
-			{{ Form::text('email', Input::old('email'), array('placeholder' => 'yourself@example.com', 'class' => 'form-control')) }}
+			{{ Form::email('email', Input::old('email'), array('placeholder' => 'yourself@example.com', 'class' => 'form-control')) }}
 		</div>
 
 		<div class="form-group">
