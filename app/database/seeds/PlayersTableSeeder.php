@@ -249,7 +249,7 @@ class PlayersTableSeeder extends Seeder {
 
     Player::create(array(
       'name' => 'Nate Robinson',
-      'display_name' => 'Nate',
+      'display_name' => 'Nate R.',
     ));
 
     Player::create(array(
@@ -395,6 +395,16 @@ class PlayersTableSeeder extends Seeder {
     Player::create(array(
       'name' => 'Chris Gibbs',
       'display_name' => 'Chris G.',
+    ));
+
+    Player::create(array(
+      'name' => 'Water Gomez',
+      'display_name' => 'Walter',
+    ));
+
+    Player::create(array(
+      'name' => 'Nate Weber',
+      'display_name' => 'Nate W.',
     ));
 
 	}
