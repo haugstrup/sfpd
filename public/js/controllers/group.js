@@ -9,13 +9,14 @@ angular.module('sfpdApp')
     };
 
     $scope.availableMachines = function() {
-      var machinesPlayed = $scope.group.games.map(function(game) {
-        return game.machine.machine_id;
-      });
+      return $scope.group.machines;
+      // var machinesPlayed = $scope.group.games.map(function(game) {
+      //   return game.machine.machine_id;
+      // });
 
-      return $filter('filter')($scope.group.machines, function(machine) {
-        return machinesPlayed.indexOf(machine.machine_id) === -1;
-      });
+      // return $filter('filter')($scope.group.machines, function(machine) {
+      //   return machinesPlayed.indexOf(machine.machine_id) === -1;
+      // });
     };
 
     $scope.pointsForPlayer = function(pointsList, playerId) {
