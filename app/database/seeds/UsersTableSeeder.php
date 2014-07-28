@@ -9,12 +9,12 @@ class UsersTableSeeder extends Seeder {
 
     User::create(array(
       'email' => 'andreas@solitude.dk',
-      'password' => Hash::make('penguin'),
+      'password' => Hash::make($_ENV['PW_A']),
     ));
 
     User::create(array(
       'email' => 'per@sfpins.org',
-      'password' => Hash::make('swedishpenguin'),
+      'password' => Hash::make($_ENV['PW_P']),
     ));
 
   }
