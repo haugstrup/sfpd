@@ -43,6 +43,7 @@ class Result extends \Eloquent {
         case 2:
           return 2.5;
         case 3:
+        case 0:
           return 1;
         case 4:
         default:
@@ -58,6 +59,7 @@ class Result extends \Eloquent {
         case 3:
           return 2;
         case 4:
+        case 0:
           return 1;
         default:
           return 0;
