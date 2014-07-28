@@ -223,6 +223,18 @@ class MachinesTableSeeder extends Seeder {
       'shortname' => 'NBA',
     ));
 
+    Machine::create(array(
+      'name' => 'Twilight Zone',
+      'status' => 'active',
+      'shortname' => 'TZ',
+    ));
+
+    Machine::create(array(
+      'name' => 'Cactus Canyon',
+      'status' => 'active',
+      'shortname' => 'CC',
+    ));
+
 	}
 
 }
