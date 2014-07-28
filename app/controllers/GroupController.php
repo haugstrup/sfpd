@@ -58,7 +58,7 @@ class GroupController extends \BaseController {
 
 		// Create game
 
-    $hashids = new Hashids\Hashids('GN2FnrnthVuX', 9, 'abcdefghijkmnpqrstuvwxyz');
+    $hashids = new Hashids\Hashids($_ENV['SALT_GAME'], 9, 'abcdefghijkmnpqrstuvwxyz');
 
 		$input = Input::all();
 		$game = new Game(array(
