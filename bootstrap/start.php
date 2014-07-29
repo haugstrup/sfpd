@@ -13,6 +13,9 @@
 
 $app = new Illuminate\Foundation\Application;
 
+// Don't use X-Frame-Options because we need to embed results on wordpress install
+$app->forgetMiddleware('Illuminate\Http\FrameGuard');
+
 /*
 |--------------------------------------------------------------------------
 | Detect The Application Environment
