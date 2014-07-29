@@ -13,13 +13,14 @@
 
 Route::get('/', function()
 {
-	return View::make('index');
+	return View::make('index', array('embed' => false));
 });
 
 Route::get('login', array('uses' => 'HomeController@showLogin'));
 Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('logout', array('uses' => 'HomeController@doLogout', 'as' => 'logout'));
 Route::get('help', array('uses' => 'HomeController@showHelp', 'as' => 'help'));
+Route::get('embed', array('uses' => 'HomeController@showEmbed', 'as' => 'embed'));
 
 
 // =============================================
@@ -72,5 +73,5 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 // this allows angular to route them
 App::missing(function($exception)
 {
-  return View::make('index');
+  return View::make('index', array('embed' => false));
 });

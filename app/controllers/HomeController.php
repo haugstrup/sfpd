@@ -25,6 +25,11 @@ class HomeController extends BaseController {
 		return View::make('home', array('season' => $season));
 	}
 
+	public function showEmbed()
+	{
+		return View::make('index', array('embed' => true));
+	}
+
 	public function showLogin()
 	{
 		return View::make('login');

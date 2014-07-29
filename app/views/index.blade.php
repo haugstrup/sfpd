@@ -12,6 +12,7 @@
 
     <div class="container">
 
+        @if (!$embed)
         <div class="header navbar navbar-default" ng-controller="HeaderCtrl">
           <div class="navbar-inner">
             <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
@@ -21,14 +22,17 @@
             </ul>
           </div>
         </div>
+        @endif
 
         <div ng-view=""></div>
 
+        @if (!$embed)
         <hr>
 
         <div class="footer text-muted">
           <p><small><a href="{{URL::route('help')}}">View online help</a> • Comments or complaints? <a target="_blank" href="https://podio.com/webforms/8656053/642967">Get in touch</a>.</small></p>
         </div>
+        @endif
 
     </div>
 
