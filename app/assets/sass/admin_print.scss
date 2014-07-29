@@ -15,6 +15,12 @@ body {
   border:1px solid black;
   border-collapse:collapse;
 }
+.sheet thead .fake-header th {
+  padding-bottom:10px;
+}
+.sheet tfoot td {
+  padding-top:10px;
+}
 .sheet thead .fake-header th,
 .sheet tfoot td {
   border:none;
@@ -30,12 +36,10 @@ body {
 .sheet .fake-header .name {
   text-align:right;
 }
-
-.sheet .total {
-  text-align:center;
-  width:10%;
+.sheet .code {
+  font-size:1.5em;
+  letter-spacing: 0.2ex;
 }
-
 .sheet .mobile {
   width:100px;
   height:200px;
@@ -46,15 +50,33 @@ body {
 .sheet .scores {
   width:calc(100% - 110px);
 }
+.positions td {
+  border:none;
+  text-align: center;
+  padding:0;
+}
+.sheet img {
+  margin:-7px 5px 0 0;
+}
 
 @media print {
-  body {
+  body,html {
     padding:0;
+    margin:0;
   }
   .sheet {
     margin-bottom:5px;
   }
   .sheet:nth-child(4n) {
     page-break-after: always;
+    &:last-child {
+      page-break-after: auto;
+    }
   }
+  .positions td {
+    font-size:10px;
+  }
+}
+@page {
+  margin: 1cm;
 }
