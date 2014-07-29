@@ -36,7 +36,7 @@
   <p>Groups are drawn as <b>normal</b>. Eric will yell out your name as it's drawn. Your group will get a paper scoresheet as normal.</p>
 
   <h3>Designate a scorekeeper</h3>
-  <p><b>Designate a single scorekeeper for your group</b>. Anyone can view results, but you can avoid trouble be assigning a single person to entering scores for all your games.</p>
+  <p><b>Designate a single scorekeeper for your group</b>. Anyone can view results, but you can avoid trouble be assigning a single person to enter scores for all your games.</p>
 
   <h3>Find your group in the app</h3>
   <p>Your scoresheet will look a little different. On the right hand side you will find a QR-code (one of those square barcode things) and below it a 4 or 5 letter "secret" code.</p>
@@ -44,9 +44,9 @@
   <p>If you don't have a QR Reader app on your phone go to <a href="{{url('/')}}">{{url('/')}}</a> and type in the "secret" code in the text box.</p>
 
   <h3>Add players</h3>
-  <p>At first your group will look empty. It will just display a dropdown with all players. Use the dropdown to <b>add players in the same order as your scoresheet</b>. Order matters as the first player selected will be picking the first game.</p>
+  <p>At first your group will look empty. It will just display a dropdown with all players. Use the dropdown to <b>add players in the same order as on your scoresheet</b>. Order matters as the first player selected will be picking the first game.</p>
   <p>If you make a mistake you can remove players until the first game has been picked.</p>
-  <p>If you are in a three person group only pick three players. Then pick your first game.</p>
+  <p>If you are in a three person group only pick three players. Then choose your first game.</p>
 
   <h3>Choose a game</h3>
   <p>After you have selected all players in your group you can scroll down and pick the first game. There is a dropdown with all functional games as Free Gold Watch. Beware that you may not be eligible to pick all of these games. <b>Only pick games in your assigned section!</b></p>
@@ -65,6 +65,6 @@
   <p>You can use the "Results" and "Standings" links in the menu to view individual results and overall standings respetively.</p>
 
   <h3>Add the app to your home screen</h3>
-  <p>For easy access you can add the SFPD app to your home screen. You'll get to display to awesome SFPD logo to all your friends.</p>
+  <p>For easy access you can add the SFPD app to your home screen. You'll get to display the awesome SFPD logo to all your friends.</p>
 </div>
 @stop
