@@ -25,14 +25,14 @@
   <p>The app is a mobile website that allows you to:</p>
   <ul>
     <li>Enter game scores</li>
-    <li>View results from the current and previous league nights</li>
-    <li>View the current standings in the league</li>
+    <li>View results from current and previous league nights</li>
+    <li>View current standings in the league</li>
   </ul>
   <p>Making software is hard, so we will still be using paper scoresheets as well. They'll function as a paper trail in case Andreas messed up when writing the software. <b>If you have any questions find Andreas and ask him</b>. Don't go to Per with questions about the mobile app.</p>
   <p>The app is a mobile website. <b>No download is necessary ahead of time.</b> Just show up with your phone and you're all set.</p>
 
-  <h3>Player checkin &amp; drawing groups</h3>
-  <p>Player checkin is <b>unchanged</b>. Go to the counter. Find your name. Add it to the bag.</p>
+  <h3>Player check in &amp; drawing groups</h3>
+  <p>Player check in is <b>unchanged</b>. Go to the counter. Find your name. Add it to the bag.</p>
   <p>Groups are drawn as <b>normal</b>. Eric will yell out your name as it's drawn. Your group will get a paper scoresheet as normal.</p>
 
   <h3>Designate a scorekeeper</h3>
@@ -46,12 +46,12 @@
   <h3>Add players</h3>
   <p>At first your group will look empty. It will just display a dropdown with all players. Use the dropdown to <b>add players in the same order as on your scoresheet</b>. Order matters as the first player selected will be picking the first game.</p>
   <p>If you make a mistake you can remove players until the first game has been picked.</p>
-  <p>If you are in a three person group only pick three players. Then choose your first game.</p>
+  <p>If you are in a three person group only pick three players. Then choose your first game. Whoever has the worst score after 3 machines gets to pick the 4th machine.</p>
 
   <h3>Choose a game</h3>
   <p>After you have selected all players in your group you can scroll down and pick the first game. There is a dropdown with all functional games as Free Gold Watch. Beware that you may not be eligible to pick all of these games. <b>Only pick games in your assigned section!</b></p>
 
-  <p>The play who's turn it is picks a game. The scorekeeper uses the dropdown to find the game and clicks the "Pick game" button. This will take him or her to the results page.</p>
+  <p>The player whose turn it is picks a game. The scorekeeper uses the dropdown to find the game and clicks the "Pick game" button. This will take him or her to the results page.</p>
 
   <h3>Enter results</h3>
   <p>After the game has ended use the dropdowns to select the finishing <b>position</b> for each player. Click the save button when you're done.</p>
