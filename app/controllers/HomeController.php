@@ -30,6 +30,11 @@ class HomeController extends BaseController {
 		return View::make('index', array('embed' => true));
 	}
 
+	public function showError()
+	{
+		throw new Exception('Something awful happened. Just kidding this is a test.');
+	}
+
 	public function showLogin()
 	{
 		return View::make('login');

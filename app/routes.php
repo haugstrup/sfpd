@@ -21,6 +21,7 @@ Route::post('login', array('uses' => 'HomeController@doLogin'));
 Route::get('logout', array('uses' => 'HomeController@doLogout', 'as' => 'logout'));
 Route::get('help', array('uses' => 'HomeController@showHelp', 'as' => 'help'));
 Route::get('embed', array('uses' => 'HomeController@showEmbed', 'as' => 'embed'));
+Route::get('error', array('uses' => 'HomeController@showError', 'as' => 'error'));
 
 
 // =============================================
