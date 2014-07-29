@@ -1,9 +1,10 @@
 @extends("layout")
 @section("content")
-<h2>All players <a href="{{ URL::route('admin.players.create') }}" class="btn btn-primary">Add player</a></h2>
+<h2>All {{{count($players)}}} players <a href="{{ URL::route('admin.players.create') }}" class="btn btn-primary">Add player</a></h2>
 <table class="table table-striped">
   <thead>
     <tr>
+      <th>ID</th>
       <th>Display name</th>
       <th>Full Name</th>
       <th>Initials</th>
@@ -13,6 +14,7 @@
   <tbody>
     @foreach ($players as $player)
       <tr class="state-">
+        <td>{{{ $player->player_id }}}</td>
         <td><a href="{{ URL::route('admin.players.edit', $player->player_id) }}">{{{ $player->display_name }}}</a></td>
         <td>{{{ $player->name }}}</td>
         <td>{{{ $player->initials }}}</td>
