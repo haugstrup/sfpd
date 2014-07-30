@@ -52,6 +52,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   // Players
   Route::resource('players', 'AdminPlayerController', array('only' => array('index', 'edit', 'update', 'create', 'store')));
 
+  // Activity log
+  Route::resource('activities', 'AdminActivityController', array('only' => array('index')));
+
   // Seasons
   Route::get('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@players', 'as' => 'admin.seasons.players'));
   Route::put('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@update_players', 'as' => 'admin.seasons.update_players'));

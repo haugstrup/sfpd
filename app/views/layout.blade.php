@@ -25,6 +25,10 @@
             <a href="{{ URL::route('admin.machines.index') }}">Machines</a>
           </li>
 
+          <li class="{{ substr(Request::path(), 6, 8) == 'activities' ? 'active' : '' }}">
+            <a href="{{ URL::route('admin.activities.index') }}">Activity Log</a>
+          </li>
+
           <li class="divider-vertical"></li>
           <li><a href="{{ URL::route('logout') }}">Logout</a></li>
         </ul>
