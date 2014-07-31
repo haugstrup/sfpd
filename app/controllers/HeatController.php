@@ -9,10 +9,13 @@ class HeatController extends \BaseController {
 		$season = Season::with('heats', 'heats.groups', 'heats.groups.games', 'heats.groups.players', 'heats.groups.games.machine')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
 		$season->heats->sortBy('delta');
 
-		// Only include heats before the current active one.
+		// Only include heats before the current active one
+		// As well as heats that have groups
 		$heats = array();
 		foreach ($season->heats as $heat) {
-			$heats[] = $heat->toArray();
+			if (count($heat->groups) > 0) {
+				$heats[] = $heat->toArray();
+			}
 			if ($heat->status === 'active') {
 				break;
 			}
