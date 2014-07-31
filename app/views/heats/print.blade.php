@@ -11,8 +11,8 @@
       <table>
         <thead>
           <tr class="fake-header">
-            <th colspan="3"><img src="/img/ball-19.png" alt="" width="18" height="19">SFPD Score Sheet, {{{$group->name()}}}</th>
-            <th colspan="3" class="name">{{{$heat->season->name}}}, {{{$heat->name()}}}</th>
+            <th colspan="3"><img src="/img/ball-19.png" alt="" width="18" height="19">{{{$heat->season->name}}}, {{{$heat->name()}}}</th>
+            <th colspan="3" class="name">{{{$group->name()}}}</th>
           </tr>
           <tr>
             <th>Player Name</th>
