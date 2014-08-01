@@ -5,8 +5,7 @@
   <table class="table table-bordered table-striped">
     <thead>
       <tr>
-        <th>Name</th>
-        <th>Code</th>
+        <th>Group</th>
         <th>Players</th>
         <th>Games</th>
       </tr>
@@ -14,10 +13,16 @@
     <tbody>
       @foreach ($heat->groups as $group)
         <tr>
-          <td>{{{ $group->name() }}}</td>
-          <td><a href="{{ $group->url() }}" target="_blank">{{{ $group->code }}}</a></td>
+          <td><a href="{{ $group->url() }}" target="_blank">{{{ $group->name() }}}</a></td>
           <td>{{{ count($group->players) }}}</td>
-          <td>{{{ count($group->games) }}}</td>
+          <td>
+            @foreach ($group->games as $game)
+              <span class="glyphicon {{$game->status === 'completed' ? 'glyphicon-ok text-success' : 'glyphicon-minus text-info'}}"></span>
+            @endforeach
+            @for ($i = 0; $i < (4-count($group->games)); $i++)
+              <span class="glyphicon glyphicon-minus text-muted"></span>
+            @endfor
+          </td>
         </tr>
       @endforeach
     </tbody>
