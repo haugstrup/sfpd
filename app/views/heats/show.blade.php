@@ -7,7 +7,7 @@
     <thead>
       <tr>
         <th>Group</th>
-        <th>Players</th>
+        <th>No.</th>
         <th>Games</th>
       </tr>
     </thead>

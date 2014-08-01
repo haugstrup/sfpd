@@ -82,7 +82,7 @@ angular
   .directive("loadingIndicator", function() {
     return {
       restrict : "A",
-      template: "<div class='loading-indicator'><div class='bar-1'></div><div class='bar-2'></div><div class='bar-3'></div><div class='bar-4'></div><div class='bar-5'></div><div class='bar-6'></div><div class='bar-7'></div><div class='bar-8'></div></div>",
+      template: "<div class='loading-indicator-block-ui'></div><div class='loading-indicator-wrapper'><div class='loading-indicator'><div class='bar-1'></div><div class='bar-2'></div><div class='bar-3'></div><div class='bar-4'></div><div class='bar-5'></div><div class='bar-6'></div><div class='bar-7'></div><div class='bar-8'></div></div></div>",
       link : function(scope, element, attrs) {
         scope.$on("loading-started", function(e) {
           element.css({"display" : "block"});

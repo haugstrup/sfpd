@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/main.css">
   </head>
   <body ng-app="sfpdApp">
-    <div loading-indicator class="loading-indicator-wrapper"></div>
+    <div loading-indicator class="loading-indicator-wrapper-wrapper"></div>
 
     <div class="container">
 
