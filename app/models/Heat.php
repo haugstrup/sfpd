@@ -76,4 +76,15 @@ class Heat extends \Eloquent {
     return $return;
   }
 
+  public function player_count()
+  {
+    $count = 0;
+
+    foreach ($this->groups as $group) {
+      $count = $count + count($group->players);
+    }
+
+    return $count;
+  }
+
 }

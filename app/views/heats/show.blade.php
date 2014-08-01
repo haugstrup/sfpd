@@ -1,6 +1,7 @@
 @extends("layout")
 @section("content")
 <h2>{{{$heat->season->name}}}: {{$heat->name()}} <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
+<p>There are currently {{$heat->player_count()}} players in this round.</p>
 @if ($heat->groups)
   <table class="table table-bordered table-striped">
     <thead>
