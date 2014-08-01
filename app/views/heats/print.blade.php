@@ -11,8 +11,9 @@
       <table>
         <thead>
           <tr class="fake-header">
-            <th colspan="3"><img src="/img/ball-19.png" alt="" width="18" height="19">{{{$heat->season->name}}}, {{{$heat->name()}}}</th>
-            <th colspan="3" class="name">{{{$group->name()}}}</th>
+            <th colspan="2"><img src="/img/ball-19.png" alt="" width="18" height="19">{{{$heat->season->name}}}, {{{$heat->name()}}}</th>
+            <th colspan="2">Section: <span class="location">{{ $group->delta % 2 === 0 ? 'DOOR' : 'DESK' }}</span></th>
+            <th colspan="2" class="name">{{{$group->name()}}}</th>
           </tr>
           <tr>
             <th>Player Name</th>
