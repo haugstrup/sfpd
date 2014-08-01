@@ -1,14 +1,6 @@
 @extends("layout")
 @section("content")
-<h2>{{{$heat->season->name}}}: {{$heat->name()}}</h2>
-
-<hr>
-{{ Form::open(array('route' => array('admin.heats.store_groups', $heat->heat_id), 'method' => 'post', 'class' => 'form-inline')) }}
-  Create {{ Form::text('count', '20', array('class' => 'input-sm form-control', 'size' => 2)) }} fresh groups {{ Form::submit('Go!', array('class' => 'btn btn-success btn-sm')) }}
-{{ Form::close() }}
-<hr>
-
-<h2>Groups <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
+<h2>{{{$heat->season->name}}}: {{$heat->name()}} <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
 @if ($heat->groups)
   <table class="table table-bordered">
     <thead>
@@ -31,6 +23,12 @@
     </tbody>
   </table>
 @endif
+
+<hr>
+
+{{ Form::open(array('route' => array('admin.heats.store_groups', $heat->heat_id), 'method' => 'post', 'class' => 'form-inline')) }}
+  Create {{ Form::text('count', '20', array('class' => 'input-sm form-control', 'size' => 2)) }} fresh groups {{ Form::submit('Go!', array('class' => 'btn btn-success btn-sm')) }}
+{{ Form::close() }}
 
 <hr>
 
