@@ -14,6 +14,19 @@ class AdminHeatController extends \BaseController {
     return View::make('heats.print', array('heat' => $heat));
   }
 
+  public function current()
+  {
+    $season = Season::with('heats')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
+    foreach ($season->heats as $heat) {
+      if ($heat->status === 'active') {
+        return View::make('heats.show', array('heat' => $heat));
+        break;
+      }
+    }
+
+    return Redirect::route('admin.index');
+  }
+
   public function show($id)
   {
     $heat = Heat::with(array('season', 'groups'))->find($id);

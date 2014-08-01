@@ -61,6 +61,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::post('seasons/{season_id}/store_heat', array('uses' => 'AdminSeasonController@store_heat', 'as' => 'admin.seasons.store_heat'));
 
   // Heats
+  Route::get('heats/current', array('uses' => 'AdminHeatController@current', 'as' => 'admin.heats.current'));
   Route::resource('heats', 'AdminHeatController', array('only' => array('show', 'edit', 'update', 'create', 'store')));
   Route::post('heats/{heat_id}/groups', array('before' => 'auth', 'uses' => 'AdminHeatController@store_groups', 'as' => 'admin.heats.store_groups'));
   Route::delete('heats/{heat_id}/groups', array('before' => 'auth', 'uses' => 'AdminHeatController@destroy_groups', 'as' => 'admin.heats.destroy_groups'));

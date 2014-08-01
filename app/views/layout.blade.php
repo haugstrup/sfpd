@@ -25,12 +25,15 @@
             <a href="{{ URL::route('admin.machines.index') }}">Machines</a>
           </li>
 
-          <li class="{{ substr(Request::path(), 6, 8) == 'activities' ? 'active' : '' }}">
-            <a href="{{ URL::route('admin.activities.index') }}">Activities</a>
+          <li>
+            <a href="{{ URL::route('admin.heats.current') }}" title="View current round"><span class="glyphicon glyphicon-dashboard"></span></a>
           </li>
 
-          <li class="divider-vertical"></li>
-          <li><a href="{{ URL::route('logout') }}">Logout</a></li>
+          <li class="{{ substr(Request::path(), 6, 8) == 'activities' ? 'active' : '' }}">
+            <a href="{{ URL::route('admin.activities.index') }}" title="Activity log"><span class="glyphicon glyphicon-stats"></span></a>
+          </li>
+
+          <li><a href="{{ URL::route('logout') }}" title="Log out"><span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>
     </div>

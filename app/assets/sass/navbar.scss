@@ -9,6 +9,13 @@
   @media (min-width: 320px) {
     border-radius: $navbar-border-radius;
   }
+  .glyphicon {
+    font-size:16px;
+  }
+  .glyphicon-dashboard {
+    position:relative;
+    top:2px;
+  }
 }
 .navbar-header {
   @media (min-width: 320px) {
