@@ -22,7 +22,7 @@
           </li>
 
           <li class="{{ substr(Request::path(), 6, 8) == 'machines' ? 'active' : '' }}">
-            <a href="{{ URL::route('admin.machines.index') }}">Machines</a>
+            <a href="{{ URL::route('admin.machines.index') }}">Pins</a>
           </li>
 
           <li>
