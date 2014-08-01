@@ -26,7 +26,7 @@
           </li>
 
           <li class="{{ substr(Request::path(), 6, 8) == 'activities' ? 'active' : '' }}">
-            <a href="{{ URL::route('admin.activities.index') }}">Activity Log</a>
+            <a href="{{ URL::route('admin.activities.index') }}">Activities</a>
           </li>
 
           <li class="divider-vertical"></li>
