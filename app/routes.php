@@ -54,7 +54,7 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
 
   // Stats
   Route::get('stats/activities', array('uses' => 'AdminStatsController@activities', 'as' => 'admin.stats.activities'));
-  Route::get('stats/machine', array('uses' => 'AdminStatsController@machines', 'as' => 'admin.stats.machines'));
+  Route::get('stats/machines', array('uses' => 'AdminStatsController@machines', 'as' => 'admin.stats.machines'));
 
   // Seasons
   Route::get('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@players', 'as' => 'admin.seasons.players'));
