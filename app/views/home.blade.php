@@ -2,9 +2,8 @@
 @section("content")
 
 @if ($season)
-  <h2>Season: {{{ $season->name }}}</h2>
+  <h2>{{{ $season->name }}} <a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}" class="btn btn-primary">Administer Players</a></h2>
 
-  <h3>Rounds</h3>
   <table class="table table-striped table-vertical-center">
     <thead>
       <tr>
@@ -39,14 +38,6 @@
   {{ Form::input('time', 'time', '', array('class' => 'form-control')) }}
   {{ Form::submit('Add round', array('class' => 'btn btn-success')) }}
 {{ Form::close() }}
-
-<hr>
-
-<h3>Players</h3>
-<ul class="unstyled">
-  <li><a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}">View/Modify players for this season</a></li>
-</ul>
-
 
 @endif
 
