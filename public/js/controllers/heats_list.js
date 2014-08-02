@@ -12,4 +12,8 @@ angular.module('sfpdApp')
       return points ? points.points : "0";
     };
 
+    $scope.classForPlayerGame = function(player, game) {
+      return player.player_id === game.player_id ? 'active' : '';
+    };
+
   });

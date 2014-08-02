@@ -15,7 +15,7 @@
           <tbody>
             <tr ng-repeat="player in group.players">
               <td>{{player.display_name}}</td>
-              <td ng-repeat="game in group.games" class="text-center">
+              <td ng-repeat="game in group.games" class="text-center {{ classForPlayerGame(player, game) }}">
                 {{ pointsForPlayer(game.results, player.player_id) }}
               </td>
               <td class="text-center">
