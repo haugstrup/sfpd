@@ -51,7 +51,7 @@
   <h3>Choose a game</h3>
   <p>After you have selected all players in your group you can scroll down and pick the first game. There is a dropdown with all functional games as Free Gold Watch. Beware that you may not be eligible to pick all of these games. <b>Only pick games in your assigned section!</b></p>
 
-  <p>The player whose turn it is picks a game. The scorekeeper uses the dropdown to find the game and clicks the "Pick game" button. This will take him or her to the results page.</p>
+  <p>The player whose turn it is picks a game. The scorekeeper uses the dropdown to find the game. This will take him or her to the results page.</p>
 
   <h3>Enter results</h3>
   <p>After the game has ended use the dropdowns to select the finishing <b>position</b> for each player. Click the save button when you're done.</p>

@@ -5,7 +5,7 @@ angular.module('sfpdApp')
     $scope.buttonDisabledState = false;
 
     $scope.buttonDisabled = function() {
-      return $scope.buttonDisabledState || !$scope.group.nextMachine;
+      return $scope.buttonDisabledState;
     };
 
     $scope.availableMachines = function() {

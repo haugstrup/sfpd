@@ -49,12 +49,9 @@
     <form class="form-inline" ng-show="!(group.games|filter:{status:'active'}:true).length && group.games.length < 4">
       <p><b>{{nextPlayer().display_name}}</b> should select the next game:</p>
       <div class="form-group">
-        <select class="form-control input-sm" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in availableMachines()">
+        <select class="form-control input-sm" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in availableMachines()" ng-change="startGame()" ng-disabled="buttonDisabled()">
           <option value="">-- select machine --</option>
         </select>
-      </div>
-      <div class="form-group">
-        <button class="btn btn-success btn-sm" ng-click="startGame()" ng-disabled="buttonDisabled()">Start game</button>
       </div>
     </form>
   </div>
