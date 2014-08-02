@@ -1,6 +1,8 @@
 @extends("layout")
 @section("content")
 
+  @include('stats.menu')
+
   <h2>Activity log</h2>
   <table class="table table-striped table-vertical-center">
     <thead>

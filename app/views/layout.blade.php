@@ -17,7 +17,7 @@
         <a class="navbar-brand" href="{{ URL::route('admin.index') }}"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
         <ul class="nav navbar-nav">
 
-          <li class="{{ substr(Request::path(), 6, 8) == 'players' ? 'active' : '' }}">
+          <li class="{{ substr(Request::path(), 6, 7) == 'players' ? 'active' : '' }}">
             <a href="{{ URL::route('admin.players.index') }}">Players</a>
           </li>
 
@@ -29,8 +29,8 @@
             <a href="{{ URL::route('admin.heats.current') }}" title="View current round"><span class="glyphicon glyphicon-dashboard"></span></a>
           </li>
 
-          <li class="{{ substr(Request::path(), 6, 8) == 'activities' ? 'active' : '' }}">
-            <a href="{{ URL::route('admin.activities.index') }}" title="Activity log"><span class="glyphicon glyphicon-stats"></span></a>
+          <li class="{{ substr(Request::path(), 6, 5) == 'stats' ? 'active' : '' }}">
+            <a href="{{ URL::route('admin.stats.machines') }}" title="Stats"><span class="glyphicon glyphicon-stats"></span></a>
           </li>
 
           <li><a href="{{ URL::route('logout') }}" title="Log out"><span class="glyphicon glyphicon-log-out"></span></a></li>
