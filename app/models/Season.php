@@ -12,7 +12,27 @@ class Season extends \Eloquent {
 
   public function players()
   {
-      return $this->belongsToMany('Player');
+      return $this->belongsToMany('Player')->withPivot('rookie', 'guest', 'final_position');
+  }
+
+  public function is_rookie($player)
+  {
+    foreach ($this->players as $current) {
+      if ($current->player_id === $player->player_id) {
+        return $current->pivot->rookie;
+      }
+    }
+    return false;
+  }
+
+  public function is_guest($player)
+  {
+    foreach ($this->players as $current) {
+      if ($current->player_id === $player->player_id) {
+        return $current->pivot->guest;
+      }
+    }
+    return false;
   }
 
   public function has_player($player)

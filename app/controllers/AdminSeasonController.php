@@ -9,7 +9,7 @@ class AdminSeasonController extends \BaseController {
 
   public function players($season_id)
   {
-    $season = Season::with('players')->find($season_id);
+    $season = Season::find($season_id);
     $players = Player::orderBy('name')->get();
 
     return View::make('seasons.players', array('season' => $season, 'players' => $players));
@@ -25,6 +25,33 @@ class AdminSeasonController extends \BaseController {
 
     $season->players()->sync($players);
     $season->save();
+
+
+    // Update pivot table values for rookies and guests
+    $rookies = array();
+    foreach (Input::get('rookies') as $player_id) {
+      $rookies[] = (int)$player_id;
+    }
+    DB::table('player_season')
+      ->where('season_id', $season->season_id)
+      ->update(array('rookie' => false));
+    DB::table('player_season')
+      ->where('season_id', $season->season_id)
+      ->whereIn('player_id', $rookies)
+      ->update(array('rookie' => true));
+
+    $guests = array();
+    foreach (Input::get('guests') as $player_id) {
+      $guests[] = (int)$player_id;
+    }
+    DB::table('player_season')
+      ->where('season_id', $season->season_id)
+      ->update(array('guest' => false));
+    DB::table('player_season')
+      ->where('season_id', $season->season_id)
+      ->whereIn('player_id', $guests)
+      ->update(array('guest' => true));
+
 
     return Redirect::route('admin.index')->with('success', "Updated players for {$season->name}");
   }

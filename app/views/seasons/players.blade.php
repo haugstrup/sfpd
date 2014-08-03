@@ -7,8 +7,9 @@
   <thead>
     <tr>
       <th>Name</th>
-      <th class="text-center">Initials</th>
-      <th class="text-center">IFPA No.</th>
+      <th class="text-center">Rookie?</th>
+      <th class="text-center">Guest?</th>
+      <th class="text-center">Final position</th>
     </tr>
   </thead>
   <tbody>
@@ -17,8 +18,8 @@
         <td>
           {{ Form::checkbox("players[]", $player->player_id, $season->has_player($player), array('id' => "player-{$player->player_id}")) }}
           {{ Form::label("player-{$player->player_id}", $player->display_name) }}</td>
-        <td class="text-center">{{ Form::label("player-{$player->player_id}", $player->initials ? $player->initials : '&nbsp;') }}</td>
-        <td class="text-center">@if ($player->ifpa_id) <a href="http://www.ifpapinball.com/player.php?player_id={{{ $player->ifpa_id }}}">{{{ $player->ifpa_id }}}</a>@endif</td>
+        <td class="text-center">{{ Form::checkbox("rookies[]", $player->player_id, $season->is_rookie($player), array('id' => "rookie-{$player->player_id}")) }}</td>
+        <td class="text-center">{{ Form::checkbox("guests[]", $player->player_id, $season->is_guest($player), array('id' => "guest-{$player->player_id}")) }}</td>
       </tr>
     @endforeach
   </tbody>

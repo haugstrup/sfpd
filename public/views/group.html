@@ -4,7 +4,7 @@
   <table class="table table-unstyled table-vertical-center">
     <tr ng-repeat="player in group.players">
       <td>
-        {{player.display_name}} {{gamePicked(player)}}
+        {{player.formatted_name}} {{gamePicked(player)}}
       </td>
       <td>
         <button class="btn btn-xs btn-danger" ng-show="!group.games.length" ng-click="removePlayer(player)">remove</button>
@@ -13,7 +13,7 @@
   </table>
 
   <form ng-show="roomForPlayers() && !group.games.length">
-    <select class="form-control input-sm" ng-required ng-model="group.newPlayer" ng-options="player as player.display_name for player in group.season.players | orderBy:'display_name'" ng-change="addPlayer()">
+    <select class="form-control input-sm" ng-required ng-model="group.newPlayer" ng-options="player as player.formatted_name for player in group.season.players | orderBy:'display_name'" ng-change="addPlayer()">
       <option value="">-- add player --</option>
     </select>
   </form>

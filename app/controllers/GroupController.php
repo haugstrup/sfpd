@@ -124,6 +124,17 @@ class GroupController extends \BaseController {
 		$season = Season::with('players')->find($group->heat->season_id);
 		$machines = Machine::orderBy('name')->where('status', '=', 'active')->get();
 
+		// Append rookie and guest information so names can be formatted
+		foreach ($group->players as $player) {
+			foreach ($season->players as $season_player) {
+				if ($player->player_id === $season_player->player_id) {
+					$player->pivot->rookie = $season_player->pivot->rookie;
+					$player->pivot->guest = $season_player->pivot->guest;
+					break;
+				}
+			}
+		}
+
 		$response = $group->toArray();
 		$response['season'] = $season->toArray();
 		$response['machines'] = $machines->toArray();
