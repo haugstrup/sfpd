@@ -8,7 +8,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="seasonPoint in season.points | orderBy:'points':true">
-      <td>{{ (season.players|filter:{player_id:seasonPoint.player_id}:true)[0].formatted_name }}</td>
+      <td ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</td>
       <td class="text-center" ng-repeat="heat in season.heats">
         {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}
       </td>

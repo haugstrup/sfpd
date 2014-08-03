@@ -3,8 +3,8 @@
 
   <table class="table table-unstyled table-vertical-center">
     <tr ng-repeat="player in group.players">
-      <td>
-        {{player.formatted_name}} {{gamePicked(player)}}
+      <td ng-bind-html="(nameForPlayer(player.player_id))">
+        {{ (nameForPlayer(player.player_id)) }} {{gamePicked(player)}}
       </td>
       <td>
         <button class="btn btn-xs btn-danger" ng-show="!group.games.length" ng-click="removePlayer(player)">remove</button>

@@ -1,5 +1,3 @@
-$icon-font-path: "/bower_components/bootstrap-sass-official/vendor/assets/fonts/bootstrap/";
-
 @import "bootstrap.scss";
 @import "navbar.scss";
 
@@ -41,6 +39,11 @@ body {
       padding-left:0;
     }
   }
+}
+
+.player-icon {
+  color:#aaa;
+  font-size:11px;
 }
 
 // Smaller headers for phones

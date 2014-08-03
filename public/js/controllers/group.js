@@ -1,11 +1,16 @@
 angular.module('sfpdApp')
-  .controller('GroupCtrl', function ($scope, $location, group, $http, $filter) {
+  .controller('GroupCtrl', function ($scope, $location, group, $http, $sanitize, $filter) {
     $scope.group = group;
     $scope.group.newPlayer = null;
     $scope.buttonDisabledState = false;
 
     $scope.buttonDisabled = function() {
       return $scope.buttonDisabledState;
+    };
+
+    $scope.nameForPlayer = function(playerId) {
+      var player = $filter('filter')($scope.group.players, {player_id: playerId}, true)[0];
+      return $sanitize(player.display_name) + ' ' + player.icon;
     };
 
     $scope.availableMachines = function() {
