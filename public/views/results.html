@@ -4,7 +4,7 @@
     <h2>{{season.name}}, {{heat.name}}</h2>
     <ul class="list-unstyled">
       <li ng-repeat="group in heat.groups | filter:hasGamesFilter">
-        <table class="table table-scores">
+        <table class="table table-scores table-condensed">
           <thead>
             <tr>
               <th>{{group.name}}</th>
