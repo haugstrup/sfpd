@@ -85,6 +85,21 @@ body {
   }
 }
 
+// Landscape tips
+.landscape-tip {
+  display: none;
+}
+@media only screen and (orientation:portrait) and (max-width: 400px) {
+  .landscape-tip {
+    display:block;
+  }
+}
+@media only screen and (orientation:landscape) and (max-width: 400px) {
+  .landscape-tip {
+    display:none;
+  }
+}
+
 // Ajax loading indicator
 .loading-indicator-wrapper-wrapper {
   display:none;
