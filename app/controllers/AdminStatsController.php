@@ -12,6 +12,7 @@ class AdminStatsController extends \BaseController {
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
       ->groupBy('machines.type')
       ->orderBy('aggregate', 'desc')
+      ->orderBy('machines.type', 'asc')
       ->get();
 
     // Popular machines
@@ -21,6 +22,7 @@ class AdminStatsController extends \BaseController {
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
       ->groupBy('games.machine_id')
       ->orderBy('aggregate', 'desc')
+      ->orderBy('machines.name', 'asc')
       ->get();
 
     return View::make('stats.machines', array(
