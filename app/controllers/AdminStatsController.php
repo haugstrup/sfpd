@@ -8,6 +8,7 @@ class AdminStatsController extends \BaseController {
     // Popularity by type
     $type_popular = DB::table('games')
       ->select(array('machines.type', DB::raw('COUNT(*) as aggregate'), DB::raw('ROUND(COUNT(*) / (SELECT COUNT(*) FROM games) * 100, 2) AS percentage')))
+      ->where('games.deleted_at', null)
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
       ->groupBy('machines.type')
       ->orderBy('aggregate', 'desc')
@@ -16,6 +17,7 @@ class AdminStatsController extends \BaseController {
     // Popular machines
     $list_popular = DB::table('games')
       ->select(array('machines.name', DB::raw('COUNT(*) as aggregate')))
+      ->where('games.deleted_at', null)
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
       ->groupBy('games.machine_id')
       ->orderBy('aggregate', 'desc')
