@@ -3,6 +3,12 @@
 <h2>{{{$heat->season->name}}}: {{$heat->name()}} <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
 <p>
   There are currently {{$heat->player_count()}} players in this round.
+  @if($heat->game_stats()['first'])
+    First game created at {{$heat->game_stats()['first']->format('H:i')}}.
+  @endif
+  @if($heat->game_stats()['last'])
+    Last game updated at {{$heat->game_stats()['last']->format('H:i')}}.
+  @endif
 </p>
 @if ($heat->groups)
   <table class="table table-bordered table-striped">
