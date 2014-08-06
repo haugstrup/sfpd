@@ -30,4 +30,9 @@ class Game extends \Eloquent {
       return $this->belongsTo('Group');
   }
 
+  public function local_updated_at()
+  {
+    return $this->updated_at->copy()->tz('America/Los_Angeles')->format('Y-m-d H:i:s');
+  }
+
 }

@@ -18,7 +18,7 @@
           <td>{{{ count($group->players) }}}</td>
           <td>
             @foreach ($group->games as $game)
-              <span class="glyphicon {{$game->status === 'completed' ? 'glyphicon-ok text-success' : 'glyphicon-minus text-info'}}" title="Last update: {{$game->updated_at}}"></span>
+              <span class="glyphicon {{$game->status === 'completed' ? 'glyphicon-ok text-success' : 'glyphicon-minus text-info'}}" title="Last update: {{$game->local_updated_at()}}"></span>
             @endforeach
             @for ($i = 0; $i < (4-count($group->games)); $i++)
               <span class="glyphicon glyphicon-minus text-muted"></span>
