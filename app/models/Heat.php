@@ -102,8 +102,8 @@ class Heat extends \Eloquent {
 
     foreach ($this->groups as $group) {
       foreach ($group->games as $game) {
-        if ($game->updated_at < $return['first'] || $return['first'] === null) {
-          $return['first'] = $game->updated_at->copy()->tz('America/Los_Angeles');
+        if ($game->created_at < $return['first'] || $return['first'] === null) {
+          $return['first'] = $game->created_at->copy()->tz('America/Los_Angeles');
         }
         if ($game->updated_at > $return['last'] || $return['last'] === null) {
           $return['last'] = $game->updated_at->copy()->tz('America/Los_Angeles');
