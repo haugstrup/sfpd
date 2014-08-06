@@ -28,6 +28,32 @@ table label {
   top:-5px;
 }
 
+// Timeline
+.timeline-cell {
+  width:180px;
+}
+.timeline {
+  width:180px;
+  position:relative;
+  height:20px;
+  background:#d9edf7;
+  overflow:hidden;
+  border-radius:2px;
+  .timeline-entry {
+    position:absolute;
+    background:#31708f;
+    height:20px;
+    top:0;
+    width:6px;
+    margin-left:-3px;
+    &.first {
+      margin-left:0;
+    }
+    &.last {
+      margin-left:-6px;
+    }
+  }
+}
 
 /* States */
 .state-inactive {
@@ -47,5 +73,8 @@ li.state-active, a.state-active {
   }
   h4 {
     font-size:14px;
+  }
+  .timeline-cell {
+    display:none;
   }
 }

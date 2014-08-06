@@ -6,6 +6,11 @@ class Game extends \Eloquent {
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'game_id');
   protected $fillable = array('status', 'player_id', 'group_id', 'machine_id');
 
+  public function getDates()
+  {
+      return array('created_at', 'updated_at');
+  }
+
   public function log($action) {
     Activity::create(array('ref_type' => 'game', 'ref_id' => $this->game_id, 'action' => $action, 'data' => json_encode($this->toArray())));
   }
@@ -32,7 +37,7 @@ class Game extends \Eloquent {
 
   public function local_updated_at()
   {
-    return $this->updated_at->copy()->tz('America/Los_Angeles')->format('Y-m-d H:i:s');
+    return $this->updated_at->copy()->tz('America/Los_Angeles');
   }
 
 }

@@ -87,4 +87,36 @@ class Heat extends \Eloquent {
     return $count;
   }
 
+  public function game_stats()
+  {
+    static $return;
+
+    if ($return && $return['first'] && $return['last']) {
+      return $return;
+    }
+
+    $return = array(
+      'first' => null,
+      'last' => null
+    );
+
+    foreach ($this->groups as $group) {
+      foreach ($group->games as $game) {
+        if ($game->updated_at < $return['first'] || $return['first'] === null) {
+          $return['first'] = $game->updated_at->copy()->tz('America/Los_Angeles');
+        }
+        if ($game->updated_at > $return['last'] || $return['last'] === null) {
+          $return['last'] = $game->updated_at->copy()->tz('America/Los_Angeles');
+        }
+      }
+    }
+
+    // Calculate timespan for timeline
+    if ($return['first'] && $return['last']) {
+      $return['diff'] = $return['first']->diffInMinutes($return['last']);
+    }
+
+    return $return;
+  }
+
 }

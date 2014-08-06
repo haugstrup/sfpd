@@ -1,7 +1,9 @@
 @extends("layout")
 @section("content")
 <h2>{{{$heat->season->name}}}: {{$heat->name()}} <a href="{{ URL::route('admin.heats.print', $heat->heat_id) }}" class="btn btn-primary" target="_blank">Print groups</a></h2>
-<p>There are currently {{$heat->player_count()}} players in this round.</p>
+<p>
+  There are currently {{$heat->player_count()}} players in this round.
+</p>
 @if ($heat->groups)
   <table class="table table-bordered table-striped">
     <thead>
@@ -9,6 +11,7 @@
         <th>Group</th>
         <th>No.</th>
         <th>Games</th>
+        <th class="timeline-cell">Last updated times</th>
       </tr>
     </thead>
     <tbody>
@@ -18,11 +21,18 @@
           <td>{{{ count($group->players) }}}</td>
           <td>
             @foreach ($group->games as $game)
-              <span class="glyphicon {{$game->status === 'completed' ? 'glyphicon-ok text-success' : 'glyphicon-minus text-info'}}" title="Last update: {{$game->local_updated_at()}}"></span>
+              <span class="glyphicon {{$game->status === 'completed' ? 'glyphicon-ok text-success' : 'glyphicon-minus text-info'}}" title="Last update: {{$game->local_updated_at()->format('Y-m-d H:i:s')}}"></span>
             @endforeach
             @for ($i = 0; $i < (4-count($group->games)); $i++)
               <span class="glyphicon glyphicon-minus text-muted"></span>
             @endfor
+          </td>
+          <td class="timeline-cell">
+            <div class="timeline">
+              @foreach ($group->games as $game)
+                <div class="timeline-entry {{$game->local_updated_at()==$heat->game_stats()['first'] ? 'first' : ''}} {{$game->local_updated_at()==$heat->game_stats()['last'] ? 'last' : ''}}" title="{{$game->machine->name}} last updated at {{$game->local_updated_at()->format('Y-m-d H:i:s')}}" style="left:{{round($game->local_updated_at()->diffInMinutes($heat->game_stats()['first'])/$heat->game_stats()['diff']*100)}}%"></div>
+              @endforeach
+            </div>
           </td>
         </tr>
       @endforeach
