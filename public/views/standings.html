@@ -3,12 +3,14 @@
   <thead>
     <tr>
       <th>&nbsp;</th>
+      <th>&nbsp;</th>
       <th class="text-center" ng-repeat="heat in season.heats">{{heat.short_name}}</th>
       <th class="text-center">Score</th>
     </tr>
   </thead>
   <tbody>
     <tr ng-repeat="seasonPoint in season.points | orderBy:'points':true" class="{{isFirstRookie(seasonPoint.player_id)}}">
+      <td class="index-cell">{{$index+1}}</td>
       <td ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</td>
       <td class="text-center" ng-repeat="heat in season.heats">
         {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}

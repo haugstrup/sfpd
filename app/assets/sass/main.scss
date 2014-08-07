@@ -50,6 +50,10 @@ body {
   color:#aaa;
   font-size:11px;
 }
+.index-cell {
+  width:2ex;
+  text-align:right;
+}
 
 // Smaller headers for phones
 @media screen and (max-width: 400px) {
