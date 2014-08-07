@@ -10,7 +10,7 @@
   </thead>
   <tbody>
     <tr ng-repeat="seasonPoint in season.points | orderBy:'points':true" class="{{isFirstRookie(seasonPoint.player_id)}}">
-      <td class="index-cell">{{$index+1}}</td>
+      <td class="index-cell">{{getPosition($index, seasonPoint.points)}}</td>
       <td ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</td>
       <td class="text-center" ng-repeat="heat in season.heats">
         {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}
