@@ -5,8 +5,10 @@ class SeasonController extends \BaseController {
 	public function index()
 	{
     // Find active season
-    $season = Season::with('heats', 'heats.groups', 'players')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
+    $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
     $season->heats->sortBy('delta');
+
+    $season->set_group_player_number_on_results();
 
     // Return it with players, heats and points
     $response = $season->toArray();
@@ -20,9 +22,7 @@ class SeasonController extends \BaseController {
 
     $response['points'] = $season->points();
 
-
     return Response::json($response);
-
 	}
 
 }

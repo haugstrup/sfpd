@@ -9,6 +9,8 @@ class HeatController extends \BaseController {
 		$season = Season::with('heats', 'heats.groups', 'heats.groups.games', 'heats.groups.players', 'heats.groups.games.machine')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
 		$season->heats->sortBy('delta');
 
+    $season->set_group_player_number_on_results();
+
 		// Only include heats before the current active one
 		// As well as heats that have groups
 		$heats = array();

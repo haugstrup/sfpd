@@ -6,6 +6,8 @@ class Result extends \Eloquent {
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'game');
   protected $fillable = array('game_id', 'player_id', 'position', 'delta');
   protected $appends = array('points');
+  public $player_count = null;
+  public $has_tardy_player = null;
 
   public function log($action) {
     Activity::create(array('ref_type' => 'result', 'ref_id' => $this->result_id, 'action' => $action, 'data' => json_encode($this->toArray())));
@@ -24,14 +26,20 @@ class Result extends \Eloquent {
   public function getPointsAttribute()
   {
 
-    $three_player_group = count($this->game->group->players) === 3 || $this->position < 0;
+    $player_count = !is_null($this->player_count) ? $this->player_count : count($this->game->group->players);
 
-    // If at least one player is tardy, score as three person group
+    $three_player_group = $player_count === 3 || $this->position < 0 || $this->has_tardy_player;
+
     if (!$three_player_group) {
-      foreach ($this->game->results as $current) {
-        if ($current->position < 0) {
-          $three_player_group = true;
-          break;
+      if (!is_null($this->has_tardy_player)) {
+        $three_player_group = $this->has_tardy_player;
+      }
+      else {
+        foreach ($this->game->results as $current) {
+          if ($current->position < 0) {
+            $three_player_group = true;
+            break;
+          }
         }
       }
     }

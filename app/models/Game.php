@@ -40,4 +40,13 @@ class Game extends \Eloquent {
     return $this->updated_at->copy()->tz('America/Los_Angeles');
   }
 
+  public function has_tardy_player() {
+    foreach ($this->results as $current) {
+      if ($current->position < 0) {
+        return true;
+      }
+    }
+    return false;
+  }
+
 }
