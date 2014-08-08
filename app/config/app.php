@@ -120,7 +120,8 @@ return array(
 		'Illuminate\View\ViewServiceProvider',
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Way\Generators\GeneratorsServiceProvider',
-		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider'
+		'SimpleSoftwareIO\QrCode\QrCodeServiceProvider',
+		'Barryvdh\Debugbar\ServiceProvider',
 	),
 
 	/*

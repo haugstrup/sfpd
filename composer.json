@@ -6,10 +6,11 @@
 	"require": {
 		"laravel/framework": "4.1.*",
 		"hashids/hashids": "0.3.*@dev",
-		"simplesoftwareio/simple-qrcode": "1.0.*"
+		"simplesoftwareio/simple-qrcode": "1.0.*",
+		"barryvdh/laravel-debugbar": "1.*"
 	},
 	"require-dev": {
-	    "way/generators": "2.*"
+    "way/generators": "2.*"
 	},
 	"autoload": {
 		"classmap": [
