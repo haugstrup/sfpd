@@ -68,12 +68,7 @@ class Season extends \Eloquent {
   public function set_group_player_number_on_results() {
     foreach ($this->heats as $heat) {
       foreach ($heat->groups as $group) {
-        foreach ($group->games as $game) {
-          foreach ($game->results as $result) {
-            $result->player_count = count($group->players);
-            $result->has_tardy_player = $game->has_tardy_player();
-          }
-        }
+        $group->set_group_player_number_on_results();
       }
     }
   }

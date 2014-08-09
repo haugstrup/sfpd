@@ -31,7 +31,6 @@ angular.module('sfpdApp')
 
     $scope.getPosition = function(index, points) {
       index = index+1;
-      console.log('testing', $scope.positionPoints, points);
       if ($scope.positionPoints === points) {
         return ' ';
       } else {

@@ -68,4 +68,13 @@ class Group extends \Eloquent {
 
   }
 
+  public function set_group_player_number_on_results() {
+    foreach ($this->games as $game) {
+      foreach ($game->results as $result) {
+        $result->player_count = count($this->players);
+        $result->has_tardy_player = $game->has_tardy_player();
+      }
+    }
+  }
+
 }

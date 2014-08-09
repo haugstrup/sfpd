@@ -31,6 +31,7 @@ Route::group(array('prefix' => 'api'), function() {
   Route::resource('seasons', 'SeasonController', array('only' => array('index')));
   Route::resource('heats', 'HeatController', array('only' => array('index')));
   Route::resource('games', 'GameController', array('only' => array('show', 'update', 'destroy')));
+  Route::resource('players', 'PlayerController', array('only' => array('show')));
 
   Route::resource('groups', 'GroupController', array('only' => array('show', 'update')));
   Route::post('groups/{code}/games', array('uses' => 'GroupController@store_game', 'as' => 'groups.store_game'));

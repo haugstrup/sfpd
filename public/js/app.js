@@ -39,6 +39,15 @@ angular
           }
         }
       })
+      .when('/player/:playerId', {
+        templateUrl: 'public/views/player.html',
+        controller: 'PlayerCtrl',
+        resolve: {
+          response: function($route, $http) {
+            return $http.get('/api/players/'+$route.current.params.playerId);
+          }
+        }
+      })
       .when('/game/:code', {
         templateUrl: 'public/views/game.html',
         controller: 'GameCtrl',
