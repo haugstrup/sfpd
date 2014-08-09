@@ -46,6 +46,8 @@ class Result extends \Eloquent {
 
     if ($three_player_group) {
       switch ($this->position) {
+        case null:
+          return 0;
         case 1:
           return 4.5;
         case 2:
@@ -60,6 +62,8 @@ class Result extends \Eloquent {
     }
     else {
       switch ($this->position) {
+        case null:
+          return 0;
         case 1:
           return 4.5;
         case 2:
