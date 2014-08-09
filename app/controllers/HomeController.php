@@ -37,6 +37,9 @@ class HomeController extends BaseController {
 
 	public function showLogin()
 	{
+		if (Auth::check()) {
+			return Redirect::to('admin');
+		}
 		return View::make('login');
 	}
 
