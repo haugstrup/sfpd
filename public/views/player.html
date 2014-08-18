@@ -41,6 +41,7 @@
     <h3>Seasons</h3>
     <ul class="list-unstyled">
       <li ng-repeat="season in seasons">{{season.name}} <span ng-if="season.pivot.rookie">as a rookie</span><span ng-if="season.pivot.guest">as a guest</span><span ng-if="season.pivot.final_position">. Final position: {{season.pivot.final_position}}</span></li>
+      <li ng-repeat="legacy in player.legacy_seasons.split(';').reverse()">{{legacy}}</li>
     </ul>
   </div>
 
