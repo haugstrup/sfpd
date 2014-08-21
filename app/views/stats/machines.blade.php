@@ -3,6 +3,14 @@
 
   @include('stats.menu')
 
+  {{ Form::open(array('route' => array('admin.stats.machines'), 'method' => 'get', 'class' => 'form-inline filter-form')) }}
+
+    {{ Form::select('filter', $filters, Input::get('filter'), array('class' => 'form-control input-sm')) }}
+
+    {{ Form::submit('Filter stats', array('class' => 'btn btn-primary btn-sm')) }}
+  {{ Form::close() }}
+
+
   <h2>Popularity by type</h2>
   <table class="table table-striped">
     <thead>
