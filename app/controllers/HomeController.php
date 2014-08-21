@@ -20,9 +20,8 @@ class HomeController extends BaseController {
 
 		$season = Season::with('heats', 'players')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
 		$season->heats->sortBy('delta');
-		$season->players->sortBy('display_name');
 
-		return View::make('home', array('season' => $season));
+		return View::make('seasons.show', array('season' => $season));
 	}
 
 	public function showEmbed()

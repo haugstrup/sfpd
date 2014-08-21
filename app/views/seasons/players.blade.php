@@ -1,5 +1,8 @@
 @extends("layout")
 @section("content")
+
+@include('seasons.menu')
+
 <h2>Players in {{{$season->name}}}</h2>
 
 {{ Form::open(array('route' => array('admin.seasons.update_players', $season->season_id), 'method' => 'put')) }}

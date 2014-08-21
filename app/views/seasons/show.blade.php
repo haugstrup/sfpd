@@ -1,8 +1,10 @@
 @extends("layout")
 @section("content")
 
+@include('seasons.menu')
+
 @if ($season)
-  <h2>{{{ $season->name }}} <a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}" class="btn btn-primary">Administer Players</a></h2>
+  <h2>{{{ $season->name }}}</h2>
 
   <table class="table table-striped table-vertical-center">
     <thead>

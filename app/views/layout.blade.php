@@ -33,6 +33,10 @@
             <a href="{{ URL::route('admin.stats.machines') }}" title="Stats"><span class="glyphicon glyphicon-stats"></span></a>
           </li>
 
+          <li class="{{ substr(Request::path(), 6, 7) == 'seasons' ? 'active' : '' }}">
+            <a href="{{ URL::route('admin.seasons.index') }}" title="Seasons"><span class="glyphicon glyphicon-calendar"></span></a>
+          </li>
+
           <li><a href="{{ URL::route('logout') }}" title="Log out"><span class="glyphicon glyphicon-log-out"></span></a></li>
         </ul>
       </div>

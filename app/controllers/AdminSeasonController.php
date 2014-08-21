@@ -7,6 +7,21 @@ class AdminSeasonController extends \BaseController {
     $this->beforeFilter('csrf', array('on' => array('post', 'put', 'delete')));
   }
 
+  public function show($id)
+  {
+    $season = Season::find($id);
+    $season = Season::with('heats', 'players')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
+    $season->heats->sortBy('delta');
+
+    return View::make('seasons.show', array('season' => $season));
+  }
+
+  public function index()
+  {
+    $seasons = Season::orderBy('created_at')->get();
+    return View::make('seasons.index', array('seasons' => $seasons));
+  }
+
   public function players($season_id)
   {
     $season = Season::find($season_id);
