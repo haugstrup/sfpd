@@ -1,6 +1,8 @@
 @extends("layout")
 @section("content")
 
+@include('seasons.menu_index')
+
 <h2>All seasons</h2>
 <table class="table table-striped">
   <thead>

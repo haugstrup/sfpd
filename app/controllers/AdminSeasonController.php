@@ -10,7 +10,6 @@ class AdminSeasonController extends \BaseController {
   public function show($id)
   {
     $season = Season::find($id);
-    $season = Season::with('heats', 'players')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
     $season->heats->sortBy('delta');
 
     return View::make('seasons.show', array('season' => $season));
@@ -18,8 +17,49 @@ class AdminSeasonController extends \BaseController {
 
   public function index()
   {
-    $seasons = Season::orderBy('created_at')->get();
+    $seasons = Season::orderBy('created_at', 'desc')->get();
     return View::make('seasons.index', array('seasons' => $seasons));
+  }
+
+  public function create()
+  {
+    return View::make('seasons.create', array('season' => new Season()));
+  }
+
+  public function store()
+  {
+    $validator = $this->validate();
+    if ($validator->fails())
+    {
+      return Redirect::route('admin.seasons.create')->withErrors($validator)->withInput();
+    }
+
+    $season = new Season(Input::all());
+    $season->save();
+
+    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Created {$season->name}");
+  }
+
+  public function edit($id)
+  {
+    $season = Season::find($id);
+    return View::make('seasons.edit', array('season' => $season));
+  }
+
+  public function update($id)
+  {
+
+    $validator = $this->validate();
+    if ($validator->fails())
+    {
+      return Redirect::route('admin.seasons.edit', $id)->withErrors($validator)->withInput();
+    }
+
+    $season = Season::find($id);
+    $season->fill(Input::all());
+    $season->save();
+
+    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "{$season->name} updated");
   }
 
   public function players($season_id)
@@ -102,6 +142,16 @@ class AdminSeasonController extends \BaseController {
     $heat->save();
 
     return Redirect::route('admin.index')->with('success', "Created {$heat->name()} for {$season->name}");
+
+  }
+
+  public function validate() {
+    $rules = array(
+      'name'    => 'required',
+      'status' => 'required|in:active,complete'
+    );
+
+    return Validator::make(Input::all(), $rules);
 
   }
 
