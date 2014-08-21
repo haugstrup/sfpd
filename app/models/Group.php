@@ -68,11 +68,33 @@ class Group extends \Eloquent {
 
   }
 
+  public function set_points_map($map)
+  {
+    $this->points_map = $map;
+  }
+
+  public function get_points_map()
+  {
+    if (!$this->points_map) {
+      $raw_map = DB::table('groups')
+        ->select(array('seasons.points_map'))
+        ->join('heats', 'heats.heat_id', '=', 'groups.heat_id')
+        ->join('seasons', 'seasons.season_id', '=', 'heats.season_id')
+        ->where('groups.group_id', $this->group_id)
+        ->first();
+
+      $this->points_map = json_decode($raw_map->points_map, true);
+    }
+
+    return $this->points_map;
+  }
+
   public function set_group_player_number_on_results() {
     foreach ($this->games as $game) {
       foreach ($game->results as $result) {
         $result->player_count = count($this->players);
         $result->has_tardy_player = $game->has_tardy_player();
+        $result->set_points_map($this->get_points_map());
       }
     }
   }

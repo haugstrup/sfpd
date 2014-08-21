@@ -23,6 +23,28 @@ class Result extends \Eloquent {
     return $this->belongsTo('Game');
   }
 
+  public function set_points_map($map)
+  {
+    $this->points_map = $map;
+  }
+
+  public function get_points_map()
+  {
+    if (!$this->points_map) {
+      $raw_map = DB::table('games')
+        ->select(array('seasons.points_map'))
+        ->join('groups', 'groups.group_id', '=', 'games.group_id')
+        ->join('heats', 'heats.heat_id', '=', 'groups.heat_id')
+        ->join('seasons', 'seasons.season_id', '=', 'heats.season_id')
+        ->where('games.game_id', $this->game_id)
+        ->first();
+
+      $this->points_map = json_decode($raw_map->points_map, true);
+    }
+
+    return $this->points_map;
+  }
+
   public function getPointsAttribute()
   {
 
@@ -31,9 +53,16 @@ class Result extends \Eloquent {
       return 0;
     }
 
-    $player_count = !is_null($this->player_count) ? $this->player_count : count($this->game->group->players);
+    // 0 is D.Q. and always means 1 point
+    if ($this->position === 0) {
+      return 1;
+    }
 
+
+    $player_count = !is_null($this->player_count) ? $this->player_count : count($this->game->group->players);
     $three_player_group = $player_count === 3 || $this->position < 0 || $this->has_tardy_player;
+
+    $points_map = $this->get_points_map();
 
     if (!$three_player_group) {
       if (!is_null($this->has_tardy_player)) {
@@ -49,35 +78,13 @@ class Result extends \Eloquent {
       }
     }
 
-    if ($three_player_group) {
-      switch ($this->position) {
-        case 1:
-          return 4.5;
-        case 2:
-          return 2.5;
-        case 3:
-        case 0:
-          return 1;
-        case 4:
-        default:
-          return 0;
-      }
+    $size_key = $three_player_group ? 3 : 4;
+
+    if (isset($points_map[$size_key]) && isset($points_map[$size_key][$this->position])) {
+      return $points_map[$size_key][$this->position];
     }
-    else {
-      switch ($this->position) {
-        case 1:
-          return 4.5;
-        case 2:
-          return 3;
-        case 3:
-          return 2;
-        case 4:
-        case 0:
-          return 1;
-        default:
-          return 0;
-      }
-    }
+
+    return 0;
 
   }
 

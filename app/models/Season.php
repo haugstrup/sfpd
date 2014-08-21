@@ -69,6 +69,7 @@ class Season extends \Eloquent {
   public function set_group_player_number_on_results() {
     foreach ($this->heats as $heat) {
       foreach ($heat->groups as $group) {
+        $group->set_points_map(json_decode($this->points_map, true));
         $group->set_group_player_number_on_results();
       }
     }
