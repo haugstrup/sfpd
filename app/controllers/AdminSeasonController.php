@@ -148,7 +148,8 @@ class AdminSeasonController extends \BaseController {
   public function validate() {
     $rules = array(
       'name'    => 'required',
-      'status' => 'required|in:active,complete'
+      'status' => 'required|in:active,complete',
+      'points_map' => 'required'
     );
 
     return Validator::make(Input::all(), $rules);
