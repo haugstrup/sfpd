@@ -111,7 +111,7 @@ class AdminSeasonController extends \BaseController {
         ->update(array('guest' => true));
     }
 
-    return Redirect::route('admin.index')->with('success', "Updated players for {$season->name}");
+    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Updated players for {$season->name}");
   }
 
   public function store_heat($id)
@@ -141,7 +141,7 @@ class AdminSeasonController extends \BaseController {
     ));
     $heat->save();
 
-    return Redirect::route('admin.index')->with('success', "Created {$heat->name()} for {$season->name}");
+    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Created {$heat->name()} for {$season->name}");
 
   }
 
