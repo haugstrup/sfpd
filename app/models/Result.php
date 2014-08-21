@@ -26,6 +26,11 @@ class Result extends \Eloquent {
   public function getPointsAttribute()
   {
 
+    // Result not present always means a zero
+    if ($this->position === null) {
+      return 0;
+    }
+
     $player_count = !is_null($this->player_count) ? $this->player_count : count($this->game->group->players);
 
     $three_player_group = $player_count === 3 || $this->position < 0 || $this->has_tardy_player;
@@ -46,8 +51,6 @@ class Result extends \Eloquent {
 
     if ($three_player_group) {
       switch ($this->position) {
-        case null:
-          return 0;
         case 1:
           return 4.5;
         case 2:
@@ -62,8 +65,6 @@ class Result extends \Eloquent {
     }
     else {
       switch ($this->position) {
-        case null:
-          return 0;
         case 1:
           return 4.5;
         case 2:
