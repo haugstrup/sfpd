@@ -36,7 +36,7 @@
           <td class="timeline-cell">
             <div class="timeline">
               @foreach ($group->games as $game)
-                <div class="timeline-entry {{$game->local_updated_at()==$heat->game_stats()['last'] ? 'last' : ''}}" title="{{$game->machine->name}} last updated at {{$game->local_updated_at()->format('Y-m-d H:i:s')}}" style="left:{{round($game->local_updated_at()->diffInMinutes($heat->game_stats()['first'])/$heat->game_stats()['diff']*100)}}%"></div>
+                <div class="timeline-entry {{$game->local_updated_at()==$heat->game_stats()['last'] ? 'last' : ''}}" title="{{$game->machine->name}} last updated at {{$game->local_updated_at()->format('Y-m-d H:i:s')}}" style="left:{{$heat->game_stats()['diff'] > 0 ? round($game->local_updated_at()->diffInMinutes($heat->game_stats()['first'])/$heat->game_stats()['diff']*100) : 0}}%"></div>
               @endforeach
             </div>
           </td>
