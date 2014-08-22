@@ -23,7 +23,7 @@
     <tbody>
       @foreach ($heat->groups as $group)
         <tr>
-          <td><a href="{{ $group->url() }}" target="_blank">{{{ $group->name() }}}</a></td>
+          <td><a href="{{ URL::route('admin.groups.show', $group->group_id) }}">{{{ $group->name() }}}</a></td>
           <td>{{{ count($group->players) }}}</td>
           <td>
             @foreach ($group->games as $game)
