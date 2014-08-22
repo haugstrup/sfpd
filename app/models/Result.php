@@ -80,11 +80,16 @@ class Result extends \Eloquent {
 
     $size_key = $three_player_group ? 3 : 4;
 
+    $points = 0;
     if (isset($points_map[$size_key]) && isset($points_map[$size_key][$this->position])) {
-      return $points_map[$size_key][$this->position];
+      $points = $points_map[$size_key][$this->position];
     }
 
-    return 0;
+    if ($this->bonus_points) {
+      $points = $points+$this->bonus_points;
+    }
+
+    return $points;
 
   }
 

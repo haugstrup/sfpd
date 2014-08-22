@@ -3,7 +3,7 @@
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class AddLegacySeasonsToPlayers extends Migration {
+class AddBonusPointToResults extends Migration {
 
 	/**
 	 * Run the migrations.
@@ -12,8 +12,8 @@ class AddLegacySeasonsToPlayers extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('players', function($table) {
-			$table->string('legacy_seasons', 100);
+		Schema::table('results', function($table) {
+			$table->integer('bonus_points')->unsigned()->nullable();
 		});
 	}
 
@@ -24,8 +24,8 @@ class AddLegacySeasonsToPlayers extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('players', function($table) {
-			$table->dropColumn('legacy_seasons');
+		Schema::table('results', function($table) {
+			$table->dropColumn('bonus_points');
 		});
 	}
 
