@@ -26,7 +26,15 @@
 
     @foreach($group->players as $player)
       <div class="form-group">
-        {{Form::select('results['.$i.']['.$player->player_id.']', array('' => '-- no result --', 1 => '1st', 2 => '2nd', 3 => '3rd', 4 => '4th', 0 => 'Disqualified', -1 => 'Tardy'), isset($group->games[$i]) ? $group->games[$i]->result_for_player($player)->position : null) }}
+        {{Form::select('results['.$i.']['.$player->player_id.']', array(
+          '' => '-- no result --',
+          1 => $points_map[count($group->players)][1] . ' points',
+          2 => $points_map[count($group->players)][2] . ' points',
+          3 => $points_map[count($group->players)][3] . ' points',
+          4 => $points_map[count($group->players)][4] . ' points',
+          0 => 'Disqualified',
+          -1 => 'Tardy'
+        ), isset($group->games[$i]) ? $group->games[$i]->result_for_player($player)->position : null) }}
         {{ Form::label('results['.$i.']['.$player->player_id.']', $player->name) }}
         {{ Form::checkbox('bonus['.$i.']['.$player->player_id.']', 'bonus', isset($group->games[$i]) && $group->games[$i]->result_for_player($player)->bonus_points ? true : false) }} Bonus
       </div>

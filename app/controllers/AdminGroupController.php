@@ -30,7 +30,12 @@ class AdminGroupController extends \BaseController {
       $players[$player->player_id] = $player->name;
     }
 
-    return View::make('groups.edit', array('group' => $group, 'players' => $players, 'machines' => $machines_options));
+    return View::make('groups.edit', array(
+      'group' => $group,
+      'players' => $players,
+      'machines' => $machines_options,
+      'points_map' => json_decode($group->heat->season->points_map, true)
+    ));
   }
 
   public function update_players($id)
