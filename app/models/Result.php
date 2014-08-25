@@ -4,7 +4,7 @@ class Result extends \Eloquent {
   protected $primaryKey = 'result_id';
   protected $softDelete = true;
   protected $hidden = array('created_at', 'deleted_at', 'updated_at', 'game');
-  protected $fillable = array('game_id', 'player_id', 'position', 'delta');
+  protected $fillable = array('game_id', 'player_id', 'position', 'delta', 'bonus_points');
   protected $appends = array('points');
   public $player_count = null;
   public $has_tardy_player = null;

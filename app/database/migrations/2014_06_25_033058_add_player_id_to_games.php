@@ -13,7 +13,7 @@ class AddPlayerIdToGames extends Migration {
 	public function up()
 	{
 		Schema::table('games', function($table) {
-			$table->integer('player_id')->unsigned();
+			$table->integer('player_id')->unsigned()->nullable();
 			$table->foreign('player_id')->references('player_id')->on('players');
 		});
 	}

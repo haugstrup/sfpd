@@ -13,7 +13,7 @@ class AddDeltaToResultsTable extends Migration {
 	public function up()
 	{
 		Schema::table('results', function($table) {
-			$table->integer('delta')->unsigned();
+			$table->integer('delta')->unsigned()->nullable();
 		});
 	}
 

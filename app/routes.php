@@ -54,7 +54,9 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::resource('players', 'AdminPlayerController', array('only' => array('index', 'edit', 'update', 'create', 'store')));
 
   // Groups
-  Route::resource('groups', 'AdminGroupController', array('only' => array('show')));
+  Route::resource('groups', 'AdminGroupController', array('only' => array('show', 'edit')));
+  Route::put('groups/{group_id}/players', array('uses' => 'AdminGroupController@update_players', 'as' => 'admin.groups.update_players'));
+  Route::put('groups/{group_id}/results', array('uses' => 'AdminGroupController@update_results', 'as' => 'admin.groups.update_results'));
 
   // Stats
   Route::get('stats/activities', array('uses' => 'AdminStatsController@activities', 'as' => 'admin.stats.activities'));

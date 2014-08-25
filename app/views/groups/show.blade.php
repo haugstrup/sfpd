@@ -34,5 +34,6 @@
     </tbody>
   </table>
 @endif
+<a href="{{ URL::route('admin.groups.edit', $group->group_id) }}" class="btn btn-danger btn-sm">Per don't click this</a>
 
 @stop
