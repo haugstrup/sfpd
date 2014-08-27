@@ -28,7 +28,7 @@ Route::get('error', array('uses' => 'HomeController@showError', 'as' => 'error')
 // API ROUTES ==================================
 // =============================================
 Route::group(array('prefix' => 'api'), function() {
-  Route::resource('seasons', 'SeasonController', array('only' => array('index')));
+  Route::resource('seasons', 'SeasonController', array('only' => array('index', 'show')));
   Route::resource('heats', 'HeatController', array('only' => array('index')));
   Route::resource('games', 'GameController', array('only' => array('show', 'update', 'destroy')));
   Route::resource('players', 'PlayerController', array('only' => array('show')));

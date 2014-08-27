@@ -21,6 +21,15 @@ angular
           }
         }
       })
+      .when('/standings/:seasonId', {
+        templateUrl: 'public/views/standings.html',
+        controller: 'StandingsCtrl',
+        resolve: {
+          response: function($route, $http) {
+            return $http.get('/api/seasons/'+$route.current.params.seasonId);
+          }
+        }
+      })
       .when('/results', {
         templateUrl: 'public/views/results.html',
         controller: 'HeatsListCtrl',

@@ -6,6 +6,19 @@ class SeasonController extends \BaseController {
 	{
     // Find active season
     $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->where('status', '=', 'active')->orderBy('created_at')->get()->first();
+
+    return $this->common_response($season);
+	}
+
+  public function show($id)
+  {
+    $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->where('status', '=', 'active')->find($id);
+
+    return $this->common_response($season);
+  }
+
+  public function common_response($season)
+  {
     $season->heats->sortBy('delta');
 
     $season->set_group_player_number_on_results();
@@ -23,6 +36,6 @@ class SeasonController extends \BaseController {
     $response['points'] = $season->points();
 
     return Response::json($response);
-	}
+  }
 
 }
