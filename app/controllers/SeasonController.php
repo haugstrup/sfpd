@@ -12,7 +12,7 @@ class SeasonController extends \BaseController {
 
   public function show($id)
   {
-    $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->where('status', '=', 'active')->find($id);
+    $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->find($id);
 
     return $this->common_response($season);
   }
