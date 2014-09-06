@@ -15,7 +15,7 @@ class GameController extends \BaseController {
 
 	public function update($code)
 	{
-		$game = Game::with('results')->where('code', '=', $code)->get()->first();
+		$game = Game::with('group.heat', 'results')->where('code', '=', $code)->get()->first();
 
 		if (!$game || $game->group->heat->status != 'active') {
 			App::abort(403);
@@ -35,6 +35,10 @@ class GameController extends \BaseController {
 		$game->save();
 
 		$game->log('update');
+
+		Cache::forget('season-players-'.$game->group->heat->season_id);
+		Cache::forget('season-heats-'.$game->group->heat->season_id);
+		Cache::forget('season-points-'.$game->group->heat->season_id);
 
 	}
 
@@ -61,6 +65,10 @@ class GameController extends \BaseController {
 
 		$game->results()->delete();
 		$game->delete();
+
+		Cache::forget('season-players-'.$game->group->heat->season_id);
+		Cache::forget('season-heats-'.$game->group->heat->season_id);
+		Cache::forget('season-points-'.$game->group->heat->season_id);
 
 		return Response::make('',204);
 	}
