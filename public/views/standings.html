@@ -3,19 +3,24 @@
   <thead>
     <tr>
       <th>&nbsp;</th>
-      <th>&nbsp;</th>
-      <th class="text-center" ng-repeat="heat in season.heats">{{heat.short_name}}</th>
-      <th class="text-center">Score</th>
+      <th>Round:</th>
+      <th class="text-center" ng-repeat="heat in season.heats">#{{heat.delta+1}}</th>
+      <th ng-if=season.should_adjust_score class="text-center">Adj.</th>
+      <th class="text-center">Tot.</th>
     </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="seasonPoint in season.points | orderBy:'points':true" class="{{isFirstRookie(seasonPoint.player_id)}}">
+    <tr ng-repeat="seasonPoint in season.points | orderBy:(season.should_adjust_score ? 'adjusted_points' : 'points'):true" class="{{isFirstRookie(seasonPoint.player_id)}}">
       <td class="index-cell">{{getPosition($index, seasonPoint.points)}}</td>
       <td><a href="#/player/{{seasonPoint.player_id}}" ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</a></td>
       <td class="text-center" ng-repeat="heat in season.heats">
         {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}
       </td>
-      <td class="text-center"><b>{{seasonPoint.points}}</b></td>
+      <td ng-if=season.should_adjust_score class="text-center"><b>{{seasonPoint.adjusted_points}}</b></td>
+      <td class="text-center">
+        <span ng-show=season.should_adjust_score>{{seasonPoint.points}}</span>
+        <b ng-hide=season.should_adjust_score>{{seasonPoint.points}}</b>
+      </td>
     </tr>
   </tbody>
 </table>
