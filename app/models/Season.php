@@ -6,8 +6,6 @@ class Season extends \Eloquent {
   protected $hidden = array('created_at', 'deleted_at', 'updated_at');
   protected $fillable = array('name', 'status', 'points_map');
 
-  public $should_adjust_score = false;
-
   public function heats()
   {
     return $this->hasMany('Heat');
@@ -48,6 +46,22 @@ class Season extends \Eloquent {
     return false;
   }
 
+  public function should_adjust_score()
+  {
+    // Only calculated adjusted points if:
+    //  * Season has more than 8 rounds total
+    //  * Heat number 6 (index:5) has a game with results
+    if (
+      count($this->heats) > 8 &&
+      count($this->heats[5]->groups) > 0 &&
+      count($this->heats[5]->groups[0]->games) > 0 &&
+      count($this->heats[5]->groups[0]->games[0]->results) > 0
+    ) {
+      return true;
+    }
+    return false;
+  }
+
   public function points() {
     $points = array();
     $adjusted_points = array();
@@ -69,12 +83,11 @@ class Season extends \Eloquent {
       }
     }
 
-    // Only calculated adjusted points if season has more than 8 rounds total and more than 5 rounds with groups with games
-    $this->should_adjust_score = (count($this->heats) > 8 && $heat_count > 5);
+    $should_adjust_score = $this->should_adjust_score();
 
     foreach ($points as $player_id => $score) {
 
-      if ($this->should_adjust_score) {
+      if ($should_adjust_score) {
         rsort($adjusted_points[$player_id]);
 
         // Remove lowest scores, but keep in mind that a player
@@ -94,7 +107,7 @@ class Season extends \Eloquent {
       $return[] = array(
         'player_id' => $player_id,
         'points' => $score,
-        'adjusted_points' => $this->should_adjust_score ? $adjusted_points[$player_id] : $score,
+        'adjusted_points' => $should_adjust_score ? $adjusted_points[$player_id] : $score,
       );
     }
 

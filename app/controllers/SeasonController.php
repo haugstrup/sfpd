@@ -34,7 +34,7 @@ class SeasonController extends \BaseController {
     }
 
     $response['points'] = $season->points();
-    $response['should_adjust_score'] = $season->should_adjust_score;
+    $response['should_adjust_score'] = $season->should_adjust_score();
 
     return Response::json($response);
   }
