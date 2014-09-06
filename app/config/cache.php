@@ -15,7 +15,7 @@ return array(
 	|
 	*/
 
-	'driver' => 'file',
+	'driver' => 'database',
 
 	/*
 	|--------------------------------------------------------------------------
@@ -84,6 +84,6 @@ return array(
 	|
 	*/
 
-	'prefix' => 'laravel',
+	'prefix' => 'sfpd-',
 
 );
