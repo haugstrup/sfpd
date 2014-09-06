@@ -111,6 +111,8 @@ class AdminSeasonController extends \BaseController {
         ->update(array('guest' => true));
     }
 
+    Cache::forget('season-players-'.$season->season_id);
+
     return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Updated players for {$season->name}");
   }
 

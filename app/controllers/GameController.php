@@ -36,7 +36,6 @@ class GameController extends \BaseController {
 
 		$game->log('update');
 
-		Cache::forget('season-players-'.$game->group->heat->season_id);
 		Cache::forget('season-heats-'.$game->group->heat->season_id);
 		Cache::forget('season-points-'.$game->group->heat->season_id);
 
@@ -66,7 +65,6 @@ class GameController extends \BaseController {
 		$game->results()->delete();
 		$game->delete();
 
-		Cache::forget('season-players-'.$game->group->heat->season_id);
 		Cache::forget('season-heats-'.$game->group->heat->season_id);
 		Cache::forget('season-points-'.$game->group->heat->season_id);
 
