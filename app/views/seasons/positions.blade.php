@@ -27,7 +27,7 @@
         <td class="text-center">{{{$point['adjusted_points']}}}</td>
         <td class="text-center">{{{$point['position']}}}</td>
         <td class="text-center">
-          {{ Form::text("players[]", $player->final_position, array("class" => 'form-control input-table-small')) }}
+          {{ Form::text("players[".$player->player_id."]", $player->final_position ? $player->final_position : $point['position'], array("class" => 'form-control input-table-small')) }}
         </td>
       </tr>
     @endforeach

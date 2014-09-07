@@ -140,7 +140,14 @@ class AdminSeasonController extends \BaseController {
 
   public function update_positions($season_id)
   {
-
+    $season = Season::find($season_id);
+    foreach (Input::get('players') as $player_id => $position) {
+      DB::table('player_season')
+        ->where('season_id', $season->season_id)
+        ->where('player_id', (int)$player_id)
+        ->update(array('final_position' => (int)$position));
+    }
+    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Final positions updated for {$season->name}");
   }
 
   public function store_heat($id)
