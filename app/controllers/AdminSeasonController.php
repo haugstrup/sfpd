@@ -116,6 +116,33 @@ class AdminSeasonController extends \BaseController {
     return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Updated players for {$season->name}");
   }
 
+  public function positions($season_id)
+  {
+    $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->find($season_id);
+    $season->set_group_player_number_on_results();
+    $points = $season->points(true);
+
+    $position_points = null;
+    $position = null;
+    foreach ($points as $index => $point) {
+      $adjusted_index = $index+1;
+      if ($position_points === $point['adjusted_points']) {
+        $points[$index]['position'] = $position;
+      } else {
+        $position = $adjusted_index;
+        $position_points = $point['adjusted_points'];
+        $points[$index]['position'] = $position;
+      }
+    }
+
+    return View::make('seasons.positions', array('season' => $season, 'points' => $points));
+  }
+
+  public function update_positions($season_id)
+  {
+
+  }
+
   public function store_heat($id)
   {
     $rules = array(

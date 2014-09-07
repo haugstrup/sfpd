@@ -62,7 +62,7 @@ class Season extends \Eloquent {
     return false;
   }
 
-  public function points() {
+  public function points($sort = false) {
     $points = array();
     $adjusted_points = array();
     $return = array();
@@ -111,7 +111,24 @@ class Season extends \Eloquent {
       );
     }
 
+    if ($sort) {
+      function points_sort($a, $b) {
+        return $a['adjusted_points'] == $b['adjusted_points'] ? 0 : ($a['adjusted_points'] > $b['adjusted_points']) ? -1 : 1;
+      }
+      usort($return, 'points_sort');
+    }
+
     return $return;
+  }
+
+  public function get_player_by_id($player_id)
+  {
+    foreach ($this->players as $player) {
+      if ($player->player_id === $player_id) {
+        return $player;
+      }
+    }
+    return null;
   }
 
   public function set_group_player_number_on_results() {

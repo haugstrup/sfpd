@@ -67,6 +67,8 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::get('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@players', 'as' => 'admin.seasons.players'));
   Route::put('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@update_players', 'as' => 'admin.seasons.update_players'));
   Route::post('seasons/{season_id}/store_heat', array('uses' => 'AdminSeasonController@store_heat', 'as' => 'admin.seasons.store_heat'));
+  Route::get('seasons/{season_id}/positions', array('uses' => 'AdminSeasonController@positions', 'as' => 'admin.seasons.positions'));
+  Route::put('seasons/{season_id}/positions', array('uses' => 'AdminSeasonController@update_positions', 'as' => 'admin.seasons.update_positions'));
 
   // Heats
   Route::get('heats/current', array('uses' => 'AdminHeatController@current', 'as' => 'admin.heats.current'));
