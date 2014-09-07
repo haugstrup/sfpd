@@ -62,6 +62,27 @@ class AdminSeasonController extends \BaseController {
     return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "{$season->name} updated");
   }
 
+  public function ifpa($season_id)
+  {
+    $season = Season::with('players')->find($season_id);
+    $ifpa = array();
+    foreach ($season->players as $player) {
+      if ($player->pivot->final_position) {
+        $ifpa[] = array(
+          'position' => $player->pivot->final_position,
+          'name' => $player->name,
+          'ifpa_id' => $player->ifpa_id ? $player->ifpa_id : ''
+        );
+      }
+    }
+
+    usort($ifpa, function($a, $b) {
+      return $a['position'] == $b['position'] ? 0 : ($a['position'] > $b['position']) ? 1 : -1;
+    });
+
+    return View::make('seasons.ifpa', array('season' => $season, 'ifpa' => $ifpa));
+  }
+
   public function players($season_id)
   {
     $season = Season::find($season_id);

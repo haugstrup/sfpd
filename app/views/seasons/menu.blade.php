@@ -3,4 +3,5 @@
   <li class="{{ substr(Request::path(), 16, 4) == 'edit' ? 'active' : '' }}"><a href="{{ URL::route('admin.seasons.edit', array($season->season_id)) }}">Edit</a></li>
   <li class="{{ substr(Request::path(), 16, 7) == 'players' ? 'active' : '' }}"><a href="{{ URL::route('admin.seasons.players', array($season->season_id)) }}">Administer players</a></li>
   <li class="{{ substr(Request::path(), 16, 9) == 'positions' ? 'active' : '' }}"><a href="{{ URL::route('admin.seasons.positions', array($season->season_id)) }}">Final positions</a></li>
+  <li class="{{ substr(Request::path(), 16, 4) == 'ifpa' ? 'active' : '' }}"><a href="{{ URL::route('admin.seasons.ifpa', array($season->season_id)) }}">IFPA results</a></li>
 </ul>
