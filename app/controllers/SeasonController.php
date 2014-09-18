@@ -22,7 +22,7 @@ class SeasonController extends \BaseController {
       $season_id = $season->season_id;
     }
 
-    if (Cache::has('season-players-'.$season_id)) {
+    if (Cache::has('season-points-'.$season_id)) {
       if (!$season) {
         $season = Season::find($season_id);
       }
