@@ -31,6 +31,7 @@ class SeasonController extends \BaseController {
       $response['players'] = Cache::get('season-players-'.$season_id);
       $response['heats'] = Cache::get('season-heats-'.$season_id);
       $response['points'] = Cache::get('season-points-'.$season_id);
+      $response['should_adjust_score'] = Cache::get('season-adjust-score-'.$season_id);
 
     } else {
       $season = Season::with('players', 'heats', 'heats.groups', 'heats.groups.players', 'heats.groups.games', 'heats.groups.games.results')->find($season_id);
@@ -55,6 +56,7 @@ class SeasonController extends \BaseController {
       Cache::forever('season-players-'.$season_id, $response['players']);
       Cache::forever('season-heats-'.$season_id, $response['heats']);
       Cache::forever('season-points-'.$season_id, $response['points']);
+      Cache::forever('season-adjust-score-'.$season_id, $response['should_adjust_score']);
 
     }
 

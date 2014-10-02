@@ -38,6 +38,7 @@ class GameController extends \BaseController {
 
 		Cache::forget('season-heats-'.$game->group->heat->season_id);
 		Cache::forget('season-points-'.$game->group->heat->season_id);
+		Cache::forget('season-adjust-score-'.$game->group->heat->season_id);
 
 	}
 
@@ -67,6 +68,7 @@ class GameController extends \BaseController {
 
 		Cache::forget('season-heats-'.$game->group->heat->season_id);
 		Cache::forget('season-points-'.$game->group->heat->season_id);
+		Cache::forget('season-adjust-score-'.$game->group->heat->season_id);
 
 		return Response::make('',204);
 	}
