@@ -20,13 +20,13 @@ class Player extends Eloquent {
   public function getFormattedNameAttribute()
   {
     if ($this->pivot && $this->pivot->rookie) {
-      return $this->display_name . ' (R)';
+      return $this->name . ' (R)';
     }
     elseif ($this->pivot && $this->pivot->guest) {
-      return $this->display_name . ' (G)';
+      return $this->name . ' (G)';
     }
 
-    return $this->display_name;
+    return $this->name;
   }
 
   public function getRookieAttribute()
