@@ -4,7 +4,8 @@ class PlayerController extends \BaseController {
 
   public function show($id)
   {
-    $player = Player::with('seasons')->find($id);
+    $player = Player::find($id);
+    $seasons = $player->seasons()->orderBy('created_at', 'desc')->get();
 
     $response = array('player' => $player->toArray());
 
@@ -25,7 +26,7 @@ class PlayerController extends \BaseController {
 
     $response['group'] = $group->toArray();
     $response['machines'] = $machines;
-    $response['seasons'] = $player->seasons->toArray();
+    $response['seasons'] = $seasons->toArray();
 
     return Response::json($response);
   }
