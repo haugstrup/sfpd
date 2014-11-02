@@ -4,7 +4,7 @@ class Player extends Eloquent {
   protected $primaryKey = 'player_id';
   protected $softDelete = true;
   protected $fillable = array('name', 'display_name', 'ifpa_id', 'initials');
-  protected $visible = array('player_id', 'display_name', 'legacy_seasons');
+  protected $visible = array('player_id', 'display_name');
   protected $appends = array('formatted_name', 'icon', 'rookie');
 
   public function seasons()
