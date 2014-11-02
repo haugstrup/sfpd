@@ -36,6 +36,15 @@ class Season extends \Eloquent {
     return false;
   }
 
+  public function final_position($player) {
+    foreach ($this->players as $current) {
+      if ($current->player_id === $player->player_id) {
+        return $current->pivot->final_position;
+      }
+    }
+    return false;
+  }
+
   public function has_player($player)
   {
     foreach ($this->players as $current) {

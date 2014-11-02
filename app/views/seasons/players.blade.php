@@ -23,6 +23,7 @@
           {{ Form::label("player-{$player->player_id}", $player->display_name) }}</td>
         <td class="text-center">{{ Form::checkbox("rookies[]", $player->player_id, $season->is_rookie($player), array('id' => "rookie-{$player->player_id}")) }}</td>
         <td class="text-center">{{ Form::checkbox("guests[]", $player->player_id, $season->is_guest($player), array('id' => "guest-{$player->player_id}")) }}</td>
+        <td class="text-center">{{{$season->final_position($player)}}}</td>
       </tr>
     @endforeach
   </tbody>
