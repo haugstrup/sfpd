@@ -28,7 +28,8 @@ Route::get('error', array('uses' => 'HomeController@showError', 'as' => 'error')
 // API ROUTES ==================================
 // =============================================
 Route::group(array('prefix' => 'api'), function() {
-  Route::resource('seasons', 'SeasonController', array('only' => array('index', 'show')));
+  Route::get('seasons', array('uses' => 'SeasonController@json_index'));
+  Route::get('seasons/{season_id}', array('uses' => 'SeasonController@json_show'));
   Route::resource('heats', 'HeatController', array('only' => array('index')));
   Route::resource('games', 'GameController', array('only' => array('show', 'update', 'destroy')));
   Route::resource('players', 'PlayerController', array('only' => array('show')));
@@ -37,6 +38,11 @@ Route::group(array('prefix' => 'api'), function() {
   Route::post('groups/{code}/games', array('uses' => 'GroupController@store_game', 'as' => 'groups.store_game'));
 
 });
+
+// =============================================
+// PUBLIC ROUTES ===============================
+// =============================================
+Route::resource('standings', 'SeasonController', array('only' => array('index', 'show')));
 
 // =============================================
 // ADMIN ROUTES ==================================
