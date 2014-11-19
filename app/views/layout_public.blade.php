@@ -8,7 +8,6 @@
     <link rel="stylesheet" href="/css/main.css?foo=bar">
   </head>
   <body>
-    @if (empty($_GET['embed']) || $_GET['embed'] !== 'true')
     <div class="header navbar navbar-default navbar-static-top">
       <div class="navbar-inner">
         <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
@@ -20,20 +19,17 @@
         </ul>
       </div>
     </div>
-    @endif
 
     <div class="container">
 
       @yield("content")
 
 
-      @if (empty($_GET['embed']) || $_GET['embed'] !== 'true')
       <hr>
 
       <div class="footer text-muted">
         <p><small><a href="{{URL::route('help')}}">View online help</a> • Comments or complaints? <a target="_blank" href="https://podio.com/webforms/8656053/642967">Get in touch</a>.</small></p>
       </div>
-      @endif
 
     </div>
 
