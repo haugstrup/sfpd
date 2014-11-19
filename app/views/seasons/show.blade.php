@@ -20,7 +20,7 @@
           <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->name()}}</a></td>
           <td><a href="{{ URL::route('admin.heats.show', $heat->heat_id) }}">{{$heat->formatted_date()}}</a></td>
           <td class="text-center">
-            @if ($heat->status === 'inactive')
+            @if ($heat->status === 'inactive' || $heat->status === 'completed')
               {{ Form::open(array('route' => array('heats.activate', $heat->heat_id))) }}
                 {{ Form::submit('Activate', array('class' => 'btn btn-success')) }}
               {{ Form::close() }}

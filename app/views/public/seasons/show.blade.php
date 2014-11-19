@@ -4,7 +4,7 @@
 <div class="landscape-tip alert alert-info"><b>Tip:</b> Rotate your phone to landscape mode for a better view.</div>
 
 <h2>
-  {{{$season['name']}}}
+  {{{$season['name']}}} standings
   <div class="dropdown dropdown-right">
     <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
       Change season

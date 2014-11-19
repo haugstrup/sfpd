@@ -68,6 +68,16 @@ class Group extends \Eloquent {
 
   }
 
+  public function points_for_player($player)
+  {
+    foreach ($this->points() as $point) {
+      if ($point['player_id'] === $player->player_id) {
+        return $point['points'];
+      }
+    }
+    return null;
+  }
+
   public function set_points_map($map)
   {
     $this->points_map = $map;

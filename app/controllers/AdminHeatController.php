@@ -97,7 +97,7 @@ class AdminHeatController extends \BaseController {
     $season = $heat->season;
     foreach ($season->heats as $current) {
       if ($current->status === 'active') {
-        $current->status = 'inactive';
+        $current->status = 'completed';
         $current->save();
       }
     }
@@ -111,7 +111,7 @@ class AdminHeatController extends \BaseController {
   public function deactivate($id)
   {
     $heat = Heat::find($id);
-    $heat->status = 'inactive';
+    $heat->status = 'completed';
     $heat->save();
 
     return Redirect::route('admin.index')->with('success', "{$heat->name()} closed");
