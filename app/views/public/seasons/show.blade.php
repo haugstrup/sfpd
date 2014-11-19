@@ -25,7 +25,13 @@
       <th>&nbsp;</th>
       <th>Round:</th>
       @foreach ($season['heats'] as $heat)
-        <th class="text-center">#{{{isset($heat['delta']) ? $heat['delta']+1 : '0'}}}</th>
+        <th class="text-center">
+          @if($heat['status'] !== 'inactive')
+            <a href="{{URL::route('results.show', $heat['heat_id'])}}">#{{{isset($heat['delta']) ? $heat['delta']+1 : '0'}}}</a>
+          @else
+            #{{{isset($heat['delta']) ? $heat['delta']+1 : '0'}}}
+          @endif
+        </th>
       @endforeach
       @if ($season['should_adjust_score'])
         <th class="text-center">Adj.</th>
