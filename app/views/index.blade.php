@@ -15,7 +15,7 @@
       <div class="navbar-inner">
         <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
         <ul class="nav navbar-nav">
-          <li ng-class="{ active: isActive('/standings')}"><a ng-href="#/standings">Standings</a></li>
+          <li><a href="/standings">Standings</a></li>
           <li ng-class="{ active: isActive('/results')}"><a ng-href="#/results">Results</a></li>
         </ul>
       </div>
