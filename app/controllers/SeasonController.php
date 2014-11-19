@@ -33,7 +33,10 @@ class SeasonController extends \BaseController {
     if ($response['should_adjust_score']) {
       usort($response['points'], function($a, $b) {
         if ($a['adjusted_points'] == $b['adjusted_points']) {
-          return 0;
+          if ($a['points'] == $b['points']) {
+            return 0;
+          }
+          return ($a['points'] < $b['points']) ? 1 : -1;
         }
         return ($a['adjusted_points'] < $b['adjusted_points']) ? 1 : -1;
       });
