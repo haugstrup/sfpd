@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="/css/main.css?foo=bar">
   </head>
   <body>
-    @if (!isset($embed))
+    @if (empty($_GET['embed']) || $_GET['embed'] !== 'true')
     <div class="header navbar navbar-default navbar-static-top">
       <div class="navbar-inner">
         <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
@@ -27,7 +27,7 @@
       @yield("content")
 
 
-      @if (!isset($embed))
+      @if (empty($_GET['embed']) || $_GET['embed'] !== 'true')
       <hr>
 
       <div class="footer text-muted">
