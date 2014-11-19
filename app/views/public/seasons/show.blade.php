@@ -3,20 +3,21 @@
 
 <div class="landscape-tip alert alert-info"><b>Tip:</b> Rotate your phone to landscape mode for a better view.</div>
 
-<div class="dropdown dropdown-right">
-  <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-    Change season
-    <span class="caret"></span>
-  </button>
+<h2>
+  {{{$season['name']}}}
+  <div class="dropdown dropdown-right">
+    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
+      Change season
+      <span class="caret"></span>
+    </button>
 
-  <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
-    @foreach($seasons as $s)
-      <li role="presentation"><a role="menuitem" href="{{URL::route('standings.show', $s->season_id)}}">{{{$s->name}}}</a></li>
-    @endforeach
-  </ul>
-</div>
-
-<h2>{{{$season['name']}}}</h2>
+    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+      @foreach($seasons as $s)
+        <li role="presentation"><a role="menuitem" href="{{URL::route('standings.show', $s->season_id)}}">{{{$s->name}}}</a></li>
+      @endforeach
+    </ul>
+  </div>
+</h2>
 
 <table class="table table-striped table-condensed">
   <thead>
