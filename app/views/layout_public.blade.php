@@ -37,6 +37,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
     <script src="/bootstrap.min.js"></script>
+    @include('ga')
 
   </body>
 </html>

@@ -38,6 +38,7 @@
 
     <script src="//ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
     <script src="/js/scripts.min.js"></script>
+    @include('ga')
 
 </body>
 </html>
