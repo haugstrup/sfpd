@@ -7,6 +7,7 @@
 <div class="landscape-tip alert alert-info"><b>Tip:</b> Rotate your phone to landscape mode for a better view.</div>
 
 <ol class="breadcrumb">
+  <li>Standings</li>
   <li class="active dropdown">
     <a class="dropdown-toggle" href="3" data-toggle="dropdown" aria-expanded="false">{{{$season['name']}}}<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
@@ -16,7 +17,7 @@
     </ul>
   </li>
   @if ($season['has_final_position'])
-    <li class="breadcrumb-right"><a href="{{{URL::route('standings.playoffs', $season['season_id'])}}}">Playoff results</a></li>
+    <li class="breadcrumb-right"><a href="{{{URL::route('standings.playoffs', $season['season_id'])}}}">Playoffs</a></li>
   @endif
 </ol>
 
