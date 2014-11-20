@@ -14,17 +14,6 @@ class SeasonController extends \BaseController {
     return View::make('public.seasons.show', array('season' => $this->sorted_response($season_id), 'seasons' => $seasons));
   }
 
-	public function json_index()
-	{
-    return Response::json($this->common_response());
-	}
-
-  public function json_show($id)
-  {
-
-    return Response::json($this->common_response($id));
-  }
-
   public function sorted_response($season_id = null)
   {
     $response = $this->common_response($season_id);
