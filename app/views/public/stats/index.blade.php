@@ -9,7 +9,7 @@
     <li class="active dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">{{{$current_filter_name}}}<span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
         @foreach($filters as $key => $filter)
-          <li role="presentation"><a role="menuitem" href="{{URL::route('stats.index', array('filter' => $key))}}">{{{$filter}}}</a></li>
+          <li role="presentation"><a role="menuitem" href="{{URL::route('statistics.index', array('filter' => $key))}}">{{{$filter}}}</a></li>
         @endforeach
       </ul>
     </li>

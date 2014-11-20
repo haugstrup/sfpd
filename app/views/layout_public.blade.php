@@ -24,7 +24,7 @@
             <a href="{{ URL::route('results.index') }}">Results</a>
           </li>
           <li class="{{ substr(Request::path(), 0, 5) == 'stats' ? 'active' : '' }}">
-            <a href="{{ URL::route('stats.index') }}">Stats</a>
+            <a href="{{ URL::route('statistics.index') }}">Stats</a>
           </li>
         </ul>
       </div>
