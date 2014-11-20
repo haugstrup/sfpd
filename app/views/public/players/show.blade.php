@@ -49,7 +49,7 @@
       @foreach ($seasons as $season)
       <tr>
         <td>
-          {{{$season->name}}}
+          <a href="{{{URL::route('standings.show', $season->season_id)}}}">{{{$season->name}}}</a>
           @if ($season->pivot->guest)
             <span class="player-icon glyphicon glyphicon-user" title="Guest"></span>
           @endif
