@@ -14,14 +14,15 @@ class HeatController extends \BaseController {
 
 	public function common_response($heat_id = null)
 	{
-		$season = Season::where('status', '=', 'active')->orderBy('created_at')->get()->first();
-		$heats = Heat::whereIn('status', array('active', 'completed'))->where('season_id', '=', $season->season_id)->orderBy('date', 'desc')->get();
 		if ($heat_id) {
 			$heat = Heat::with('groups', 'groups.games', 'groups.players', 'groups.games.machine', 'groups.games.results')->find($heat_id);
 		}
 		else {
 			$heat = Heat::with('groups', 'groups.games', 'groups.players', 'groups.games.machine', 'groups.games.results')->whereIn('status', array('active', 'completed'))->orderBy('date', 'desc')->get()->first();
 		}
+
+		$season = Season::find($heat->season_id);
+		$heats = Heat::whereIn('status', array('active', 'completed'))->where('season_id', '=', $season->season_id)->orderBy('date', 'desc')->get();
 
 		foreach($heat->groups as $group) {
 			$group->set_points_map(json_decode($season->points_map, true));
