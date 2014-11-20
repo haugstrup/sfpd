@@ -1,4 +1,4 @@
-<table class="table table-scores table-condensed">
+<table class="table table-scores">
   <thead>
     <tr>
       <th>{{{$group->name}}}</th>
