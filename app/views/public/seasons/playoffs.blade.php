@@ -9,7 +9,7 @@
   <li class="active dropdown"><a class="dropdown-toggle" href="3" data-toggle="dropdown" aria-expanded="false">{{{$season['name']}}}<span class="caret"></span></a>
     <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
       @foreach($seasons as $s)
-        <li role="presentation"><a role="menuitem" href="{{URL::route('standings.show', $s->season_id)}}">{{{$s->name}}}</a></li>
+        <li role="presentation"><a role="menuitem" href="{{URL::route('standings.playoffs', $s->season_id)}}">{{{$s->name}}}</a></li>
       @endforeach
     </ul>
   </li>
