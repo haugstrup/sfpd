@@ -3,21 +3,16 @@
 
 <div class="landscape-tip alert alert-info"><b>Tip:</b> Rotate your phone to landscape mode for a better view.</div>
 
-<h2>
-  {{{$season['name']}}} standings
-  <div class="dropdown dropdown-right">
-    <button class="btn btn-link dropdown-toggle" type="button" data-toggle="dropdown" aria-expanded="false">
-      Change season
-      <span class="caret"></span>
-    </button>
-
+<ol class="breadcrumb">
+  <li class="active dropdown">
+    <a class="dropdown-toggle" href="3" data-toggle="dropdown" aria-expanded="false">{{{$season['name']}}}<span class="caret"></span></a>
     <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
       @foreach($seasons as $s)
         <li role="presentation"><a role="menuitem" href="{{URL::route('standings.show', $s->season_id)}}">{{{$s->name}}}</a></li>
       @endforeach
     </ul>
-  </div>
-</h2>
+  </li>
+</ol>
 
 <table class="table table-striped table-condensed">
   <thead>
@@ -51,7 +46,11 @@
         </td>
         @foreach ($season['heats'] as $heat)
           <td class="text-center">
-            {{{ !empty($heat['points'][$season_point['player_id']]) ? $heat['points'][$season_point['player_id']] : '0' }}}
+            @if(!empty($heat['points'][$season_point['player_id']]))
+              <a href="{{{URL::route('groups.public', $heat['points'][$season_point['player_id']]['group_id'])}}}">{{{$heat['points'][$season_point['player_id']]['points']}}}</a>
+            @else
+              0
+            @endif
           </td>
         @endforeach
         @if ($season['should_adjust_score'])

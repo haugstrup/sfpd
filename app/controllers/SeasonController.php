@@ -78,7 +78,7 @@ class SeasonController extends \BaseController {
     foreach ($response['heats'] as $index => $heat) {
       $points = array();
       foreach ($heat['points'] as $point) {
-        $points[$point['player_id']] = $point['points'];
+        $points[$point['player_id']] = array('points' => $point['points'], 'group_id' => $point['group_id']);
       }
       $response['heats'][$index]['points'] = $points;
     }

@@ -59,17 +59,21 @@ class Heat extends \Eloquent {
   public function points() {
     $points = array();
     $return = array();
+    $player_group = array();
 
     foreach ($this->groups as $group) {
       foreach ($group->points as $point) {
         $points[$point['player_id']] = isset($points[$point['player_id']]) ? $points[$point['player_id']] + $point['points'] : $point['points'];
+
+        $player_group[$point['player_id']] = $group->group_id;
       }
     }
 
     foreach ($points as $player_id => $score) {
       $return[] = array(
         'player_id' => $player_id,
-        'points' => $score
+        'points' => $score,
+        'group_id' => $player_group[$player_id]
       );
     }
 

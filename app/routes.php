@@ -44,6 +44,7 @@ Route::group(array('prefix' => 'api'), function() {
 // =============================================
 Route::resource('standings', 'SeasonController', array('only' => array('index', 'show')));
 Route::resource('results', 'HeatController', array('only' => array('index', 'show')));
+Route::get('groups/{group_id}', array('uses' => 'GroupController@show_single', 'as' => 'groups.public'));
 
 // =============================================
 // ADMIN ROUTES ==================================

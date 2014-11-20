@@ -2,6 +2,15 @@
 
 class GroupController extends \BaseController {
 
+	public function show_single($group_id)
+	{
+		$group = Group::with('players', 'games', 'games.machine', 'games.player', 'games.results', 'heat', 'heat.groups', 'heat.season')->find($group_id);
+		$group->set_points_map(json_decode($group->heat->season->points_map, true));
+		$group->set_group_player_number_on_results();
+
+		return View::make('public.groups.show', array('group' => $group));
+	}
+
 	public function show($code)
 	{
 		return $this->respond_with_full_group($code);
