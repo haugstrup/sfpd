@@ -17,6 +17,7 @@
         <ul class="nav navbar-nav">
           <li><a href="/standings">Standings</a></li>
           <li><a href="/results">Results</a></li>
+          <li><a href="/stats">Stats</a></li>
         </ul>
       </div>
     </div>

@@ -1,15 +1,16 @@
-@extends("layout")
+@extends("layout_public")
 @section("content")
 
-  @include('stats.menu')
-
-  {{ Form::open(array('route' => array('admin.stats.machines'), 'method' => 'get', 'class' => 'form-inline filter-form')) }}
-
-    {{ Form::select('filter', $filters, Input::get('filter'), array('class' => 'form-control input-sm')) }}
-
-    {{ Form::submit('Filter stats', array('class' => 'btn btn-primary btn-sm')) }}
-  {{ Form::close() }}
-
+  <ol class="breadcrumb">
+    <li>Stats</li>
+    <li class="active dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">{{{$current_filter_name}}}<span class="caret"></span></a>
+      <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+        @foreach($filters as $key => $filter)
+          <li role="presentation"><a role="menuitem" href="{{URL::route('stats.index', array('filter' => $key))}}">{{{$filter}}}</a></li>
+        @endforeach
+      </ul>
+    </li>
+  </ol>
 
   <h2>Popularity by type</h2>
   <table class="table table-striped">

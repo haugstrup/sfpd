@@ -45,6 +45,7 @@ Route::group(array('prefix' => 'api'), function() {
 Route::resource('standings', 'SeasonController', array('only' => array('index', 'show')));
 Route::resource('results', 'HeatController', array('only' => array('index', 'show')));
 Route::resource('players', 'PlayerController', array('only' => array('show')));
+Route::resource('stats', 'StatsController', array('only' => array('index')));
 Route::get('groups/{group_id}', array('uses' => 'GroupController@show_single', 'as' => 'groups.public'));
 
 // =============================================
@@ -66,10 +67,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::resource('groups', 'AdminGroupController', array('only' => array('show', 'edit')));
   Route::put('groups/{group_id}/players', array('uses' => 'AdminGroupController@update_players', 'as' => 'admin.groups.update_players'));
   Route::put('groups/{group_id}/results', array('uses' => 'AdminGroupController@update_results', 'as' => 'admin.groups.update_results'));
-
-  // Stats
-  Route::get('stats/activities', array('uses' => 'AdminStatsController@activities', 'as' => 'admin.stats.activities'));
-  Route::get('stats/machines', array('uses' => 'AdminStatsController@machines', 'as' => 'admin.stats.machines'));
 
   // Seasons
   Route::resource('seasons', 'AdminSeasonController', array('only' => array('index', 'show', 'create', 'store', 'edit', 'update')));

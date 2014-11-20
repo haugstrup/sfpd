@@ -1,8 +1,8 @@
 <?php
 
-class AdminStatsController extends \BaseController {
+class StatsController extends \BaseController {
 
-  public function machines()
+  public function index()
   {
 
     $current_filter = Input::get('filter');
@@ -10,17 +10,29 @@ class AdminStatsController extends \BaseController {
       $current_filter = explode(':', $current_filter);
     }
 
-    $heats = Heat::with('season')->orderBy('season_id', 'desc')->orderBy('delta', 'desc')->get();
+    // $heats = Heat::with('season')->orderBy('season_id', 'desc')->orderBy('delta', 'desc')->get();
+    $seasons = Season::with('heats')->orderBy('created_at', 'desc')->get();
     $filters = array('' => 'No filter');
+    $filter_names = array();
 
-    $season_id = null;
-    foreach ($heats as $heat) {
-      if ($heat->season_id != $season_id) {
-        $filters['season:'.$heat->season_id] = "-- ".$heat->season->name." --";
+    foreach ($seasons as $season) {
+      $season->heats->sortBy('delta');
+
+      $key = 'season:'.$season->season_id;
+      $filters[$key] = "-- ".$season->name." --";
+      $filter_names[$key] = $season->name;
+
+      $heats = array();
+      foreach ($season->heats as $heat) {
+        $key = 'heat:'.$heat->heat_id;
+        $heats[$key] = $heat->name;
+        $filter_names[$key] = $season->name . ', ' . $heat->name;
       }
-      $filters['heat:'.$heat->heat_id] = $heat->name;
-      $season_id = $heat->season_id;
+
+      $filters = array_merge($filters, array_reverse($heats));
     }
+
+    $current_filter_name = isset($filter_names[Input::get('filter')]) ? $filter_names[Input::get('filter')] : 'Add filter';
 
     // Popularity by type
     $type_popular = DB::table('games')
@@ -65,18 +77,13 @@ class AdminStatsController extends \BaseController {
     $type_popular = $type_popular->get();
     $list_popular = $list_popular->get();
 
-    return View::make('stats.machines', array(
+    return View::make('public.stats.index', array(
       'list_popular' => $list_popular,
       'type_popular' => $type_popular,
       'type_map' => array('' => 'No type', 'dmd' => 'DMD', 'ss' => 'Solid State', 'em' => 'Electro-Mechanical'),
-      'filters' => $filters
+      'filters' => $filters,
+      'current_filter_name' => $current_filter_name
     ));
-  }
-
-  public function activities()
-  {
-    $activities = Activity::take(100)->orderBy('created_at', 'desc')->get();
-    return View::make('stats.activities', array('activities' => $activities));
   }
 
 }
