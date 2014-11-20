@@ -59,7 +59,7 @@
         </td>
         <td class="text-center">
           @if ($season->pivot->final_position)
-            {{{$season->pivot->final_position}}}
+            {{{$season->pivot->final_position}}}{{{date('S',mktime(1,1,1,1,( (($season->pivot->final_position>=10)+($season->pivot->final_position>=20)+($season->pivot->final_position==0))*10 + $season->pivot->final_position%10) ))}}}
           @endif
         </td>
       </tr>

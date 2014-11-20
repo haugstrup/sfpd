@@ -14,9 +14,30 @@ class SeasonController extends \BaseController {
     return View::make('public.seasons.show', array('season' => $this->sorted_response($season_id), 'seasons' => $seasons));
   }
 
+  public function playoffs($season_id)
+  {
+    $season = Season::find($season_id);
+    $seasons = Season::where('status', '=', 'complete')->orderBy('created_at', 'desc')->get();
+
+    $results = DB::table('player_season')
+      ->select('players.player_id', 'player_season.final_position', 'players.display_name', 'player_season.rookie')
+      ->join('players', 'players.player_id', '=', 'player_season.player_id')
+      ->where('season_id', $season_id)
+      ->orderBy('final_position', 'asc')
+      ->get();
+
+    return View::make('public.seasons.playoffs', array('season' => $season, 'seasons' => $seasons, 'results' => $results));
+  }
+
   public function sorted_response($season_id = null)
   {
     $response = $this->common_response($season_id);
+
+    $response['has_final_position'] = false;
+    $some_player = current($response['players']);
+    if (isset($some_player['final_position'])) {
+      $response['has_final_position'] = true;
+    }
 
     // Sort points.
     if ($response['should_adjust_score']) {

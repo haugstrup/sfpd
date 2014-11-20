@@ -9,12 +9,15 @@
 <ol class="breadcrumb">
   <li class="active dropdown">
     <a class="dropdown-toggle" href="3" data-toggle="dropdown" aria-expanded="false">{{{$season['name']}}}<span class="caret"></span></a>
-    <ul class="dropdown-menu dropdown-menu-right" role="menu" aria-labelledby="dLabel">
+    <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
       @foreach($seasons as $s)
         <li role="presentation"><a role="menuitem" href="{{URL::route('standings.show', $s->season_id)}}">{{{$s->name}}}</a></li>
       @endforeach
     </ul>
   </li>
+  @if ($season['has_final_position'])
+    <li class="breadcrumb-right"><a href="{{{URL::route('standings.playoffs', $season['season_id'])}}}">Playoff results</a></li>
+  @endif
 </ol>
 
 <table class="table table-striped table-condensed">

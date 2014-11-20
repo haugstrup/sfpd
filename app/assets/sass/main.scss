@@ -109,6 +109,14 @@ body {
   }
 }
 
+// Breadcrumb
+.breadcrumb>li+li.breadcrumb-right:before {
+  content:none;
+}
+.breadcrumb-right {
+  float:right;
+}
+
 // Ajax loading indicator
 .loading-indicator-wrapper-wrapper {
   display:none;
