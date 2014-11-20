@@ -39,7 +39,7 @@
       <tr>
         <td class="index-cell">{{{$season_point['position']}}}</td>
         <td>
-          <a href="/#/player/{{{$season_point['player_id']}}}">
+          <a href="{{{URL::route('players.show', $season_point['player_id'])}}}">
             {{{$season['players'][$season_point['player_id']]['display_name'] }}}
             {{$season['players'][$season_point['player_id']]['icon']}}
           </a>

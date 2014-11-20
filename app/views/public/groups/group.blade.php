@@ -11,7 +11,7 @@
   <tbody>
     @foreach($group->players as $player)
     <tr>
-      <td><a href="/#/player/{{{$player->player_id}}}">{{{$player->display_name}}}</a></td>
+      <td><a href="{{{URL::route('players.show', $player->player_id)}}}">{{{$player->display_name}}}</a></td>
       @foreach($group->games as $game)
       <td class="text-center {{{ $player->player_id === $game->player_id ? 'active' : '' }}}">
         {{{ $game->result_for_player($player)->points }}}

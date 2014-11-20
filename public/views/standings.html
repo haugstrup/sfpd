@@ -12,7 +12,7 @@
   <tbody>
     <tr ng-repeat="seasonPoint in season.points | orderBy:(season.should_adjust_score ? 'adjusted_points' : 'points'):true" class="{{isFirstRookie(seasonPoint.player_id)}}">
       <td class="index-cell">{{getPosition($index, (season.should_adjust_score ? seasonPoint.adjusted_points : seasonPoint.points))}}</td>
-      <td><a href="#/player/{{seasonPoint.player_id}}" ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</a></td>
+      <td><a href="/players/{{seasonPoint.player_id}}" ng-bind-html="(nameForPlayer(seasonPoint.player_id))">{{ (nameForPlayer(seasonPoint.player_id)) }}</a></td>
       <td class="text-center" ng-repeat="heat in season.heats">
         {{pointsForPlayerForHeat(heat.points, seasonPoint.player_id)}}
       </td>

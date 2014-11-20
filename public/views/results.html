@@ -14,7 +14,7 @@
           </thead>
           <tbody>
             <tr ng-repeat="player in group.players">
-              <td><a href="#/player/{{player.player_id}}">{{player.display_name}}</a></td>
+              <td><a href="/players/{{player.player_id}}">{{player.display_name}}</a></td>
               <td ng-repeat="game in group.games" class="text-center {{ classForPlayerGame(player, game) }}">
                 {{ pointsForPlayer(game.results, player.player_id) }}
               </td>

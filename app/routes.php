@@ -31,8 +31,8 @@ Route::group(array('prefix' => 'api'), function() {
   Route::get('seasons', array('uses' => 'SeasonController@json_index'));
   Route::get('seasons/{season_id}', array('uses' => 'SeasonController@json_show'));
   Route::get('heats', array('uses' => 'HeatController@json_index'));
+  Route::get('players/{player_id}', array('uses' => 'PlayerController@json_show'));
   Route::resource('games', 'GameController', array('only' => array('show', 'update', 'destroy')));
-  Route::resource('players', 'PlayerController', array('only' => array('show')));
 
   Route::resource('groups', 'GroupController', array('only' => array('show', 'update')));
   Route::post('groups/{code}/games', array('uses' => 'GroupController@store_game', 'as' => 'groups.store_game'));
@@ -44,6 +44,7 @@ Route::group(array('prefix' => 'api'), function() {
 // =============================================
 Route::resource('standings', 'SeasonController', array('only' => array('index', 'show')));
 Route::resource('results', 'HeatController', array('only' => array('index', 'show')));
+Route::resource('players', 'PlayerController', array('only' => array('show')));
 Route::get('groups/{group_id}', array('uses' => 'GroupController@show_single', 'as' => 'groups.public'));
 
 // =============================================
