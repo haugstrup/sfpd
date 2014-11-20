@@ -1,4 +1,7 @@
 @extends("layout_public")
+@section("title")
+  {{{$player->display_name}}}
+@stop
 @section("content")
 
 <h2>{{{$player->display_name}}}</h2>

@@ -1,4 +1,7 @@
 @extends("layout_public")
+@section("title")
+  Standings {{{$season['name']}}}
+@stop
 @section("content")
 
 <div class="landscape-tip alert alert-info"><b>Tip:</b> Rotate your phone to landscape mode for a better view.</div>

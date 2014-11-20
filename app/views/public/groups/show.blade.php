@@ -1,4 +1,7 @@
 @extends("layout_public")
+@section("title")
+  Results {{{$group->heat->season->name}}}, {{{$group->heat->name}}}, {{{$group->name}}}
+@stop
 @section("content")
 
 <ol class="breadcrumb">

@@ -1,4 +1,7 @@
 @extends("layout_public")
+@section("title")
+  Machine stats
+@stop
 @section("content")
 
   <ol class="breadcrumb">
