@@ -18,12 +18,9 @@ module.exports = function(grunt) {
             'public/js/app.js',
             'public/js/services/game.js',
             'public/js/services/group.js',
-            'public/js/controllers/player.js',
             'public/js/controllers/game.js',
             'public/js/controllers/group.js',
-            'public/js/controllers/heats_list.js',
-            'public/js/controllers/main.js',
-            'public/js/controllers/standings.js'
+            'public/js/controllers/main.js'
           ]
         }
       }
