@@ -19,13 +19,14 @@
 <table class="table table-striped">
   <thead>
     <tr>
+      <th class="position-cell">Finish</th>
       <th>Player</th>
-      <th class="text-center">Finish</th>
     </tr>
   </thead>
   <tbody>
     @foreach ($results as $result)
       <tr>
+        <td>{{{$result->final_position}}}{{{date('S',mktime(1,1,1,1,( (($result->final_position>=10)+($result->final_position>=20)+($result->final_position==0))*10 + $result->final_position%10) ))}}}</td>
         <td>
           <a href="{{{URL::route('players.show', $result->player_id)}}}">
             {{{$result->display_name }}}
@@ -34,7 +35,6 @@
             @endif
           </a>
         </td>
-        <td class="text-center">{{{$result->final_position}}}{{{date('S',mktime(1,1,1,1,( (($result->final_position>=10)+($result->final_position>=20)+($result->final_position==0))*10 + $result->final_position%10) ))}}}</td>
       </tr>
     @endforeach
   </tbody>
