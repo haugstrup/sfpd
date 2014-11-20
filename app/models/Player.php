@@ -5,7 +5,7 @@ class Player extends Eloquent {
   protected $softDelete = true;
   protected $fillable = array('name', 'display_name', 'ifpa_id', 'initials');
   protected $visible = array('player_id', 'display_name');
-  protected $appends = array('formatted_name', 'icon', 'rookie');
+  protected $appends = array('formatted_name', 'icon', 'rookie', 'final_position');
 
   public function seasons()
   {
@@ -27,6 +27,14 @@ class Player extends Eloquent {
     }
 
     return $this->name;
+  }
+
+  public function getFinalPositionAttribute()
+  {
+    if ($this->pivot && $this->pivot->final_position) {
+      return $this->pivot->final_position;
+    }
+    return null;
   }
 
   public function getRookieAttribute()
