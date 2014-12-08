@@ -101,7 +101,7 @@ class SeasonController extends \BaseController {
     $season = null;
 
     if (!$season_id) {
-      $season = Season::orderBy('created_at', 'desc')->get()->first();
+      $season = Season::whereIn('status', array('active', 'complete'))->orderBy('created_at', 'desc')->get()->first();
       $season_id = $season->season_id;
     }
 

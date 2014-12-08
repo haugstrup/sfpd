@@ -5,7 +5,7 @@
 
 <div class="form-group">
   {{ Form::label('status', 'Status') }}
-  {{Form::select('status', array('complete' => 'Complete', 'active' => 'Active'), null, array('class' => 'form-control'))}}
+  {{Form::select('status', array('inactive' => 'Inactive', 'complete' => 'Complete', 'active' => 'Active'), null, array('class' => 'form-control'))}}
 </div>
 
 <div class="form-group">
