@@ -34,9 +34,11 @@ class SeasonController extends \BaseController {
     $response = $this->common_response($season_id);
 
     $response['has_final_position'] = false;
-    $some_player = current($response['players']);
-    if (isset($some_player['final_position'])) {
-      $response['has_final_position'] = true;
+    if (!empty($response['players'])) {
+      $some_player = current($response['players']);
+      if (isset($some_player['final_position'])) {
+        $response['has_final_position'] = true;
+      }
     }
 
     // Sort points.
