@@ -4,7 +4,7 @@ class Season extends \Eloquent {
   protected $primaryKey = 'season_id';
   protected $softDelete = true;
   protected $hidden = array('created_at', 'deleted_at', 'updated_at');
-  protected $fillable = array('name', 'status', 'points_map');
+  protected $fillable = array('name', 'status', 'points_map', 'game_count', 'adjust_points');
 
   public function heats()
   {

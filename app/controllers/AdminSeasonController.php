@@ -175,7 +175,8 @@ class AdminSeasonController extends \BaseController {
     $rules = array(
       'name'    => 'required',
       'status' => 'required|in:inactive,active,complete',
-      'points_map' => 'required'
+      'points_map' => 'required',
+      'game_count' => 'required|integer'
     );
 
     return Validator::make(Input::all(), $rules);
