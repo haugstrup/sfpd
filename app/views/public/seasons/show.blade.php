@@ -56,7 +56,7 @@
             @if(!empty($heat['points'][$season_point['player_id']]))
               <a href="{{{URL::route('groups.public', $heat['points'][$season_point['player_id']]['group_id'])}}}">{{{$heat['points'][$season_point['player_id']]['points']}}}</a>
             @else
-              0
+              <span class="text-muted">-</span>
             @endif
           </td>
         @endforeach
