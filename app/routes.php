@@ -67,7 +67,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::resource('seasons', 'AdminSeasonController', array('only' => array('index', 'show', 'create', 'store', 'edit', 'update')));
   Route::get('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@players', 'as' => 'admin.seasons.players'));
   Route::put('seasons/{season_id}/players', array('uses' => 'AdminSeasonController@update_players', 'as' => 'admin.seasons.update_players'));
-  Route::post('seasons/{season_id}/store_heat', array('uses' => 'AdminSeasonController@store_heat', 'as' => 'admin.seasons.store_heat'));
   Route::get('seasons/{season_id}/positions', array('uses' => 'AdminSeasonController@positions', 'as' => 'admin.seasons.positions'));
   Route::put('seasons/{season_id}/positions', array('uses' => 'AdminSeasonController@update_positions', 'as' => 'admin.seasons.update_positions'));
   Route::get('seasons/{season_id}/ifpa', array('uses' => 'AdminSeasonController@ifpa', 'as' => 'admin.seasons.ifpa'));
@@ -78,8 +77,6 @@ Route::group(array('prefix' => 'admin', 'before' => 'auth'), function() {
   Route::post('heats/{heat_id}/groups', array('before' => 'auth', 'uses' => 'AdminHeatController@store_groups', 'as' => 'admin.heats.store_groups'));
   Route::delete('heats/{heat_id}/groups', array('before' => 'auth', 'uses' => 'AdminHeatController@destroy_groups', 'as' => 'admin.heats.destroy_groups'));
   Route::get('heats/{heat_id}/print', array('before' => 'auth', 'uses' => 'AdminHeatController@print_groups', 'as' => 'admin.heats.print'));
-  Route::post('heats/{heat_id}/activate', array('before' => 'auth', 'uses' => 'AdminHeatController@activate', 'as' => 'heats.activate'));
-  Route::post('heats/{heat_id}/deactivate', array('before' => 'auth', 'uses' => 'AdminHeatController@deactivate', 'as' => 'heats.deactivate'));
 
 });
 

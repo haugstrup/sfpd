@@ -171,37 +171,6 @@ class AdminSeasonController extends \BaseController {
     return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Final positions updated for {$season->name}");
   }
 
-  public function store_heat($id)
-  {
-    $rules = array(
-      'date'    => 'required',
-      'time'    => 'required'
-    );
-
-    $validator = Validator::make(Input::all(), $rules);
-
-    if ($validator->fails())
-    {
-      return Redirect::route('admin.index')->withErrors($validator)->withInput();
-    }
-
-    $input = Input::all();
-    $season = Season::with('heats')->find($id);
-    $delta = count($season->heats);
-    $date = new \Carbon\Carbon("{$input['date']} {$input['time']}:00", 'America/Los_Angeles');
-
-    $heat = new Heat(array(
-      'date' => $date->setTimezone('UTC'),
-      'status' => 'inactive',
-      'season_id' => $id,
-      'delta' => $delta
-    ));
-    $heat->save();
-
-    return Redirect::route('admin.seasons.show', array($season->season_id))->with('success', "Created {$heat->name()} for {$season->name}");
-
-  }
-
   public function validate() {
     $rules = array(
       'name'    => 'required',

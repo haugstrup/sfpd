@@ -5,7 +5,7 @@ class Heat extends \Eloquent {
   protected $softDelete = true;
   protected $fillable = array('date', 'delta', 'season_id', 'status');
   protected $hidden = array('created_at', 'deleted_at', 'updated_at');
-  protected $appends = array('name', 'formatted_date', 'full_name', 'short_name');
+  protected $appends = array('name', 'formatted_date', 'full_name', 'short_name', 'htlm5_date', 'html5_time');
 
   public function getDates()
   {
@@ -45,6 +45,14 @@ class Heat extends \Eloquent {
 
   public function formatted_date() {
     return $this->date->setTimezone(new DateTimeZone('America/Los_Angeles'))->format('l, F jS, g:iA');
+  }
+
+  public function getHtml5DateAttribute() {
+    return $this->date ? $this->date->setTimezone(new DateTimeZone('America/Los_Angeles'))->format('Y-m-d') : null;
+  }
+
+  public function getHtml5TimeAttribute() {
+    return $this->date ? $this->date->setTimezone(new DateTimeZone('America/Los_Angeles'))->format('H:i') : null;
   }
 
   public function name() {
