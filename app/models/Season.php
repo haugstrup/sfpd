@@ -58,13 +58,15 @@ class Season extends \Eloquent {
   public function should_adjust_score()
   {
     // Only calculated adjusted points if:
-    //  * Season has more than 8 rounds total
-    //  * Heat number 6 (index:5) has a game with results
+    //  * adjust_points property is set
+    //  * Heat number `adjust_points` (index == `adjust_points`-1) has a game with results
+    $index = $this->adjust_points ? ($this->adjust_points-1) : 0;
     if (
-      count($this->heats) > 8 &&
-      count($this->heats[5]->groups) > 0 &&
-      count($this->heats[5]->groups[0]->games) > 0 &&
-      count($this->heats[5]->groups[0]->games[0]->results) > 0
+      $this->adjust_points && $this->adjust_points > 0 &&
+      isset($this->heats[$index]) &&
+      count($this->heats[$index]->groups) > 0 &&
+      count($this->heats[$index]->groups[0]->games) > 0 &&
+      count($this->heats[$index]->groups[0]->games[0]->results) > 0
     ) {
       return true;
     }

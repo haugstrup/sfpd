@@ -15,7 +15,7 @@
 
 <div class="form-group">
   {{ Form::label('adjust_points', 'Adjust points after round number') }}
-  {{Form::select('adjust_points', array('' => "Don't adjust", "6" => "Round 6"), null, array('class' => 'form-control'))}}
+  {{Form::select('adjust_points', array('' => "Don't adjust", "7" => "Round 7"), null, array('class' => 'form-control'))}}
 </div>
 
 <div class="form-group">

@@ -1,11 +1,11 @@
 <div class="form-group">
   {{ Form::label('html5_date', 'Date') }}
-  {{ Form::input('date', 'html5_date', $heat->html5_date, array('class' => 'form-control')) }}
+  {{ Form::input('date', 'html5_date', $heat->html5_date(), array('class' => 'form-control')) }}
 </div>
 
 <div class="form-group">
   {{ Form::label('html5_time', 'Time') }}
-  {{ Form::input('time', 'html5_time', $heat->html5_time, array('class' => 'form-control')) }}
+  {{ Form::input('time', 'html5_time', $heat->html5_time(), array('class' => 'form-control')) }}
 </div>
 
 <div class="form-group">
