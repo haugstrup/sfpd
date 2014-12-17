@@ -46,7 +46,7 @@
       </tbody>
     </table>
 
-    <form class="form-inline" ng-show="!(group.games|filter:{status:'active'}:true).length && group.games.length < 4">
+    <form class="form-inline" ng-show="!(group.games|filter:{status:'active'}:true).length && group.games.length < group.season.game_count">
       <p><b>{{nextPlayer().display_name}}</b> should select the next game:</p>
       <div class="form-group">
         <select class="form-control input-sm" ng-required ng-model="group.nextMachine" ng-options="machine as machine.name for machine in availableMachines()" ng-change="startGame()" ng-disabled="buttonDisabled()">

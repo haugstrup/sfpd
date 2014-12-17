@@ -67,12 +67,12 @@ angular.module('sfpdApp')
         return null;
       }
 
-      if ($scope.group.games.length >= 4) {
+      if ($scope.group.games.length >= $scope.group.season.game_count) {
         return null;
       }
 
-      // 3 player group, last game. Worst player picks
-      if ($scope.group.games.length === 3 && $scope.group.players.length === 3) {
+      // All players have picked once, worst player picks this game
+      if ($scope.group.games.length >= $scope.group.players.length) {
 
         var worstPlayer = null;
 

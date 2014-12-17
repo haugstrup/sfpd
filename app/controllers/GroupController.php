@@ -45,6 +45,7 @@ class GroupController extends \BaseController {
 		$player = Input::get('player');
 		$machine = Input::get('machine');
 		$machine = Machine::find((int)$machine['machine_id']);
+		$season = Season::find($group->heat->season_id);
 
 		if (!$group || $group->heat->status != 'active') {
 			App::abort(404);
@@ -56,7 +57,7 @@ class GroupController extends \BaseController {
 		}
 
 		// Make sure not to create more than 4 games
-		if (count($group->games) >= 4) {
+		if (count($group->games) >= $season->game_count) {
 			App::abort(403);
 		}
 
