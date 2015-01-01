@@ -81,8 +81,10 @@ class SeasonController extends \BaseController {
 
     // Key players by player_id
     $players = array();
-    foreach ($response['players'] as $player) {
-      $players[$player['player_id']] = $player;
+    if (is_array($response['players'])) {
+      foreach ($response['players'] as $player) {
+        $players[$player['player_id']] = $player;
+      }
     }
     $response['players'] = $players;
 
