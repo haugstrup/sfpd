@@ -16,6 +16,7 @@ body {
 }
 .sheet table {
   width:100%;
+  table-layout:fixed;
 }
 .sheet th, .sheet td {
   border:1px solid black;
@@ -23,9 +24,10 @@ body {
 }
 .sheet thead .fake-header th {
   padding-bottom:10px;
+  font-weight:normal;
 }
 .sheet tfoot td {
-  padding-top:10px;
+  padding-top:5px;
 }
 .sheet thead .fake-header th,
 .sheet tfoot td {
@@ -33,7 +35,6 @@ body {
 }
 .sheet td {
   padding:5px;
-  width:18%;
 }
 .sheet th {
   text-align:left;
@@ -42,27 +43,35 @@ body {
 .sheet .fake-header .name {
   text-align:right;
 }
-.sheet .code {
-  font-size:1.5em;
-  letter-spacing: 0.2ex;
-}
-.sheet .mobile {
-  width:100px;
-  height:200px;
-  float:right;
-  text-align:center;
-  padding-top:25px;
-}
 .sheet .scores {
-  width:calc(100% - 110px);
+  position:relative;
+}
+.player-name {
+  min-width:18%;
+}
+.sheet .scores > table > tbody > tr > td {
+  width:calc(20% - 10px);
 }
 .positions td {
+  width:auto;
   border:none;
   text-align: center;
   padding:0;
 }
 .sheet img {
   margin:-7px 5px 0 0;
+}
+.code-cell {
+  position:absolute;
+  top:3px;
+  left:50%;
+  margin-left:-45px;
+  text-align:middle;
+  font-size:1.2em;
+  b {
+    letter-spacing:0.2ex;
+    text-transform: uppercase;
+  }
 }
 
 @media print {
@@ -71,9 +80,10 @@ body {
     margin:0;
   }
   .sheet {
-    margin-bottom:5px;
+    margin-bottom:22px;
   }
   .sheet:nth-child(4n) {
+    margin-bottom: 0;
     page-break-after: always;
     &:last-child {
       page-break-after: auto;
