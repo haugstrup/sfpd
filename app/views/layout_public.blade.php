@@ -9,7 +9,7 @@
       {{{$_ENV['LEAGUE'] == 'sfpd' ? 'San Francisco Pinball Department' : 'Belles and Chimes'}}}
     </title>
     <link rel="apple-touch-icon" href="/img/{{{$_ENV['LEAGUE']}}}-touch-icon.png">
-    <link rel="shortcut icon" href="{{{$_ENV['LEAGUE']}}}-favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/{{{$_ENV['LEAGUE']}}}-favicon.ico" type="image/x-icon" />
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
     <link rel="stylesheet" href="/css/main.css?g=pinbot">
   </head>
