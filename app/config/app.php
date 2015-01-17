@@ -26,7 +26,7 @@ return array(
 	|
 	*/
 
-	'url' => 'http://sfpd.hgstrp.com',
+	'url' => $_ENV['LEAGUE'] == 'sfpd' ? 'http://sfpd.hgstrp.com' : 'http://scores.bellesandchimespinball.com',
 
 	/*
 	|--------------------------------------------------------------------------
