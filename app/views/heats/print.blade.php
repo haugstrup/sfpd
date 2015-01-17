@@ -11,7 +11,7 @@
       <table>
         <thead>
           <tr class="fake-header">
-            <th colspan="4">SFPD {{{$heat->season->name}}}, {{{$heat->name()}}}</th>
+            <th colspan="4">{{{$_ENV['LEAGUE'] == 'sfpd' ? 'SFPD' : 'B&C'}}} {{{$heat->season->name}}}, {{{$heat->name()}}}</th>
             <th colspan="2" class="name">{{{$group->name()}}}</th>
           </tr>
           <tr>

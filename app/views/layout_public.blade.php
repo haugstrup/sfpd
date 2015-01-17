@@ -6,16 +6,16 @@
       @if(trim($__env->yieldContent('title')))
         @yield("title") |
       @endif
-      San Francisco Pinball Department
+      {{{$_ENV['LEAGUE'] == 'sfpd' ? 'San Francisco Pinball Department' : 'Belles and Chimes'}}}
     </title>
-    <link rel="apple-touch-icon" href="/img/touch-icon.png">
+    <link rel="apple-touch-icon" href="/img/{{{$_ENV['LEAGUE']}}}-touch-icon.png">
     <meta name="viewport" content="width=device-width,initial-scale=1.0,maximum-scale=1.0">
     <link rel="stylesheet" href="/css/main.css?g=pinbot">
   </head>
   <body>
     <div class="header navbar navbar-default navbar-static-top">
       <div class="navbar-inner">
-        <a class="navbar-brand" href="/"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
+        <a class="navbar-brand" href="/"><img src="/img/{{{$_ENV['LEAGUE']}}}-logo64.png" alt="{{{$_ENV['LEAGUE']}}}" width="32" height="32"></a>
         <ul class="nav navbar-nav">
           <li class="{{ substr(Request::path(), 0, 9) == 'standings' ? 'active' : '' }}">
             <a href="{{ URL::route('standings.index') }}">Standings</a>

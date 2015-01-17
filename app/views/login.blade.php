@@ -1,6 +1,6 @@
 @extends("layout")
 @section("title")
-  SFPD Login
+  {{{$_ENV['LEAGUE'] == 'sfpd' ? 'SFPD' : 'Belles and Chimes'}}} Login
 @stop
 @section("content")
 	{{ Form::open(array('url' => 'login', 'role' => 'form')) }}

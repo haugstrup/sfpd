@@ -2,8 +2,8 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>@if (!Auth::check()) @yield("title") @else SFPD Admin @endif</title>
-  <link rel="apple-touch-icon" href="/img/touch-icon.png">
+  <title>@if (!Auth::check()) @yield("title") @else {{{$_ENV['LEAGUE'] == 'sfpd' ? 'SFPD' : 'Belles'}}} Admin @endif</title>
+  <link rel="apple-touch-icon" href="/img/{{{$_ENV['LEAGUE']}}}-touch-icon.png">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
@@ -12,7 +12,7 @@
   @if (Auth::check())
   <div class="navbar navbar-default navbar-static-top">
     <div class="navbar-inner">
-      <a class="navbar-brand" href="{{ URL::route('admin.index') }}"><img src="/img/logo64.png" alt="SFPD" width="32" height="32"></a>
+      <a class="navbar-brand" href="{{ URL::route('admin.index') }}"><img src="/img/{{{$_ENV['LEAGUE']}}}-logo64.png" alt="{{{$_ENV['LEAGUE']}}}" width="32" height="32"></a>
       <ul class="nav navbar-nav">
 
         <li class="{{ substr(Request::path(), 6, 7) == 'players' ? 'active' : '' }}">

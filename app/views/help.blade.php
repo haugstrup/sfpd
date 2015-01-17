@@ -2,6 +2,11 @@
 @section("content")
 
 <div class="text-blob">
+
+  @if ($_ENV['LEAGUE'] == 'belles')
+    <div class="alert alert-info">Dear Belles, the text below was written with the San Francisco Pinball Department in mind. Some of it will be relevant for you, some will not. I hope it's self-evident which is which. —Andreas</div>
+  @endif
+
   <h2>Overview</h2>
   <p>To help Per not having to spend all Wednesday night typing in scores from league nights we have a mobile app for entering scores and viewing results.</p>
   <p>The app is a mobile website that allows you to:</p>
