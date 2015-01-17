@@ -18,7 +18,9 @@ class HomeController extends BaseController {
 	public function home()
 	{
 		$season = Season::with('heats', 'players')->orderBy('created_at', 'desc')->get()->first();
-		$season->heats->sortBy('delta');
+		if ($season) {
+			$season->heats->sortBy('delta');
+		}
 
 		return View::make('seasons.show', array('season' => $season));
 	}
