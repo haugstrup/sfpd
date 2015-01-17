@@ -9,6 +9,7 @@
     {{{$_ENV['LEAGUE'] == 'sfpd' ? 'SFPD' : 'Belles'}}} Admin
   @endif</title>
   <link rel="apple-touch-icon" href="/img/{{{$_ENV['LEAGUE']}}}-touch-icon.png">
+  <link rel="shortcut icon" href="{{{$_ENV['LEAGUE']}}}-favicon.ico" type="image/x-icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="/css/admin.css">
 </head>
