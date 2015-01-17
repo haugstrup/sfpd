@@ -17,6 +17,11 @@ class UsersTableSeeder extends Seeder {
       'password' => Hash::make($_ENV['PW_P']),
     ));
 
+    User::create(array(
+      'email' => 'echaschneider@gmail.com',
+      'password' => Hash::make($_ENV['PW_E']),
+    ));
+
   }
 
 }
