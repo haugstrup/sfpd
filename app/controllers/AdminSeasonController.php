@@ -65,22 +65,75 @@ class AdminSeasonController extends \BaseController {
   public function ifpa($season_id)
   {
     $season = Season::with('players')->find($season_id);
-    $ifpa = array();
-    foreach ($season->players as $player) {
-      if ($player->pivot->final_position) {
-        $ifpa[] = array(
-          'position' => $player->pivot->final_position,
-          'name' => $player->name,
-          'ifpa_id' => $player->ifpa_id ? $player->ifpa_id : ''
-        );
+
+    if (Input::get('filter') === 'top5' || Input::get('filter') === 'bottom5') {
+      $sorted_points = Season::sorted_points($season->season_id);
+      $heats = Input::get('filter') === 'bottom5' ? array_slice($sorted_points['heats'], -5, 5) : array_slice($sorted_points['heats'], 0, 5);
+
+      $summed_points = array();
+      foreach ($heats as $heat) {
+        if (!empty($heat['points'])) {
+          foreach ($heat['points'] as $player_id => $points) {
+            if (empty($summed_points[$player_id])) {
+              $summed_points[$player_id] = $points['points'];
+            } else {
+              $summed_points[$player_id] = $summed_points[$player_id] + $points['points'];
+            }
+          }
+        }
       }
+
+      arsort($summed_points);
+
+      $ifpa = array();
+      $position = 0;
+      $prev_position = 0;
+      $current = null;
+      foreach ($summed_points as $player_id => $points) {
+        $player = $season->players->find($player_id);
+
+        $position++;
+        if ($current == $points) {
+          $ifpa[] = array(
+            'points' => $points,
+            'position' => $prev_position,
+            'name' => $player->name,
+            'ifpa_id' => $player->ifpa_id ? $player->ifpa_id : ''
+          );
+        } else {
+          $ifpa[] = array(
+            'points' => $points,
+            'position' => $position,
+            'name' => $player->name,
+            'ifpa_id' => $player->ifpa_id ? $player->ifpa_id : ''
+          );
+          $prev_position = $position;
+        }
+        $current = $points;
+      }
+
+      $message = 'Showing standings for the '.(Input::get('filter') == 'top5' ? 'first 5 rounds' : 'last 5 rounds').' of the season';
+
+    } else {
+      $ifpa = array();
+      foreach ($season->players as $player) {
+        if ($player->pivot->final_position) {
+          $ifpa[] = array(
+            'position' => $player->pivot->final_position,
+            'name' => $player->name,
+            'ifpa_id' => $player->ifpa_id ? $player->ifpa_id : ''
+          );
+        }
+      }
+
+      usort($ifpa, function($a, $b) {
+        return $a['position'] == $b['position'] ? 0 : ($a['position'] > $b['position']) ? 1 : -1;
+      });
+
+      $message = 'Showing results for the full season';
     }
 
-    usort($ifpa, function($a, $b) {
-      return $a['position'] == $b['position'] ? 0 : ($a['position'] > $b['position']) ? 1 : -1;
-    });
-
-    return View::make('seasons.ifpa', array('season' => $season, 'ifpa' => $ifpa));
+    return View::make('seasons.ifpa', array('season' => $season, 'ifpa' => $ifpa, 'message' => $message));
   }
 
   public function players($season_id)
