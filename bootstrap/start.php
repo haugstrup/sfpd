@@ -29,7 +29,7 @@ $app->forgetMiddleware('Illuminate\Http\FrameGuard');
 
 $env = $app->detectEnvironment(array(
 
-	'local' => array('marcuse.local'),
+	'local' => array('marcuse.local', 'marcuse'),
 
 ));
 

@@ -41,6 +41,7 @@ Route::get('standings/{seasons_id}/playoffs', array('uses' => 'SeasonController@
 Route::resource('results', 'HeatController', array('only' => array('index', 'show')));
 Route::resource('players', 'PlayerController', array('only' => array('show')));
 Route::resource('statistics', 'StatsController', array('only' => array('index')));
+Route::get('statistics/players', array('uses' => 'StatsController@players', 'as' => 'statistics.players'));
 Route::get('groups/{group_id}', array('uses' => 'GroupController@show_single', 'as' => 'groups.public'));
 
 // =============================================

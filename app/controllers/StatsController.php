@@ -86,4 +86,93 @@ class StatsController extends \BaseController {
     ));
   }
 
+  public function players() {
+
+    // Players per round
+    $players_per_round = array();
+    $heats = Heat::with('season', 'groups', 'groups.players')->orderBy('heats.date', 'asc')->get();
+    foreach ($heats as $heat) {
+      $key = $heat->season->name.', '.$heat->name();
+      $players_per_round[$key] = 0;
+      foreach ($heat->groups as $group) {
+        $players_per_round[$key] = $players_per_round[$key] + count($group->players);
+      }
+    }
+
+    // Strength of schedule, oh my
+    $players_by_sos = array();
+    $season = Season::whereIn('status', array('active', 'complete'))->orderBy('created_at', 'desc')->get()->first();
+
+    if ($season) {
+      // Points by player
+      $season_id = $season->season_id;
+      $points = Season::sorted_points($season_id);
+      $points_by_player = array();
+      foreach ($points['points'] as $point) {
+        $points_by_player[$point['player_id']] = $point['points'];
+      }
+
+      // Opponent groups
+      $groups = array();
+      foreach ($heats as $heat) {
+        if ($heat->season_id === $season_id) {
+          foreach ($heat->groups as $group) {
+            $g = array();
+            foreach ($group->players as $player) {
+              $g[] = $player->player_id;
+            }
+            $groups[] = $g;
+          }
+        }
+      }
+
+      // Number of rounds this player has played
+      // Opponents faced
+      foreach ($points_by_player as $player_id => $current_points) {
+        $p = array(
+          'total' => null,
+          'average' => null,
+          'rounds' => 0,
+          'opponents' => array(),
+          'opponents_points' => array(),
+        );
+
+        foreach ($groups as $group) {
+          if (in_array($player_id, $group)) {
+
+            $p['rounds']++;
+
+            foreach ($group as $player) {
+              if ($player !== $player_id) {
+                $p['opponents'][] = $player;
+                $p['opponents_points'][] = $points_by_player[$player];
+              }
+            }
+          }
+        }
+
+        if ($p['rounds'] > 2) {
+          $p['total'] = array_sum($p['opponents_points']);
+          $p['average'] = round($p['total']/count($p['opponents_points']), 2);
+
+          $players_by_sos[$player_id] = $p;
+        }
+
+      }
+
+      uasort($players_by_sos, function($a, $b) {
+        if ($a['average'] == $b['average']) {
+          return 0;
+        }
+        return ($a['average'] < $b['average']) ? 1 : -1;
+      });
+    }
+
+    return View::make('public.stats.players', array(
+      'players_per_round' => $players_per_round,
+      'players_by_sos' => $players_by_sos,
+      'points' => $points
+    ));
+  }
+
 }

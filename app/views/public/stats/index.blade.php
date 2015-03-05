@@ -6,6 +6,12 @@
 
   <ol class="breadcrumb">
     <li>Stats</li>
+    <li class="active dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">Machine stats<span class="caret"></span></a>
+      <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
+        <li role="presentation"><a role="menuitem" href="{{URL::route('statistics.index')}}">Machine stats</a></li>
+        <li role="presentation"><a role="menuitem" href="{{URL::route('statistics.players')}}">Player stats</a></li>
+      </ul>
+    </li>
     <li class="active dropdown"><a class="dropdown-toggle" href="#" data-toggle="dropdown" aria-expanded="false">{{{$current_filter_name}}}<span class="caret"></span></a>
       <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel">
         @foreach($filters as $key => $filter)
