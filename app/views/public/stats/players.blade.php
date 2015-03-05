@@ -53,12 +53,14 @@
   <tbody>
     <?php $count = 1; ?>
     @foreach ($players_by_sos as $player_id => $sos)
+      @if ($sos['rounds'] > 2)
       <tr>
         <td class="index-cell">{{{$count}}}</td>
         <td>{{{ $points['players'][$player_id]['display_name'] }}}</td>
-        <td class="text-right">{{{ $sos['average'] }}}</td>
+        <td class="text-right">{{{ $sos['opponents_average'] }}}</td>
       </tr>
       <?php $count++; ?>
+      @endif
     @endforeach
   </tbody>
 </table>

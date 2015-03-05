@@ -130,11 +130,13 @@ class StatsController extends \BaseController {
       // Opponents faced
       foreach ($points_by_player as $player_id => $current_points) {
         $p = array(
-          'total' => null,
-          'average' => null,
+          'total' => 0,
+          'opponents_average' => 0,
+          'own_average' => 0,
           'rounds' => 0,
           'opponents' => array(),
           'opponents_points' => array(),
+          'opponents_averages' => array(),
         );
 
         foreach ($groups as $group) {
@@ -151,20 +153,28 @@ class StatsController extends \BaseController {
           }
         }
 
-        if ($p['rounds'] > 2) {
-          $p['total'] = array_sum($p['opponents_points']);
-          $p['average'] = round($p['total']/count($p['opponents_points']), 2);
+        $p['total'] = array_sum($p['opponents_points']);
+        $p['own_average'] = $points_by_player[$player_id]/$p['rounds'];
 
-          $players_by_sos[$player_id] = $p;
+        $players_by_sos[$player_id] = $p;
+
+      }
+
+      foreach ($players_by_sos as $player_id => $p) {
+
+        foreach ($p['opponents'] as $opponent) {
+          $players_by_sos[$player_id]['opponents_averages'][] = $players_by_sos[$opponent]['own_average'];
         }
+
+        $players_by_sos[$player_id]['opponents_average'] = round(array_sum($players_by_sos[$player_id]['opponents_averages'])/count($players_by_sos[$player_id]['opponents_averages']), 2);
 
       }
 
       uasort($players_by_sos, function($a, $b) {
-        if ($a['average'] == $b['average']) {
+        if ($a['opponents_average'] == $b['opponents_average']) {
           return 0;
         }
-        return ($a['average'] < $b['average']) ? 1 : -1;
+        return ($a['opponents_average'] < $b['opponents_average']) ? 1 : -1;
       });
     }
 
