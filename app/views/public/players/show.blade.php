@@ -26,7 +26,7 @@
     <tbody>
       @foreach ($machines as $machine)
       <tr>
-        <td>{{{$machine->name}}}</td>
+        <td><a href="{{{URL::route('statistics.machine', $machine->machine_id)}}}">{{{$machine->name}}}</a></td>
         <td class="text-center">{{{$machine->count}}}</td>
       </tr>
       @endforeach

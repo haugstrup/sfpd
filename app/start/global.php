@@ -68,7 +68,7 @@ App::error(function(Exception $exception, $code)
     "http" => array(
       "method" => Request::method(),
       "url" => Request::url(),
-      "query_string" => $query ? $query["query"] : '',
+      "query_string" => $query && !empty($query["query"]) ? $query["query"] : '',
       "data" => Request::isMethod('post') ? Input::all() : new stdClass(),
     ),
   ));

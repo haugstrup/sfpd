@@ -11,7 +11,7 @@ class PlayerController extends \BaseController {
 
     // Machines picked
     $machines = DB::table('games')
-      ->select(array('machines.name', DB::raw('COUNT(*) as count')))
+      ->select(array('games.machine_id', 'machines.name', DB::raw('COUNT(*) as count')))
       ->where('games.deleted_at', null)
       ->where('games.player_id', $player->player_id)
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')

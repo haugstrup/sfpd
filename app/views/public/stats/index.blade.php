@@ -52,7 +52,7 @@
     <tbody>
       @foreach ($list_popular as $item)
         <tr>
-          <td>{{{ $item->name }}}</td>
+          <td><a href="{{{ URL::route('statistics.machine', array($item->machine_id, 'filter' => $raw_filter)) }}}">{{{ $item->name }}}</a></td>
           <td class="text-center">{{{ $item->aggregate }}}</td>
         </tr>
       @endforeach
