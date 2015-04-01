@@ -35,6 +35,28 @@
 </div>
 @endif
 
+@if ($grudges && count($grudges) > 0)
+<div class="section">
+  <h3>Grudges - Often faced opponents</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th class="text-center">Count</th>
+      </tr>
+    </thead>
+    <tbody>
+      @foreach ($grudges as $grudge)
+      <tr>
+        <td><a href="{{{URL::route('players.show', $grudge['player_id'])}}}">{{{$grudge['name']}}}</a></td>
+        <td class="text-center">{{{$grudge['count']}}}</td>
+      </tr>
+      @endforeach
+    </tbody>
+  </table>
+</div>
+@endif
+
 @if($seasons && count($seasons) > 0)
 <div class="section" ng-if="seasons.length > 0">
   <h3>Seasons</h3>
