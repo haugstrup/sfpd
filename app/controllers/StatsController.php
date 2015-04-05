@@ -196,6 +196,46 @@ class StatsController extends \BaseController {
     ));
   }
 
+  public function guests() {
+    $data = array(5 => array(), 1 => array());
+
+    foreach ($data as $season_id => $v) {
+      $points = Season::sorted_points($season_id);
+
+      foreach ($points['heats'] as $heat) {
+        $data[$season_id][$heat['heat_id']] = array(
+          'guest_count' => 0,
+          'member_count' => 0,
+          'rookie_count' => 0,
+          'total_count' => 0,
+          'guest_percentage' => 0,
+          'name' => $heat['name']
+        );
+
+        foreach ($heat['points'] as $player_id => $p) {
+          if ($points['players'][$player_id]['rookie']) {
+            $data[$season_id][$heat['heat_id']]['rookie_count']++;
+          } elseif (stristr($points['players'][$player_id]['icon'], 'guest')) {
+            $data[$season_id][$heat['heat_id']]['guest_count']++;
+          } else {
+            $data[$season_id][$heat['heat_id']]['member_count']++;
+          }
+          $data[$season_id][$heat['heat_id']]['total_count']++;
+        }
+
+        if ($data[$season_id][$heat['heat_id']]['total_count'] > 0) {
+          $data[$season_id][$heat['heat_id']]['guest_percentage'] = round(($data[$season_id][$heat['heat_id']]['guest_count']/$data[$season_id][$heat['heat_id']]['total_count'])*100);
+        }
+
+      }
+    }
+
+    return View::make('public.stats.guests', array(
+      'seasons' => array(1 => 'Fall 2014', 5 => 'Spring 2015'),
+      'data' => $data,
+    ));
+  }
+
   public function prepare_filters() {
     $current_filter = Input::get('filter');
     if ($current_filter) {

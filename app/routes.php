@@ -43,6 +43,7 @@ Route::resource('players', 'PlayerController', array('only' => array('show')));
 Route::resource('statistics', 'StatsController', array('only' => array('index')));
 Route::get('statistics/players', array('uses' => 'StatsController@players', 'as' => 'statistics.players'));
 Route::get('statistics/machines/{machine_id}', array('uses' => 'StatsController@machine', 'as' => 'statistics.machine'));
+Route::get('statistics/guests', array('uses' => 'StatsController@guests', 'as' => 'statistics.guests'));
 Route::get('groups/{group_id}', array('uses' => 'GroupController@show_single', 'as' => 'groups.public'));
 
 // =============================================
