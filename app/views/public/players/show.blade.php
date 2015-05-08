@@ -6,6 +6,8 @@
 
 <h2>{{{$player->display_name}}}</h2>
 
+<p><a href="{{{URL::route('players.games', $player->player_id)}}}">View latest games for {{{$player->display_name}}}</a></p>
+
 @if ($group)
 <div class="section">
   <h3>Last result: {{{$group->heat->season->name}}}, {{{$group->heat->name}}}</h3>

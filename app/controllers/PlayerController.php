@@ -61,4 +61,50 @@ class PlayerController extends \BaseController {
     ));
   }
 
+  public function show_games($player_id) {
+    $player = Player::find($player_id);
+
+    $games = DB::table('results')
+      ->select(array('results.player_id', 'results.position', 'games.machine_id', 'machines.name'))
+      ->where('results.player_id', $player->player_id)
+      ->whereNull('results.deleted_at')
+      ->where('results.position', '>', 0)
+      ->join('games', 'games.game_id', '=', 'results.game_id')
+      ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
+      ->orderBy('results.created_at', 'desc')
+      ->take(100)
+      ->get();
+
+    $aggregated_results = array();
+    foreach ($games as $game) {
+
+      if (!isset($aggregated_results[$game->machine_id])) {
+        $aggregated_results[$game->machine_id] = array(
+          'results' => array(),
+          'name' => $game->name,
+          'average' => 0
+        );
+      }
+
+      $aggregated_results[$game->machine_id]['results'][] = $game->position;
+      sort($aggregated_results[$game->machine_id]['results']);
+      $aggregated_results[$game->machine_id]['average'] = round(array_sum($aggregated_results[$game->machine_id]['results'])/count($aggregated_results[$game->machine_id]['results']), 2);
+    }
+
+    // Sort aggregated results by average position
+    uasort($aggregated_results, function($a, $b) {
+      if ($a['average'] == $b['average']) {
+        return 0;
+      }
+      return ($a['average'] < $b['average']) ? -1 : 1;
+    });
+
+    return View::make('public.players.show_games', array(
+      'player' => $player,
+      'games' => $games,
+      'aggregated_results' => $aggregated_results
+    ));
+
+  }
+
 }
