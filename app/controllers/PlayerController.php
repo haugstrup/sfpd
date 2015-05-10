@@ -72,11 +72,13 @@ class PlayerController extends \BaseController {
       ->join('games', 'games.game_id', '=', 'results.game_id')
       ->join('machines', 'games.machine_id', '=', 'machines.machine_id')
       ->orderBy('results.created_at', 'desc')
-      ->take(100)
       ->get();
 
     $aggregated_results = array();
+    $i = 0;
     foreach ($games as $game) {
+
+      $i++;
 
       if (!isset($aggregated_results[$game->machine_id])) {
         $aggregated_results[$game->machine_id] = array(
@@ -100,6 +102,7 @@ class PlayerController extends \BaseController {
     });
 
     return View::make('public.players.show_games', array(
+      'game_count' => $i,
       'player' => $player,
       'games' => $games,
       'aggregated_results' => $aggregated_results

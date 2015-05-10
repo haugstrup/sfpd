@@ -4,9 +4,11 @@
 @stop
 @section("content")
 
-<h2>Latest games for {{{$player->display_name}}}</h2>
+<h2>Games for {{{$player->display_name}}}</h2>
 
-<p>This table lists machines played for the latest 50 games for {{{$player->display_name}}}. The <em>average position</em> shows the average position obtained on that machine (lower is better), <em>games played</em> is the number of games played on that machine (of the latest 50 games) and <em>results</em> are the actual results (1 = 1st; 4 = 4th).</p>
+<p>This table lists <b>all</b> machines played for {{{$player->display_name}}}. The <em>average position</em> shows the average position obtained on that machine (lower is better), <em>games played</em> is the number of games played on that machine and <em>results</em> are the actual results (1 = 1st; 4 = 4th).</p>
+
+<p>{{{$player->display_name}}} has played <em>{{{$game_count}}} games</em>.</p>
 
 @if ($games)
 <div class="section">
