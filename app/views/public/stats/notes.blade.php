@@ -5,7 +5,7 @@
 @section("content")
 <h2>Notes</h2>
 <p>Find below notes about why a game was removed in a given round</p>
-<h3>Permanently out</h3>
+<div><b>Permanently out</b></div>
 <div>
   Bride of Pinbot (unsuitable rules)<br>
   <!-- Police Force (unsuitable rules)<br> -->
