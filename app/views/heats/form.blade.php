@@ -13,4 +13,9 @@
   {{Form::select('status', array('inactive' => 'Inactive', 'active' => 'Active', 'completed' => 'Completed'), $heat->status, array('class' => 'form-control'))}}
 </div>
 
+<div class="form-group">
+  {{ Form::label('notes', 'Notes') }}
+  {{Form::textarea('notes', $heat->notes, array('class' => 'form-control', 'rows' => '5'))}}
+</div>
+
 {{Form::hidden('season_id', $heat->season_id)}}

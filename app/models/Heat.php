@@ -3,7 +3,7 @@
 class Heat extends \Eloquent {
   protected $primaryKey = 'heat_id';
   protected $softDelete = true;
-  protected $fillable = array('date', 'delta', 'season_id', 'status');
+  protected $fillable = array('date', 'delta', 'season_id', 'status', 'notes');
   protected $hidden = array('created_at', 'deleted_at', 'updated_at');
   protected $appends = array('name', 'formatted_date', 'full_name', 'short_name');
 

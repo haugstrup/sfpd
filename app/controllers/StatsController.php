@@ -2,6 +2,13 @@
 
 class StatsController extends \BaseController {
 
+  public function notes() {
+    $heats = Heat::with('season')->whereNotNull('notes')->orderBy('date', 'desc')->get();
+    return View::make('public.stats.notes', array(
+      'heats' => $heats
+    ));
+  }
+
   public function index()
   {
 

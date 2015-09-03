@@ -32,6 +32,7 @@ class AdminHeatController extends \BaseController {
       'date' => $date->setTimezone('UTC'),
       'status' => $input['status'],
       'season_id' => $input['season_id'],
+      'notes' => empty($input['notes']) ? null : $input['notes'],
       'delta' => $delta
     ));
     $heat->save();
@@ -73,6 +74,7 @@ class AdminHeatController extends \BaseController {
 
     $heat->status = $input['status'];
     $heat->date = $date->setTimezone('UTC');
+    $heat->notes = empty($input['notes']) ? null : $input['notes'];
     $heat->save();
 
     return Redirect::route('admin.seasons.show', array($heat->season_id))->with('success', "Updated {$heat->name()} for {$season->name}");

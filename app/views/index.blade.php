@@ -19,6 +19,7 @@
           <li><a href="/standings">Standings</a></li>
           <li><a href="/results">Results</a></li>
           <li><a href="/statistics">Stats</a></li>
+          <li><a href="/notes">Notes</a></li>
         </ul>
       </div>
     </div>
