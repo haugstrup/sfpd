@@ -12,7 +12,7 @@
   Super Mario Bros (unsuitable rules)<br>
   Super Mario Bros. Mushroom World (unfair to tall people)<br>
   <!-- Black Knight (always breaks down)<br> -->
-  Black Knight 2000 (always breaks down)<br>
+  <!-- Black Knight 2000 (always breaks down)<br> -->
   Captain Fantastic (playfield protector catches ball)<br>
   <!-- Checkpoint (display always goes out)<br> -->
   <!-- Cyclone (scoop kicks ball SDTM)<br> -->
